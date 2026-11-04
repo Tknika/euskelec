@@ -19,3 +19,5 @@ region: Region
 playVideo: Play video
 notFound: We couldn't find this page
 backHome: Back to the home page
+pauseVideo: Pause the video
+resumeVideo: Play the video

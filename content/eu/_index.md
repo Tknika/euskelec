@@ -3,6 +3,10 @@ title: Euskelec
 description: Euskadiko Ibilgailu Elektrikoen Txapelketa. Lanbide-heziketako ikasleek ibilgailu % 100 elektriko bat diseinatu eta eraikitzen dute.
 edition: X. edizioa · 2026-2027
 hero_image: images/bolido.png
+hero_video:
+  large: video/home-1920.mp4
+  small: video/home-960.mp4
+  poster: images/home-video.jpg
 buttons:
   - label: Lehiaketa
     url: /lehiaketa/

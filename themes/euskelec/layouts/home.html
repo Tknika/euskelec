@@ -1,43 +1,60 @@
 {{ define "main" }}
   {{ $competition := partial "by-key.html" "competition" }}
 
-  {{/* Hero: wordmark, edition, buttons and the car */}}
-  <section class="relative overflow-hidden border-b border-night-800 bg-[radial-gradient(ellipse_at_70%_60%,var(--color-night-700),var(--color-night-950)_65%)]">
-    <div class="bars-bg absolute inset-y-0 left-0 w-1/3 opacity-60 [mask-image:linear-gradient(to_right,black,transparent)]" aria-hidden="true"></div>
-    <div class="container-site relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-[1.1fr_1fr]">
-      <div>
-        {{ with .Params.edition }}<p class="eyebrow mb-6">{{ . }}</p>{{ end }}
-        <h1 class="text-5xl sm:text-7xl lg:text-8xl">{{ partial "logo.html" "" }}</h1>
-        <p class="mt-6 max-w-xl font-display text-xl uppercase tracking-wide text-night-100 sm:text-2xl">{{ site.Params.description }}</p>
+  {{/* Hero: the video of the last edition over the whole window, under the transparent header.
+       Muted, looping, no sound track; the small file on phones. main.js adds pause and honours reduced motion. */}}
+  <section class="relative -mt-16 flex h-[100svh] min-h-[34rem] items-end overflow-hidden bg-night-950">
+    {{ with .Params.hero_video }}
+      <video class="absolute inset-0 size-full object-cover" autoplay muted loop playsinline preload="auto" aria-hidden="true" data-hero-video
+        {{ with .poster }}poster="{{ . | relURL }}"{{ end }}>
+        {{ with .small }}<source src="{{ . | relURL }}" type="video/mp4" media="(max-width: 767px)">{{ end }}
+        <source src="{{ .large | relURL }}" type="video/mp4">
+      </video>
+    {{ end }}
+    <div class="hero-shade absolute inset-0" aria-hidden="true"></div>
+
+    <div class="container-wide relative pb-10 sm:pb-14 lg:pb-20">
+      {{ with .Params.edition }}<p class="eyebrow mb-6">{{ . }}</p>{{ end }}
+      <h1 class="text-[clamp(2.5rem,11.5vw,12rem)] leading-none">{{ partial "logo.html" "" }}</h1>
+      <div class="mt-8 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <p class="max-w-2xl font-display text-lg uppercase tracking-wide text-night-100 sm:text-2xl">{{ site.Params.description }}</p>
         {{ with .Params.buttons }}
-          <div class="mt-10 flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-4">
             {{ range . }}
               {{ $url := .url }}{{ if hasPrefix $url "/" }}{{ $url = strings.TrimPrefix "/" $url | relLangURL }}{{ end }}
-              <a href="{{ $url }}" class="{{ if eq .style "ghost" }}btn-ghost{{ else }}btn-primary{{ end }}">{{ .label }}</a>
+              <a href="{{ $url }}" class="{{ if eq .style "ghost" }}btn-ghost bg-night-950/40 backdrop-blur{{ else }}btn-primary{{ end }}">{{ .label }}</a>
             {{ end }}
           </div>
         {{ end }}
       </div>
-      {{ with .Params.hero_image }}
-        <img src="{{ . | relURL }}" alt="" class="w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.6)]" width="1000" height="667" fetchpriority="high">
-      {{ end }}
     </div>
+
+    {{ with .Params.hero_video }}
+      <button type="button" class="absolute right-4 top-20 grid size-10 place-items-center border border-white/40 bg-night-950/40 text-white backdrop-blur transition hover:border-lime hover:text-lime sm:right-6 lg:right-10" data-hero-toggle
+        data-label-pause="{{ i18n "pauseVideo" }}" data-label-play="{{ i18n "resumeVideo" }}" aria-label="{{ i18n "pauseVideo" }}" hidden>
+        <svg class="size-4" data-icon-pause viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2h3v12H4zM9 2h3v12H9z"/></svg>
+        <svg class="hidden size-4" data-icon-play viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
+      </button>
+    {{ end }}
   </section>
 
-  {{/* What is Euskelec (page body) */}}
-  <section class="container-site grid gap-10 py-20 lg:grid-cols-[1fr_2fr]">
+  {{/* What is Euskelec (page body), with the car */}}
+  <section class="container-wide grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:gap-20">
     <div>
-      {{ with .Params.about.eyebrow }}<p class="eyebrow mb-4">{{ . }}</p>{{ end }}
-      <h2 class="text-3xl font-semibold sm:text-4xl">{{ .Params.about.title }}</h2>
+      {{ with .Params.about.eyebrow }}<p class="eyebrow mb-5">{{ . }}</p>{{ end }}
+      <h2 class="text-4xl font-semibold sm:text-5xl xl:text-6xl">{{ .Params.about.title }}</h2>
+      <div class="prose-site mt-8 max-w-2xl text-lg">{{ .Content }}</div>
     </div>
-    <div class="prose-site text-lg">{{ .Content }}</div>
+    {{ with .Params.hero_image }}
+      <img src="{{ . | relURL }}" alt="" loading="lazy" class="w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.6)]" width="1000" height="667">
+    {{ end }}
   </section>
 
   {{/* Phases and dynamic tests, from the competition page */}}
   {{ with $competition }}
-    <section class="container-site space-y-10 pb-20">
+    <section class="container-wide space-y-10 pb-20 sm:pb-28">
       <div class="flex flex-wrap items-end justify-between gap-4">
-        <h2 class="text-3xl font-semibold sm:text-4xl">{{ $.Params.phases_title }}</h2>
+        <h2 class="text-4xl font-semibold sm:text-5xl xl:text-6xl">{{ $.Params.phases_title }}</h2>
         <a href="{{ .RelPermalink }}" class="btn-ghost">{{ i18n "readMore" }}</a>
       </div>
       {{ partial "phases.html" . }}
@@ -48,7 +65,7 @@
   {{/* Sections of the site */}}
   {{ with .Params.sections }}
     <section class="border-y border-night-800 bg-night-900">
-      <div class="container-site grid gap-px py-16 md:grid-cols-3">
+      <div class="container-wide grid gap-px py-16 md:grid-cols-3">
         {{ range . }}
           {{ with partial "by-key.html" . }}
             <a href="{{ .RelPermalink }}" class="group flex flex-col gap-4 p-6 transition hover:bg-night-800 sm:p-8">
@@ -65,11 +82,11 @@
 
   {{/* Last edition's poster */}}
   {{ with .Params.poster }}
-    <section class="container-site grid items-center gap-10 py-20 md:grid-cols-2">
+    <section class="container-wide grid items-center gap-12 py-20 sm:py-28 md:grid-cols-2 lg:gap-20">
       <img src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy" class="w-full border border-night-700">
       <div>
         {{ with .eyebrow }}<p class="eyebrow mb-4">{{ . }}</p>{{ end }}
-        <h2 class="text-3xl font-semibold sm:text-4xl">{{ .title }}</h2>
+        <h2 class="text-4xl font-semibold sm:text-5xl">{{ .title }}</h2>
         {{ with .text }}<div class="prose-site mt-6">{{ . | markdownify }}</div>{{ end }}
         {{ with .file }}<p class="mt-8"><a href="{{ . | relURL }}" class="btn-primary" target="_blank">{{ $.Params.poster.button }}</a></p>{{ end }}
       </div>
@@ -78,7 +95,7 @@
 
   {{/* Call to action: contact and Instagram */}}
   {{ with .Params.cta }}
-    <section class="container-site">
+    <section class="container-wide pb-20 sm:pb-28">
       <div class="relative overflow-hidden bg-volt-600 px-6 py-14 sm:px-12">
         <div class="bars-bg absolute inset-y-0 right-0 w-1/2 opacity-40 [mask-image:linear-gradient(to_left,black,transparent)]" aria-hidden="true"></div>
         <div class="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">

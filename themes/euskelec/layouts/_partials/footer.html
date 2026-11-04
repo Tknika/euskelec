@@ -1,5 +1,6 @@
-<footer class="mt-24 border-t border-night-800 bg-night-900">
-  <div class="container-site space-y-12 py-14">
+{{ $wide := .IsHome }}
+<footer class="{{ if not $wide }}mt-24 {{ end }}border-t border-night-800 bg-night-900">
+  <div class="{{ if $wide }}container-wide{{ else }}container-site{{ end }} space-y-12 py-14">
     {{ with site.Params.organizers }}
       <section>
         <h2 class="eyebrow mb-6">{{ i18n "organizers" }}</h2>
@@ -21,7 +22,7 @@
   </div>
 
   <div class="border-t border-night-800">
-    <div class="container-site flex flex-col gap-6 py-8 text-sm text-night-400 md:flex-row md:items-center md:justify-between">
+    <div class="{{ if $wide }}container-wide{{ else }}container-site{{ end }} flex flex-col gap-6 py-8 text-sm text-night-400 md:flex-row md:items-center md:justify-between">
       <div class="flex flex-col gap-2">
         <a href="{{ site.Home.RelPermalink }}" class="text-lg">{{ partial "logo.html" "" }}</a>
         <p>{{ site.Params.description }}</p>

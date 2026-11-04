@@ -3,6 +3,10 @@ title: Euskelec
 description: Basque Electric Vehicle Contest. Vocational training students design and build a 100% electric vehicle.
 edition: 10th edition · 2026-2027
 hero_image: images/bolido.png
+hero_video:
+  large: video/home-1920.mp4
+  small: video/home-960.mp4
+  poster: images/home-video.jpg
 buttons:
   - label: Competition
     url: /competition/

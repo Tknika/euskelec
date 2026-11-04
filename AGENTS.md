@@ -29,7 +29,7 @@ There is no test suite. **A change is verified when:**
 4. **Don't invent facts.** Dates, venues, rules, results and sponsors come from the organisers. While a fact is unknown, leave the field empty (it shows "Laster" / "Próximamente" / "Coming soon") or use a `{{< note >}}`, and say so in your summary.
 5. **Tailwind: npm only.** Hugo 0.16x refuses the standalone `tailwindcss` binary. No PostCSS, `tailwind.config.js` or extra npm packages unless asked; Tailwind v4 is configured in CSS (`@theme` in `assets/css/main.css`).
 6. **Don't commit build output:** `public/`, `resources/_gen/`, `node_modules/`, `hugo_stats.json` and `.hugo_build.lock` are git-ignored. `_originals/` (full-size photos and old-site downloads) too.
-7. **Keep it static and light.** No tracking scripts, no new third-party requests. Fonts are self-hosted. YouTube is only contacted when a video tile is clicked (youtube-nocookie). The only JavaScript is that click handler; the mobile menu is a `<details>`.
+7. **Keep it static and light.** No tracking scripts, no new third-party requests. Fonts are self-hosted. YouTube is only contacted when a video tile is clicked (youtube-nocookie). The only JavaScript is that click handler and the pause button of the home video (which also stops autoplay under `prefers-reduced-motion`); the mobile menu is a `<details>`.
 
 ## Conventions
 
@@ -46,7 +46,9 @@ There is no test suite. **A change is verified when:**
 - Font: Lexend (`font-display`, self-hosted variable font) for titles, menus and labels; system sans for running text.
 - The logo is redrawn in `_partials/logo.html` (SVG bars + text) because the old site only had a 218×25 PNG. Replace it with the official SVG when available.
 - The logo's stacked bars are reused as a background motif (`.bars-bg`).
-- Components in `@layer components` in `main.css`: `container-site`, `btn-primary`, `btn-ghost`, `eyebrow`, `card`, `bars-bg`, `prose-site`. In Tailwind v4 you can't `@apply` a custom component class.
+- **Widths, as on basqueunevocweek:** the home page, the header and the home footer use `container-wide` (the whole window, side margins only); inner pages use `container-site` (up to 96rem), with text kept to a readable column (`max-w-3xl`, unless `wide: true`).
+- **Home video:** `hero_video` in the home front matter (`large` 1920px, `small` 960px for phones, `poster`), files in `static/video/`. Muted, looping, no audio track, under a transparent header (`.header-home`, solid on scroll through a CSS scroll-driven animation). The source is `_originals/videos/home.mov`; re-encode with `ffmpeg -i home.mov -an -c:v libx264 -preset slow -crf 30 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:-2 home-1920.mp4` (crf 28 and `scale=960:-2` for the small one). Keep it short and under ~5 MB.
+- Components in `@layer components` in `main.css`: `container-site`, `container-wide`, `hero-shade`, `btn-primary`, `btn-ghost`, `eyebrow`, `card`, `bars-bg`, `prose-site`. In Tailwind v4 you can't `@apply` a custom component class.
 - Markdown output is wrapped in `.prose-site`; add `not-prose` to custom lists inside it (shortcodes do).
 - Tailwind only sees classes present in `hugo_stats.json` or the CSS: write full class names, never build them with `printf`. In the dev server, CSS changes may need a server restart (the file keeps its name).
 

@@ -1,6 +1,6 @@
 {{ $page := . }}
-<header class="sticky top-0 z-40 border-b border-night-800 bg-night-950/90 backdrop-blur">
-  <div class="container-site relative flex h-16 items-center justify-between gap-6">
+<header class="sticky top-0 z-40 border-b border-night-800 bg-night-950/90 backdrop-blur{{ if .IsHome }} header-home{{ end }}">
+  <div class="container-wide relative flex h-16 items-center justify-between gap-6">
     <a href="{{ site.Home.RelPermalink }}" class="text-xl" aria-label="{{ site.Title }}: {{ i18n "home" }}">{{ partial "logo.html" "" }}</a>
 
     <nav class="hidden items-center gap-7 lg:flex" aria-label="{{ i18n "mainMenu" }}">

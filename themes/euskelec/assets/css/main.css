@@ -31,6 +31,14 @@
   src: url("../fonts/lexend-latin-wght-normal.woff2") format("woff2");
 }
 
+@keyframes header-solid {
+  to {
+    background-color: color-mix(in oklab, var(--color-night-950) 90%, transparent);
+    border-bottom-color: var(--color-night-800);
+    backdrop-filter: blur(8px);
+  }
+}
+
 @layer base {
   :root {
     color-scheme: dark;
@@ -48,8 +56,34 @@
 }
 
 @layer components {
+  /* Widths as on basqueunevocweek: inner pages use the width of the window up to a very wide screen... */
   .container-site {
-    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[96rem] px-4 sm:px-6 lg:px-10;
+  }
+  /* ...and the home page and the header the whole width, with the same side margins */
+  .container-wide {
+    @apply w-full px-4 sm:px-6 lg:px-10;
+  }
+
+  /* The home header: transparent over the video, solid from the first pixels of scroll where
+     scroll-driven animations exist (elsewhere it stays solid). No JavaScript. */
+  @supports (animation-timeline: scroll()) {
+    .header-home {
+      background-color: transparent;
+      border-bottom-color: transparent;
+      backdrop-filter: none;
+      animation: header-solid linear both;
+      animation-timeline: scroll();
+      animation-range: 0 6rem;
+    }
+  }
+
+  /* The home video: darker at the bottom and on the left, where the text goes */
+  .hero-shade {
+    background:
+      linear-gradient(to top, var(--color-night-950) 0%, color-mix(in oklab, var(--color-night-950) 55%, transparent) 35%, transparent 65%),
+      linear-gradient(to right, color-mix(in oklab, var(--color-night-950) 70%, transparent) 0%, transparent 60%),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-night-950) 60%, transparent) 0, transparent 8rem);
   }
 
   .btn-primary {

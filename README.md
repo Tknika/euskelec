@@ -74,7 +74,7 @@ menus:
 ---
 ```
 
-- **Home** (`content/<lang>/_index.md`): `edition`, `hero_image`, `buttons`, `about`, `phases_title`, `sections` (cards, by `translationKey`), `poster` (last edition) and `cta`. The body is the "What is Euskelec?" text.
+- **Home** (`content/<lang>/_index.md`): `edition`, `hero_video` (full-width background video, files in `static/video/`), `hero_image` (the car, next to the intro), `buttons`, `about`, `phases_title`, `sections` (cards, by `translationKey`), `poster` (last edition) and `cta`. The body is the "What is Euskelec?" text.
 - **Phases and dynamic tests**: `phases` and `tests` in the competition page front matter (shown there with `{{< phases >}}` / `{{< tests >}}` and on the home page). An empty `dates` or `place` shows "Laster" / "Próximamente" / "Coming soon"; `status: active` highlights a phase.
 - **Documents**: put the PDFs in `static/docs/` and list them with `{{< downloads >}}` (`path | Title | Note` per line).
 - **Sponsors and organisers**: `params.organizers`, `params.sponsors`, `params.collaborators` in `hugo.toml` (white logos).
