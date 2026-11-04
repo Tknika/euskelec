@@ -1,0 +1,27 @@
+{{- /* Download cards for documents (PDFs in static/docs/). One per line: `path | Title | Note`.
+Usage:
+{{< downloads >}}
+docs/euskelec-x-araudia.pdf | Araudia 26-27 | PDF
+{{< /downloads >}}
+*/ -}}
+<ul class="not-prose grid gap-4 sm:grid-cols-2">
+  {{/* "\r" too: on Windows checkouts (autocrlf) the lines end in CRLF */}}
+  {{ range split (trim .Inner "\r\n ") "\n" }}
+    {{ $parts := split . "|" }}
+    {{ $src := trim (index $parts 0) " \r" }}
+    {{ $title := $src }}{{ if gt (len $parts) 1 }}{{ $title = trim (index $parts 1) " \r" }}{{ end }}
+    {{ $note := "" }}{{ if gt (len $parts) 2 }}{{ $note = trim (index $parts 2) " \r" }}{{ end }}
+    {{ with $src }}
+      {{ $href := cond (hasPrefix . "http") . (. | relURL) }}
+      <li>
+        <a href="{{ $href }}" target="_blank" class="card group flex items-center gap-5 p-6">
+          <svg class="size-10 shrink-0 text-volt transition group-hover:text-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M12 11v6m-3-3 3 3 3-3"/></svg>
+          <span class="flex flex-col">
+            <span class="font-display text-lg font-semibold text-white">{{ $title }}</span>
+            <span class="text-sm text-night-400">{{ i18n "download" }}{{ with $note }} · {{ . }}{{ end }}</span>
+          </span>
+        </a>
+      </li>
+    {{ end }}
+  {{ end }}
+</ul>

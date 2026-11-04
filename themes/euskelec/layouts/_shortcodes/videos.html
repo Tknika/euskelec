@@ -1,0 +1,40 @@
+{{- /* List of YouTube videos that load nothing from YouTube until clicked (light page, no third-party
+       requests on load). One video per line: `VIDEO_ID | Title` or `VIDEO_ID | Title | Tag` (e.g. the edition year).
+       Usage:
+       {{< videos >}}
+       KJSr3SliPnM | Iniciación al Reversing (Joxean Koret)
+       {{< /videos >}}
+       main.js swaps the tile for a youtube-nocookie player on click; without JS the tile links to YouTube.
+       New video? Run scripts/fetch-video-thumbs.sh to add its preview image. */ -}}
+<ul class="not-prose my-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {{/* "\r" too: on Windows checkouts (autocrlf) the lines end in CRLF */}}
+  {{ range split (trim .Inner "\r\n ") "\n" }}
+    {{ $parts := split . "|" }}
+    {{ $id := trim (index $parts 0) " \r" }}
+    {{ $title := "" }}{{ if gt (len $parts) 1 }}{{ $title = trim (index $parts 1) " \r" }}{{ end }}
+    {{ $tag := "" }}{{ if gt (len $parts) 2 }}{{ $tag = trim (index $parts 2) " \r" }}{{ end }}
+    {{ with $id }}
+      <li class="overflow-hidden border border-night-700 bg-night-900">
+        <a href="https://www.youtube.com/watch?v={{ . }}" rel="noopener" target="_blank" data-yt="{{ . }}" data-yt-title="{{ $title }}"
+           class="group relative grid aspect-video place-items-center overflow-hidden bg-night-950">
+          {{/* Preview image, self-hosted by scripts/fetch-video-thumbs.sh (no request to YouTube before the click) */}}
+          {{ $thumb := printf "images/videos/%s.jpg" . }}
+          {{ if fileExists (printf "static/%s" $thumb) }}
+            <img src="{{ $thumb | relURL }}" alt="" loading="lazy" class="absolute inset-0 size-full object-cover transition duration-500 group-hover:scale-105">
+            <span class="absolute inset-0 bg-gradient-to-t from-night-950/70 via-night-950/10 to-night-950/20" aria-hidden="true"></span>
+          {{ else }}
+            <span class="absolute inset-0 bg-gradient-to-br from-volt/25 via-night-950 to-lime/10" aria-hidden="true"></span>
+          {{ end }}
+          <span class="relative grid size-14 place-items-center bg-lime text-night-950 shadow-lg shadow-black/30 transition group-hover:scale-110 group-hover:bg-lime-300" aria-hidden="true">
+            <svg class="ml-1 size-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          </span>
+          <span class="sr-only">{{ i18n "playVideo" }}: {{ $title }}</span>
+        </a>
+        <div class="flex items-start gap-3 px-4 py-3">
+          {{ with $tag }}<span class="mt-px shrink-0 border border-lime/40 bg-lime/10 px-1.5 py-0.5 font-display text-[11px] font-semibold leading-none text-lime">{{ . }}</span>{{ end }}
+          <p class="text-sm leading-snug text-night-100">{{ $title }}</p>
+        </div>
+      </li>
+    {{ end }}
+  {{ end }}
+</ul>

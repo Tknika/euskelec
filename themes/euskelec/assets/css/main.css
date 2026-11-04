@@ -1,0 +1,124 @@
+@import "tailwindcss";
+/* Tailwind only sees classes in the rendered HTML (hugo_stats.json, from build.buildStats) */
+@source "hugo_stats.json";
+
+/* Colours taken from the Euskelec IX poster: night blue background, the logo's electric blue, lime details. */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Lexend", ui-sans-serif, system-ui, sans-serif;
+
+  --color-night-950: #04070e;
+  --color-night-900: #08101f;
+  --color-night-800: #0e1a31;
+  --color-night-700: #172644;
+  --color-night-600: #26395e;
+  --color-night-400: #7c8bab;
+  --color-night-300: #a8b4cc;
+  --color-night-100: #e5eaf4;
+
+  --color-volt: #3d84c6;      /* logo blue */
+  --color-volt-300: #7fb4e6;
+  --color-volt-600: #2c6aa6;
+  --color-lime: #c9d400;      /* accent: lines, dates, ticks */
+  --color-lime-300: #e0ea4d;
+}
+
+@font-face {
+  font-family: "Lexend";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("../fonts/lexend-latin-wght-normal.woff2") format("woff2");
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    font-size: 17px;
+  }
+  body {
+    @apply bg-night-950 font-sans text-night-100 antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-white;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-lime;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-lime px-5 py-3 font-display text-sm font-semibold uppercase tracking-wide text-night-950 no-underline transition hover:bg-lime-300;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 border border-volt px-5 py-3 font-display text-sm font-semibold uppercase tracking-wide text-white no-underline transition hover:bg-volt;
+  }
+
+  /* Small label above titles: a lime line and uppercase text, as on the poster */
+  .eyebrow {
+    @apply flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.2em] text-lime;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-0.5 w-8 bg-lime;
+  }
+
+  .card {
+    @apply border border-night-700 bg-night-900 transition hover:border-volt;
+  }
+
+  /* The logo's stacked bars, as a decorative background */
+  .bars-bg {
+    background-image: repeating-linear-gradient(180deg, color-mix(in oklab, var(--color-volt) 18%, transparent) 0 14px, transparent 14px 26px);
+  }
+
+  /* Markdown output */
+  .prose-site {
+    @apply max-w-none leading-relaxed text-night-100;
+  }
+  .prose-site > * + * {
+    @apply mt-5;
+  }
+  .prose-site h2 {
+    @apply mt-12 text-2xl font-semibold sm:text-3xl;
+  }
+  .prose-site h3 {
+    @apply mt-8 text-xl font-semibold;
+  }
+  .prose-site a:not([class]) {
+    @apply text-volt-300 underline decoration-volt/50 underline-offset-4 transition hover:text-lime hover:decoration-lime;
+  }
+  .prose-site strong {
+    @apply text-white;
+  }
+  .prose-site ul:not(.not-prose) {
+    @apply list-none space-y-2 pl-0;
+  }
+  .prose-site ul:not(.not-prose) > li {
+    @apply relative pl-6;
+  }
+  .prose-site ul:not(.not-prose) > li::before {
+    content: "";
+    @apply absolute left-0 top-[0.7em] h-0.5 w-3 bg-lime;
+  }
+  .prose-site ol:not(.not-prose) {
+    @apply list-decimal space-y-2 pl-6 marker:text-lime;
+  }
+  .prose-site table {
+    @apply w-full border-collapse text-sm;
+  }
+  .prose-site th {
+    @apply border-b border-night-600 px-3 py-2 text-left font-display font-semibold uppercase tracking-wide text-night-300;
+  }
+  .prose-site td {
+    @apply border-b border-night-800 px-3 py-2;
+  }
+  .prose-site hr {
+    @apply my-10 border-night-700;
+  }
+}

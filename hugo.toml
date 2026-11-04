@@ -1,0 +1,158 @@
+baseURL = "https://euskelec.eus/"
+title = "Euskelec"
+theme = "euskelec"
+
+# Three languages, each in its own folder (/eu/, /es/, /en/), as on the old WordPress site,
+# so the old URLs keep working. The root (/) redirects to the default language (Basque).
+defaultContentLanguage = "eu"
+defaultContentLanguageInSubdir = true
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  # Asks search engines not to index the site. Set to false at launch.
+  noindex = true
+  email = "admin@euskelec.eus"
+  instagram = "https://www.instagram.com/euskelec/"
+  twitter = "https://twitter.com/euskelec"
+  youtube = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
+
+  # Footer logos, in this order. The footer is dark: logos must be the white versions.
+  # Without `logo`, the name is shown as text. Without `url`, the logo is not a link.
+  [[params.organizers]]
+    name = "Tknika"
+    logo = "images/logos/logo-tknika.png"
+    url = "https://tknika.eus/"
+  [[params.organizers]]
+    name = "Eusko Jaurlaritza · Gobierno Vasco — Hezkuntza Saila"
+    logo = "images/logos/logo-hezkuntza-saila.png"
+    url = "https://www.euskadi.eus/"
+  [[params.organizers]]
+    name = "FP Euskadi"
+    logo = "images/logos/logo-fp-euskadi.png"
+    url = "https://www.fpeuskadi.eus/"
+
+  # Sponsors and collaborators, as listed on the old site (2021 logos). Names marked "check"
+  # were read from the logo file names: confirm them with the organisers.
+  [[params.sponsors]]
+    name = "Irizar"
+    logo = "images/logos/logo-irizar.png"
+  [[params.sponsors]]
+    name = "Dassault Systèmes (3DS)"
+    logo = "images/logos/logo-3ds.png"
+    url = "https://www.3ds.com/es/"
+  [[params.sponsors]]
+    name = "Mubil"
+    logo = "images/logos/logo-mubil.png"
+    url = "https://www.gipuzkoa.eus/es/-/elektromugikortasunean-erreferentzia-bilakatzeko-mubil-zentroa"
+  [[params.sponsors]]
+    name = "BAM" # check
+    logo = "images/logos/logo-bam.png"
+  [[params.sponsors]]
+    name = "Fundación Vital"
+    logo = "images/logos/logo-vital.png"
+    url = "https://www.fundacionvital.eus/"
+  [[params.sponsors]]
+    name = "Alterity"
+    logo = "images/logos/logo-alterity.png"
+    url = "http://alterityglobal.com/"
+  [[params.sponsors]]
+    name = "SEG Automotive"
+    logo = "images/logos/logo-seg.png"
+    url = "https://www.seg-automotive.com/"
+  [[params.sponsors]]
+    name = "RPK" # check
+    logo = "images/logos/logo-rpk.png"
+  [[params.sponsors]]
+    name = "SMC" # check
+    logo = "images/logos/logo-smc.png"
+  [[params.sponsors]]
+    name = "AIC – Automotive Intelligence Center"
+    logo = "images/logos/logo-aic.png"
+    url = "https://www.aicenter.eu/"
+  [[params.sponsors]]
+    name = "Alecop"
+    logo = "images/logos/logo-alecop.png"
+    url = "https://alecop.com/"
+  [[params.sponsors]]
+    name = "Loramendi" # check
+    logo = "images/logos/logo-loramendi.png"
+
+  [[params.collaborators]]
+    name = "Racing Pedal Boxes"
+    logo = "images/logos/logo-rpb.png"
+    url = "https://racingpedalboxes.com/es/"
+  [[params.collaborators]]
+    name = "Euskadiko Automobilismo Federazioa" # check
+    logo = "images/logos/logo-eaff.png"
+    url = "http://www.eaf-fva.net/"
+  [[params.collaborators]]
+    name = "Vitoria-Gasteiz" # check
+    logo = "images/logos/logo-vitoria.png"
+  [[params.collaborators]]
+    name = "Euskadiko Parke Teknologikoa"
+    logo = "images/logos/logo-parke.png"
+
+[languages]
+  [languages.eu]
+    label = "Euskara"
+    weight = 1
+    contentDir = "content/eu"
+    [languages.eu.params]
+      description = "Euskadiko Ibilgailu Elektrikoen Txapelketa"
+    # External menu entries (pages add themselves to the menu from their front matter)
+    [[languages.eu.menus.main]]
+      name = "Formakuntza"
+      url = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
+      weight = 40
+  [languages.es]
+    label = "Español"
+    weight = 2
+    contentDir = "content/es"
+    [languages.es.params]
+      description = "El campeonato de vehículos eléctricos de Euskadi"
+    [[languages.es.menus.main]]
+      name = "Formación"
+      url = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
+      weight = 40
+  [languages.en]
+    label = "English"
+    weight = 3
+    contentDir = "content/en"
+    [languages.en.params]
+      description = "Basque Electric Vehicle Contest"
+    [[languages.en.menus.main]]
+      name = "Training"
+      url = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
+      weight = 40
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.goldmark.parser.attribute]
+  block = true
+
+# --- Tailwind CSS v4 (https://gohugo.io/functions/css/tailwindcss/) ---
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = "assets/notwatching/hugo_stats\\.json"
+    target = "css"
+
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    disableWatch = true
+    source = "hugo_stats.json"
+    target = "assets/notwatching/hugo_stats.json"
+
+[outputs]
+  home = ["html"]
+  section = ["html"]
+
+# Allow the Tailwind CLI (npm package)
+[security.exec]
+  allow = ['^git$', '^node$', '^tailwindcss$']

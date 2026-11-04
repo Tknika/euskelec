@@ -1,0 +1,16 @@
+{{- /* Row of logos. Context: a list from hugo.toml (params.organizers / sponsors / collaborators).
+       The logos are white (they sit on the dark footer). Without `logo`, the name is shown as text. */ -}}
+<ul class="flex flex-wrap items-center gap-x-10 gap-y-6">
+  {{ range . }}
+    {{ $name := .name }}
+    <li>
+      {{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener" title="{{ $name }}" class="block">{{ else }}<span title="{{ $name }}" class="block">{{ end }}
+        {{ with .logo }}
+          <img src="{{ . | relURL }}" alt="{{ $name }}" loading="lazy" class="h-10 w-auto max-w-36 object-contain opacity-75 transition hover:opacity-100">
+        {{ else }}
+          <span class="font-display text-sm text-night-300">{{ $name }}</span>
+        {{ end }}
+      {{ if .url }}</a>{{ else }}</span>{{ end }}
+    </li>
+  {{ end }}
+</ul>

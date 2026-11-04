@@ -1,0 +1,94 @@
+{{ define "main" }}
+  {{ $competition := partial "by-key.html" "competition" }}
+
+  {{/* Hero: wordmark, edition, buttons and the car */}}
+  <section class="relative overflow-hidden border-b border-night-800 bg-[radial-gradient(ellipse_at_70%_60%,var(--color-night-700),var(--color-night-950)_65%)]">
+    <div class="bars-bg absolute inset-y-0 left-0 w-1/3 opacity-60 [mask-image:linear-gradient(to_right,black,transparent)]" aria-hidden="true"></div>
+    <div class="container-site relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-[1.1fr_1fr]">
+      <div>
+        {{ with .Params.edition }}<p class="eyebrow mb-6">{{ . }}</p>{{ end }}
+        <h1 class="text-5xl sm:text-7xl lg:text-8xl">{{ partial "logo.html" "" }}</h1>
+        <p class="mt-6 max-w-xl font-display text-xl uppercase tracking-wide text-night-100 sm:text-2xl">{{ site.Params.description }}</p>
+        {{ with .Params.buttons }}
+          <div class="mt-10 flex flex-wrap gap-4">
+            {{ range . }}
+              {{ $url := .url }}{{ if hasPrefix $url "/" }}{{ $url = strings.TrimPrefix "/" $url | relLangURL }}{{ end }}
+              <a href="{{ $url }}" class="{{ if eq .style "ghost" }}btn-ghost{{ else }}btn-primary{{ end }}">{{ .label }}</a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+      {{ with .Params.hero_image }}
+        <img src="{{ . | relURL }}" alt="" class="w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.6)]" width="1000" height="667" fetchpriority="high">
+      {{ end }}
+    </div>
+  </section>
+
+  {{/* What is Euskelec (page body) */}}
+  <section class="container-site grid gap-10 py-20 lg:grid-cols-[1fr_2fr]">
+    <div>
+      {{ with .Params.about.eyebrow }}<p class="eyebrow mb-4">{{ . }}</p>{{ end }}
+      <h2 class="text-3xl font-semibold sm:text-4xl">{{ .Params.about.title }}</h2>
+    </div>
+    <div class="prose-site text-lg">{{ .Content }}</div>
+  </section>
+
+  {{/* Phases and dynamic tests, from the competition page */}}
+  {{ with $competition }}
+    <section class="container-site space-y-10 pb-20">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <h2 class="text-3xl font-semibold sm:text-4xl">{{ $.Params.phases_title }}</h2>
+        <a href="{{ .RelPermalink }}" class="btn-ghost">{{ i18n "readMore" }}</a>
+      </div>
+      {{ partial "phases.html" . }}
+      {{ partial "tests.html" . }}
+    </section>
+  {{ end }}
+
+  {{/* Sections of the site */}}
+  {{ with .Params.sections }}
+    <section class="border-y border-night-800 bg-night-900">
+      <div class="container-site grid gap-px py-16 md:grid-cols-3">
+        {{ range . }}
+          {{ with partial "by-key.html" . }}
+            <a href="{{ .RelPermalink }}" class="group flex flex-col gap-4 p-6 transition hover:bg-night-800 sm:p-8">
+              <span class="h-1 w-10 bg-volt transition-all group-hover:w-16 group-hover:bg-lime" aria-hidden="true"></span>
+              <h2 class="text-2xl font-semibold">{{ .LinkTitle }}</h2>
+              <p class="text-night-300">{{ .Description }}</p>
+              <span class="mt-auto font-display text-sm font-semibold uppercase tracking-wide text-lime">{{ i18n "readMore" }} →</span>
+            </a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+
+  {{/* Last edition's poster */}}
+  {{ with .Params.poster }}
+    <section class="container-site grid items-center gap-10 py-20 md:grid-cols-2">
+      <img src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy" class="w-full border border-night-700">
+      <div>
+        {{ with .eyebrow }}<p class="eyebrow mb-4">{{ . }}</p>{{ end }}
+        <h2 class="text-3xl font-semibold sm:text-4xl">{{ .title }}</h2>
+        {{ with .text }}<div class="prose-site mt-6">{{ . | markdownify }}</div>{{ end }}
+        {{ with .file }}<p class="mt-8"><a href="{{ . | relURL }}" class="btn-primary" target="_blank">{{ $.Params.poster.button }}</a></p>{{ end }}
+      </div>
+    </section>
+  {{ end }}
+
+  {{/* Call to action: contact and Instagram */}}
+  {{ with .Params.cta }}
+    <section class="container-site">
+      <div class="relative overflow-hidden bg-volt-600 px-6 py-14 sm:px-12">
+        <div class="bars-bg absolute inset-y-0 right-0 w-1/2 opacity-40 [mask-image:linear-gradient(to_left,black,transparent)]" aria-hidden="true"></div>
+        <div class="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <h2 class="max-w-2xl text-2xl font-semibold sm:text-3xl">{{ .title }}</h2>
+          <div class="flex flex-wrap gap-4">
+            {{ with partial "by-key.html" "contact" }}<a href="{{ .RelPermalink }}" class="btn-primary">{{ $.Params.cta.button }}</a>{{ end }}
+            {{ with site.Params.instagram }}<a href="{{ . }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 border border-white px-5 py-3 font-display text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white hover:text-night-950">Instagram</a>{{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

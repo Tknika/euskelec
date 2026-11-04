@@ -1,0 +1,78 @@
+# Participating schools per edition, as published on the old site (home page, "Participantes edición VIII").
+# Shown with {{< participants "VIII" >}}. Names and regions are copied as published (typos included: check them).
+VIII:
+  - bib: 1
+    school: "IURRETA LHII"
+    region: "EUSKADI"
+  - bib: 2
+    school: "CIFP Juan de Herrera"
+    region: "CASTILLA Y LEÓN"
+  - bib: 3
+    school: "CIFP MEKA LHII"
+    region: "EUSKADI"
+  - bib: 4
+    school: "IES EMT ( EMT RACING TEAM)"
+    region: "CATALUÑIA"
+  - bib: 5
+    school: "CIFP BIDEBIETA LHII"
+    region: "EUSKADI"
+  - bib: 6
+    school: "SAN JUAN BAUTISTA \"LA SALLE\""
+    region: "CANTABRIA"
+  - bib: 7
+    school: "CIFP DON BOSCO LHII"
+    region: "EUSKADI"
+  - bib: 8
+    school: "IES GALILEO"
+    region: "CASTILLA Y LEÓN"
+  - bib: 9
+    school: "GIZARTE BERRIKUNTZA"
+    region: "EUSKADI"
+  - bib: 10
+    school: "CIFP MENDIZABALA LHII"
+    region: "EUSKADI"
+  - bib: 11
+    school: "CIFP ELORRIETA-ERREKA MARI LHII"
+    region: "EUSKADI"
+  - bib: 12
+    school: "CIFP FADURA"
+    region: "EUSKADI"
+  - bib: 14
+    school: "CIFP NUMERO UNO"
+    region: "CANTABRIA"
+  - bib: 15
+    school: "FP SANTURTZI LH"
+    region: "EUSKADI"
+  - bib: 16
+    school: "EGIBIDE"
+    region: "EUSKADI"
+  - bib: 17
+    school: "IES ESKURTZE BHI+ CIFP PEÑASCAL"
+    region: "EUSKADI"
+  - bib: 18
+    school: "ESCUELAS PROFESIONALES SALESIANAS DE SARRIÁ"
+    region: "CATALUÑIA"
+  - bib: 19
+    school: "CIFP EMILIO CAMPUZANO LHII"
+    region: "EUSKADI"
+  - bib: 20
+    school: "CFP SAN VIATOR SOPUERTA"
+    region: "EUSKADI"
+  - bib: 21
+    school: "ARETXABALETA LAMBIDE ESKOLA"
+    region: "EUSKADI"
+  - bib: 22
+    school: "EBI OTXARKOAGA"
+    region: "EUSKADI"
+  - bib: 23
+    school: "IES Felipe Trigo"
+    region: "COMUNIDAD DE MADRID"
+  - bib: 24
+    school: "UROLA GARAIKO LAMBIDE ESKOLA"
+    region: "EUSKADI"
+  - bib: 25
+    school: "IES FUENTE FRESNEDO"
+    region: "CANTABRIA"
+  - bib: 26
+    school: "Centro Ortzadar"
+    region: "ESKADI"

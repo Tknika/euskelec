@@ -1,0 +1,30 @@
+{{ $page := . }}
+<header class="sticky top-0 z-40 border-b border-night-800 bg-night-950/90 backdrop-blur">
+  <div class="container-site relative flex h-16 items-center justify-between gap-6">
+    <a href="{{ site.Home.RelPermalink }}" class="text-xl" aria-label="{{ site.Title }}: {{ i18n "home" }}">{{ partial "logo.html" "" }}</a>
+
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="{{ i18n "mainMenu" }}">
+      {{ range site.Menus.main }}
+        {{ partial "menu-link.html" (dict "entry" . "page" $page "class" "font-display text-sm font-medium transition") }}
+      {{ end }}
+      {{ partial "lang-switcher.html" $page }}
+    </nav>
+
+    {{/* Mobile menu: a <details>, no JavaScript */}}
+    <details class="group lg:hidden">
+      <summary class="flex cursor-pointer list-none items-center gap-2 font-display text-sm font-medium text-white [&::-webkit-details-marker]:hidden">
+        <span>{{ i18n "menu" }}</span>
+        <svg class="size-6 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="hidden size-6 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </summary>
+      <nav class="absolute inset-x-0 top-16 border-b border-night-800 bg-night-950 px-4 pb-6 pt-2 sm:px-6" aria-label="{{ i18n "mainMenu" }}">
+        <ul class="divide-y divide-night-800">
+          {{ range site.Menus.main }}
+            <li>{{ partial "menu-link.html" (dict "entry" . "page" $page "class" "block py-3 font-display text-lg") }}</li>
+          {{ end }}
+        </ul>
+        <div class="mt-4">{{ partial "lang-switcher.html" $page }}</div>
+      </nav>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,63 @@
+# AGENTS.md
+
+Instructions for AI coding agents (and humans) working on this repository. Read [README.md](README.md) first for the overview, site map and content model; this file covers the rules and gotchas.
+
+## Project in one paragraph
+
+Trilingual (Basque `eu` = default, Spanish `es`, English `en`, each in its own folder: `/eu/`, `/es/`, `/en/`, with `/` redirecting to `/eu/`) static site for Euskelec, the Basque vocational training electric vehicle championship, replacing the old WordPress site at `euskelec.eus`. Built with **Hugo ≥ 0.146 (extended)** and **Tailwind CSS v4 via npm**, using a custom theme in `themes/euskelec`. It deploys to GitHub Pages through `.github/workflows/pages.yml` on every push to `main`. It shares its technology with the `cyberlehia` and `basqueunevocweek` sites, not their design or content: keep them separate.
+
+## Commands
+
+```sh
+npm ci                                   # once: installs Tailwind (required by Hugo)
+hugo server                              # dev server on http://localhost:1313/ (→ /eu/)
+hugo --gc --minify                       # production build → public/
+hugo --gc --minify --baseURL https://tknika.github.io/euskelec/ -d /tmp/out   # test a subpath build
+```
+
+There is no test suite. **A change is verified when:**
+1. `hugo --gc --minify` finishes with no `ERROR` and no `WARN` lines.
+2. A build with a subpath `baseURL` (command above) has no links that miss the prefix:
+   `grep -rhoE '(href|src|poster)="?/[^" >]*' /tmp/out --include=*.html | grep -vE '="?/euskelec/'` prints nothing.
+3. For visual changes, check the pages at ~1440px and ~390px wide, in the three languages.
+
+## Hard rules
+
+1. **Three languages, always.** Every content change in one of `content/eu/`, `content/es/`, `content/en/` needs the matching change in the other two, with the same `translationKey`. Every new UI string goes in `themes/euskelec/i18n/eu.yaml`, `es.yaml` and `en.yaml`; never hardcode texts in layouts.
+2. **Keep the old URLs.** The slugs match the old WordPress site (`/eu/lehiaketa/`, `/es/competicion/`, `/en/competition/`, the legal pages…). Don't rename them; if one must change, add an `aliases:` entry.
+3. **Never hardcode URLs** in templates: use `.RelPermalink`, `relURL`, `relLangURL` or `absURL`, and pass asset paths without a leading `/` (`images/x.jpg`). In CSS, reference `static/` files with relative URLs (`../fonts/…`). In Markdown, write internal links as `/path/` without the language prefix: `_markup/render-link.html` turns pages into `relLangURL` and files into `relURL`.
+4. **Don't invent facts.** Dates, venues, rules, results and sponsors come from the organisers. While a fact is unknown, leave the field empty (it shows "Laster" / "Próximamente" / "Coming soon") or use a `{{< note >}}`, and say so in your summary.
+5. **Tailwind: npm only.** Hugo 0.16x refuses the standalone `tailwindcss` binary. No PostCSS, `tailwind.config.js` or extra npm packages unless asked; Tailwind v4 is configured in CSS (`@theme` in `assets/css/main.css`).
+6. **Don't commit build output:** `public/`, `resources/_gen/`, `node_modules/`, `hugo_stats.json` and `.hugo_build.lock` are git-ignored. `_originals/` (full-size photos and old-site downloads) too.
+7. **Keep it static and light.** No tracking scripts, no new third-party requests. Fonts are self-hosted. YouTube is only contacted when a video tile is clicked (youtube-nocookie). The only JavaScript is that click handler; the mobile menu is a `<details>`.
+
+## Conventions
+
+- **Template layout (Hugo ≥ 0.146):** `layouts/baseof.html`, `home.html`, `page.html`, `404.html`, with `_partials/`, `_shortcodes/` and `_markup/`. Don't create `_default/` or `partials/`.
+- **Languages:** `languages.<lang>.contentDir` in `hugo.toml`, `defaultContentLanguageInSubdir = true`. Translations are matched by `translationKey`; `partial "by-key.html" "competition"` returns the page with that key in the current language.
+- **Menus** come from front matter (`menus: main` / `footer`), except the external *Formakuntza / Formación / Training* entry (YouTube playlist), defined per language in `hugo.toml`.
+- **Phases and tests** live in the competition page front matter and are shown there and on the home page.
+- **404:** each language gets its own `404.html`; CI copies `public/eu/404.html` to `public/404.html` for GitHub Pages.
+- Deprecated APIs to avoid (Hugo 0.158+): `languageName`, `.Language.LanguageName`, `.Language.LanguageCode`. `templates.Defer` (in `_partials/css.html`) must be called through `partial`, never `partialCached`.
+
+## Design
+
+- Taken from the Euskelec IX poster: dark night blue background (`night-950 … night-100`), the logo's electric blue (`volt`) and lime (`lime`) details: thin lines, dates, the primary button. Dark only (`color-scheme: dark`). Square corners (no `rounded-*`).
+- Font: Lexend (`font-display`, self-hosted variable font) for titles, menus and labels; system sans for running text.
+- The logo is redrawn in `_partials/logo.html` (SVG bars + text) because the old site only had a 218×25 PNG. Replace it with the official SVG when available.
+- The logo's stacked bars are reused as a background motif (`.bars-bg`).
+- Components in `@layer components` in `main.css`: `container-site`, `btn-primary`, `btn-ghost`, `eyebrow`, `card`, `bars-bg`, `prose-site`. In Tailwind v4 you can't `@apply` a custom component class.
+- Markdown output is wrapped in `.prose-site`; add `not-prose` to custom lists inside it (shortcodes do).
+- Tailwind only sees classes present in `hugo_stats.json` or the CSS: write full class names, never build them with `printf`. In the dev server, CSS changes may need a server restart (the file keeps its name).
+
+## Open items (as of 2026-11)
+
+- **Edition number:** the old site says "IX edición" (May 2026, Vitoria-Gasteiz), while the 2026-27 rules are named `euskelec_x`: the site now shows "X. edizioa · 2026-2027". Confirm.
+- **Phases of the X edition:** dates and venues unknown ("Laster"). The old competition page said phase 1 at AIC Center (Boroa business park, Amorebieta-Etxano, Barrio Gumuzio 0 S/N, 48340) and phase 2 on an urban circuit in Bilbao, "May-June", but the IX edition took place in Vitoria-Gasteiz: not copied until confirmed.
+- **Sponsors:** names marked `# check` in `hugo.toml` were read from logo file names; the list is the one from 2021. Confirm the current sponsors.
+- **English challenges PDF:** missing (the old site linked the rules PDF instead); the Spanish one is linked, marked "in Spanish".
+- **Participants:** only the VIII edition list exists (`data/participants.yaml`, copied as published).
+- **Legal pages** were copied from WordPress: the cookie policy still mentions Google Analytics, blog-comment cookies and a cookie banner that the static site doesn't have, and the legal notice gives two different owners (Tknika and the Basque Government). They need a legal review before launch.
+- **Contact:** the old WordPress form is replaced by a `mailto:` button (`admin@euskelec.eus`).
+- **News (`/blog`)** was empty on the old site and is not migrated.
+- `params.noindex = true` until launch.

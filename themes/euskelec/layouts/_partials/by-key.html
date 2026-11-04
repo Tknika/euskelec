@@ -1,0 +1,2 @@
+{{- /* Returns the page of the current language with this translationKey (or nothing). Usage: partial "by-key.html" "competition" */ -}}
+{{ return index (where site.RegularPages "Params.translationKey" .) 0 }}

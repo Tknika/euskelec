@@ -1,0 +1,10 @@
+{{- $u := urls.Parse .Destination -}}
+{{- $href := .Destination -}}
+{{- if and (not $u.IsAbs) (hasPrefix .Destination "/") -}}
+  {{- /* Drop the leading slash so the baseURL subpath (e.g. /euskelec/) is kept. Files (docs/x.pdf) are language-neutral: relURL; pages: relLangURL. */ -}}
+  {{- $p := strings.TrimPrefix "/" .Destination -}}
+  {{- if path.Ext $u.Path -}}{{- $href = $p | relURL -}}{{- else -}}{{- $href = $p | relLangURL -}}{{- end -}}
+{{- end -}}
+{{- $external := and $u.IsAbs (hasPrefix $u.Scheme "http") -}}
+<a href="{{ $href }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Text }}</a>
+{{- /**/ -}}

@@ -1,0 +1,8 @@
+{{- /* Highlighted box. Usage: {{< note >}}Markdown{{< /note >}} (type="warning" for the lime variant) */ -}}
+{{ $warn := eq (.Get "type") "warning" }}
+<div class="border {{ if $warn }}border-lime/40 bg-lime/5{{ else }}border-volt/40 bg-volt/5{{ end }} px-6 py-5">
+  <div class="flex gap-4">
+    <span class="font-display font-bold {{ if $warn }}text-lime{{ else }}text-lime{{ end }}" aria-hidden="true">{{ if $warn }}!{{ else }}i{{ end }}</span>
+    <div class="text-night-100 [&>p]:m-0">{{ .Inner | .Page.RenderString (dict "display" "block") }}</div>
+  </div>
+</div>

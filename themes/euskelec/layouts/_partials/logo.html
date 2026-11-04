@@ -1,0 +1,9 @@
+{{- /* Euskelec wordmark, redrawn as text + SVG bars after the poster so it stays sharp at any size.
+       Replace it with the official SVG logo when the organisers provide one. Context: extra classes (size). */ -}}
+<span class="inline-flex items-center gap-[0.5em] font-display font-semibold uppercase leading-none tracking-[0.08em] text-white {{ . }}">
+  <svg viewBox="0 0 30 22" class="h-[0.85em] w-auto shrink-0 text-volt" fill="currentColor" aria-hidden="true">
+    <rect x="0" y="0" width="12" height="5"/><rect x="0" y="8.5" width="12" height="5"/><rect x="0" y="17" width="12" height="5"/>
+    <rect x="15" y="0" width="15" height="5"/><rect x="15" y="8.5" width="15" height="5"/><rect x="15" y="17" width="15" height="5"/>
+  </svg>
+  <span>Eusk<span class="text-volt">elec</span></span>
+</span>
