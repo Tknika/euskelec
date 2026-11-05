@@ -17,7 +17,7 @@ It replaces the old WordPress site. Built with **[Hugo](https://gohugo.io/)** an
 git clone https://github.com/Tknika/euskelec.git
 cd euskelec
 npm ci            # installs tailwindcss + @tailwindcss/cli
-hugo server       # → http://localhost:1313/ (redirects to /eu/)
+hugo server --baseURL http://localhost:1313/euskelec/   # → http://localhost:1313/euskelec/eu/ (same path as GitHub Pages)
 ```
 
 Production build (output in `public/`): `hugo --gc --minify`.

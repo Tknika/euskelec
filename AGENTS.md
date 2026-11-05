@@ -10,7 +10,7 @@ Trilingual (Basque `eu` = default, Spanish `es`, English `en`, each in its own f
 
 ```sh
 npm ci                                   # once: installs Tailwind (required by Hugo)
-hugo server                              # dev server on http://localhost:1313/ (→ /eu/)
+hugo server --baseURL http://localhost:1313/euskelec/   # dev server on http://localhost:1313/euskelec/eu/, the same path as GitHub Pages
 hugo --gc --minify                       # production build → public/
 hugo --gc --minify --baseURL https://tknika.github.io/euskelec/ -d /tmp/out   # test a subpath build
 ```

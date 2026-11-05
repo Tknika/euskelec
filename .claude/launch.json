@@ -4,7 +4,7 @@
     {
       "name": "hugo",
       "runtimeExecutable": "C:\\Users\\AmaiaGonzalo\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Hugo.Hugo.Extended_Microsoft.Winget.Source_8wekyb3d8bbwe\\hugo.exe",
-      "runtimeArgs": ["server", "--port", "1319", "--bind", "127.0.0.1"],
+      "runtimeArgs": ["server", "--port", "1319", "--bind", "127.0.0.1", "--baseURL", "http://localhost:1319/euskelec/"],
       "port": 1319
     }
   ]
