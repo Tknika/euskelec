@@ -3,7 +3,7 @@
 
   {{/* Hero: the video of the last edition over the whole window, under the transparent header.
        Muted, looping, no sound track; the small file on phones. main.js adds pause and honours reduced motion. */}}
-  <section class="relative -mt-16 flex h-[100svh] min-h-[34rem] items-end overflow-hidden bg-brand-900 text-white">
+  <section class="relative -mt-[calc(6rem+2px)] flex h-[100svh] min-h-[34rem] items-end overflow-hidden bg-brand-900 text-white">
     {{ with .Params.hero_video }}
       <video class="absolute inset-0 size-full object-cover" autoplay muted loop playsinline preload="auto" aria-hidden="true" data-hero-video
         {{ with .poster }}poster="{{ . | relURL }}"{{ end }}>
@@ -30,7 +30,7 @@
     </div>
 
     {{ with .Params.hero_video }}
-      <button type="button" class="absolute right-4 top-20 grid size-10 place-items-center border border-white/50 bg-brand-900/40 text-white backdrop-blur transition hover:border-tknika hover:text-tknika sm:right-6 lg:right-10" data-hero-toggle
+      <button type="button" class="absolute right-4 top-28 grid size-10 place-items-center border border-white/50 bg-brand-900/40 text-white backdrop-blur transition hover:border-tknika hover:text-tknika sm:right-6 lg:right-10" data-hero-toggle
         data-label-pause="{{ i18n "pauseVideo" }}" data-label-play="{{ i18n "resumeVideo" }}" aria-label="{{ i18n "pauseVideo" }}" hidden>
         <svg class="size-4" data-icon-pause viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2h3v12H4zM9 2h3v12H9z"/></svg>
         <svg class="hidden size-4" data-icon-play viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>

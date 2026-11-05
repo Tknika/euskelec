@@ -1,5 +1,13 @@
 {{ $page := . }}
+{{- /* Two levels: a thin bar with the languages, then the logo and the main menu.
+       Total height 6rem + 2px of borders (h-8 + h-16): the home hero pulls itself up by the same amount (home.html). */ -}}
 <header class="site-header sticky top-0 z-40{{ if .IsHome }} header-home{{ end }}">
+  <div class="border-b border-current/10">
+    <div class="container-wide flex h-8 items-center justify-end">
+      {{ partial "lang-switcher.html" $page }}
+    </div>
+  </div>
+
   <div class="container-wide relative flex h-16 items-center justify-between gap-6">
     <a href="{{ site.Home.RelPermalink }}" class="logo-link text-lg" aria-label="{{ site.Title }}: {{ i18n "home" }}">{{ partial "logo.html" "" }}</a>
 
@@ -7,7 +15,6 @@
       {{ range site.Menus.main }}
         {{ partial "menu-link.html" (dict "entry" . "page" $page "class" "font-display text-sm font-medium transition") }}
       {{ end }}
-      {{ partial "lang-switcher.html" $page }}
     </nav>
 
     {{/* Mobile menu: a <details>, no JavaScript */}}
@@ -17,13 +24,12 @@
         <svg class="size-6 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         <svg class="hidden size-6 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </summary>
-      <nav class="absolute inset-x-0 top-16 border-b border-line bg-white px-4 pb-6 pt-2 text-ink shadow-lg sm:px-6" aria-label="{{ i18n "mainMenu" }}">
+      <nav class="absolute inset-x-0 top-full border-b border-line bg-white px-4 pb-6 pt-2 text-ink shadow-lg sm:px-6" aria-label="{{ i18n "mainMenu" }}">
         <ul class="divide-y divide-line">
           {{ range site.Menus.main }}
             <li>{{ partial "menu-link.html" (dict "entry" . "page" $page "class" "block py-3 font-display text-lg") }}</li>
           {{ end }}
         </ul>
-        <div class="mt-4">{{ partial "lang-switcher.html" $page }}</div>
       </nav>
     </details>
   </div>

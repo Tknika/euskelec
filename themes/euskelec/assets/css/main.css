@@ -119,7 +119,8 @@
       color-mix(in oklab, var(--color-brand) 18%, transparent);
   }
 
-  /* Buttons. primary: blue on light backgrounds. accent: the Tknika lime, on blue or on the video.
+  /* Hovers are in the Tknika lime (as a background, border or underline, never as text on white).
+     Buttons. primary: blue on light backgrounds. accent: the Tknika lime, on blue or on the video.
      ghost: outline on light backgrounds. ghost-light: outline on blue or on the video. */
   .btn-primary,
   .btn-accent,
@@ -128,16 +129,16 @@
     @apply inline-flex items-center gap-2 px-5 py-3 font-display text-sm font-semibold uppercase tracking-wide no-underline transition;
   }
   .btn-primary {
-    @apply bg-brand-700 text-white hover:bg-brand-800;
+    @apply bg-brand-700 text-white hover:bg-tknika hover:text-ink;
   }
   .btn-accent {
     @apply bg-tknika text-ink hover:bg-tknika-300;
   }
   .btn-ghost {
-    @apply border border-brand-700 text-brand-700 hover:bg-brand-700 hover:text-white;
+    @apply border border-brand-700 text-brand-700 hover:border-tknika hover:bg-tknika hover:text-ink;
   }
   .btn-ghost-light {
-    @apply border border-white text-white hover:bg-white hover:text-brand-800;
+    @apply border border-white text-white hover:border-tknika hover:bg-tknika hover:text-ink;
   }
 
   /* Small label above titles: a Tknika lime line and uppercase blue text */
@@ -154,7 +155,7 @@
   }
 
   .card {
-    @apply border border-line bg-white transition hover:border-brand hover:shadow-lg hover:shadow-brand/10;
+    @apply border border-line bg-white transition hover:border-tknika hover:shadow-lg hover:shadow-tknika/20;
   }
 
   /* The logo's bars, as a decorative background on blue surfaces */

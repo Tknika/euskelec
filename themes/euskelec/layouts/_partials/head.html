@@ -21,6 +21,9 @@
 {{ end }}
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+{{/* The favicon of the old euskelec.eus site (originals in _originals/old-site/favicon/) */}}
+<link rel="icon" href="{{ "favicon-32x32.png" | relURL }}" sizes="32x32">
+<link rel="icon" href="{{ "favicon-192x192.png" | relURL }}" sizes="192x192">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
 <link rel="preload" href="{{ "fonts/lexend-latin-wght-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 {{ partial "css.html" . }}

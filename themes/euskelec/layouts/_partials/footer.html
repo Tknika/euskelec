@@ -30,7 +30,7 @@
       <nav aria-label="{{ i18n "legalMenu" }}">
         <ul class="flex flex-wrap gap-x-6 gap-y-2">
           {{ range site.Menus.footer }}
-            <li><a href="{{ .URL }}" class="underline-offset-4 transition hover:text-white hover:underline hover:decoration-tknika">{{ .Name }}</a></li>
+            <li><a href="{{ .URL }}" class="transition hover:text-tknika">{{ .Name }}</a></li>
           {{ end }}
         </ul>
       </nav>

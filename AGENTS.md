@@ -45,7 +45,7 @@ There is no test suite. **A change is verified when:**
 - **Palette given by the organisers (2026-11), light theme:**
   - The Euskelec blue `brand` #397FAD is the main colour: the logo, the video tint, the page headers, the test tiles, the call to action. The footer uses the deeper `brand-800`.
   - Text is the dark grey `ink` #333333 on white. Secondary text uses `ink-soft`, borders `line`, and light grey sections `paper`.
-  - The Tknika lime `tknika` #BED23B is only for touches: eyebrow lines, list bullets, the active menu item and phase, the accent button (`btn-accent`, used on blue or on the video) and the video play buttons. Never use it for text on white: its contrast is too low.
+  - The Tknika lime `tknika` #BED23B is only for touches: eyebrow lines, list bullets, the active menu item and phase, the accent button (`btn-accent`, used on blue or on the video), the video play buttons, and **every hover** (button backgrounds, card borders, menu and link underlines, footer links). Never use it for text on white: its contrast is too low.
   - White on `brand` is only 4.4:1, so on `brand` write white text only when it is large (≥24px, or ≥18.7px bold). Small white text goes on `brand-700` or darker. Links and small blue text on white use `brand-700`.
   - Square corners (no `rounded-*`).
 - Font: Lexend (`font-display`, self-hosted variable font) for titles, menus and labels; system sans for running text.
