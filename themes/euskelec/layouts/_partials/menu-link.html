@@ -2,7 +2,7 @@
 {{ $e := .entry }}
 {{ $external := and (not $e.Page) (hasPrefix $e.URL "http") }}
 {{ $active := and $e.Page (or (eq $e.Page .page) (.page.IsDescendant $e.Page)) }}
-<a href="{{ $e.URL }}" class="{{ .class }} {{ if $active }}text-white{{ else }}text-night-300 hover:text-white{{ end }}"
+<a href="{{ $e.URL }}" class="{{ .class }} {{ if $active }}underline decoration-tknika decoration-2 underline-offset-8{{ else }}opacity-80 hover:opacity-100{{ end }}"
    {{- if $active }} aria-current="page"{{ end }}{{ if $external }} target="_blank" rel="noopener"{{ end }}>
   {{- $e.Name -}}
   {{- if $external }}<svg class="ml-1 inline size-3 opacity-60" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 2.5h5v5M9.5 2.5 3 9"/></svg>{{ end -}}

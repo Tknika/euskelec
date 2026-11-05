@@ -1,14 +1,28 @@
-{{- /* Row of logos. Context: a list from hugo.toml (params.organizers / sponsors / collaborators).
-       The logos are white (they sit on the dark footer). Without `logo`, the name is shown as text. */ -}}
-<ul class="flex flex-wrap items-center gap-x-10 gap-y-6">
-  {{ range . }}
+{{- /* Row of logos. Context: dict "items" (a list from hugo.toml: params.organizers / sponsors / collaborators)
+       and "large" (true for the organisers: bigger than the rest, all at one height).
+       Sponsors and collaborators are given the same visible AREA, so they look the same size whatever their shape:
+       a wide logo is lower, a square one taller (their PNGs are trimmed to the drawing, no transparent margin).
+       The logos are white (they sit on the blue footer). Without `logo`, the name is shown as text. */ -}}
+{{ $large := .large | default false }}
+{{ $area := 7000.0 }}{{/* px² at full size; --logo-scale makes them smaller on phones (footer.html) */}}
+{{ $maxH := 76.0 }}
+<ul class="flex flex-wrap items-center gap-x-10 gap-y-6 sm:gap-x-14">
+  {{ range .items }}
     {{ $name := .name }}
     <li>
       {{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener" title="{{ $name }}" class="block">{{ else }}<span title="{{ $name }}" class="block">{{ end }}
         {{ with .logo }}
-          <img src="{{ . | relURL }}" alt="{{ $name }}" loading="lazy" class="h-10 w-auto max-w-36 object-contain opacity-75 transition hover:opacity-100">
+          {{ if $large }}
+            <img src="{{ . | relURL }}" alt="{{ $name }}" loading="lazy" class="h-20 w-auto max-w-72 object-contain opacity-85 transition hover:opacity-100 sm:h-28 sm:max-w-96">
+          {{ else }}
+            {{ $img := imageConfig (printf "static/%s" .) }}
+            {{ $ratio := div (float $img.Width) $img.Height }}
+            {{ $h := math.Min $maxH (math.Sqrt (div $area $ratio)) }}
+            <img src="{{ . | relURL }}" alt="{{ $name }}" loading="lazy" width="{{ $img.Width }}" height="{{ $img.Height }}"
+              style="height: calc(var(--logo-scale, 1) * {{ math.Round $h }}px)" class="w-auto opacity-85 transition hover:opacity-100">
+          {{ end }}
         {{ else }}
-          <span class="font-display text-sm text-night-300">{{ $name }}</span>
+          <span class="font-display text-sm text-white/80">{{ $name }}</span>
         {{ end }}
       {{ if .url }}</a>{{ else }}</span>{{ end }}
     </li>

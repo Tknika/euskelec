@@ -42,13 +42,18 @@ There is no test suite. **A change is verified when:**
 
 ## Design
 
-- Taken from the Euskelec IX poster: dark night blue background (`night-950 … night-100`), the logo's electric blue (`volt`) and lime (`lime`) details: thin lines, dates, the primary button. Dark only (`color-scheme: dark`). Square corners (no `rounded-*`).
+- **Palette given by the organisers (2026-11), light theme:**
+  - The Euskelec blue `brand` #397FAD is the main colour: the logo, the video tint, the page headers, the test tiles, the call to action. The footer uses the deeper `brand-800`.
+  - Text is the dark grey `ink` #333333 on white. Secondary text uses `ink-soft`, borders `line`, and light grey sections `paper`.
+  - The Tknika lime `tknika` #BED23B is only for touches: eyebrow lines, list bullets, the active menu item and phase, the accent button (`btn-accent`, used on blue or on the video) and the video play buttons. Never use it for text on white: its contrast is too low.
+  - White on `brand` is only 4.4:1, so on `brand` write white text only when it is large (≥24px, or ≥18.7px bold). Small white text goes on `brand-700` or darker. Links and small blue text on white use `brand-700`.
+  - Square corners (no `rounded-*`).
 - Font: Lexend (`font-display`, self-hosted variable font) for titles, menus and labels; system sans for running text.
-- The logo is redrawn in `_partials/logo.html` (SVG bars + text) because the old site only had a 218×25 PNG. Replace it with the official SVG when available.
+- The logo is redrawn as one SVG in `_partials/logo.html`, traced from the old site's 218×25 PNG (`_originals/old-site/euskelec_logo.png`): five white bars in two staggered columns and the wide EUSKELEC lettering, all white (no blue, no Lexend). It is 1em high, so the parent's font size sets its size. Replace it with the official vector logo when available.
 - The logo's stacked bars are reused as a background motif (`.bars-bg`).
 - **Widths, as on basqueunevocweek:** the home page, the header and the home footer use `container-wide` (the whole window, side margins only); inner pages use `container-site` (up to 96rem), with text kept to a readable column (`max-w-3xl`, unless `wide: true`).
-- **Home video:** `hero_video` in the home front matter (`large` 1920px, `small` 960px for phones, `poster`), files in `static/video/`. Muted, looping, no audio track, under a transparent header (`.header-home`, solid on scroll through a CSS scroll-driven animation). The source is `_originals/videos/home.mov`; re-encode with `ffmpeg -i home.mov -an -c:v libx264 -preset slow -crf 30 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:-2 home-1920.mp4` (crf 28 and `scale=960:-2` for the small one). Keep it short and under ~5 MB.
-- Components in `@layer components` in `main.css`: `container-site`, `container-wide`, `hero-shade`, `btn-primary`, `btn-ghost`, `eyebrow`, `card`, `bars-bg`, `prose-site`. In Tailwind v4 you can't `@apply` a custom component class.
+- **Home video:** `hero_video` in the home front matter (`large` 1920px, `small` 960px for phones, `poster`), files in `static/video/`. Muted, looping, no audio track, under a transparent header (`.header-home`: white text over the video, white with ink text once the page scrolls, through a CSS scroll-driven animation of the registered `--hdr-fg` / `--hdr-logo` colours). The source is `_originals/videos/home.mov`; re-encode with `ffmpeg -i home.mov -an -c:v libx264 -preset slow -crf 30 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:-2 home-1920.mp4` (crf 28 and `scale=960:-2` for the small one). Keep it short and under ~5 MB.
+- Components in `@layer components` in `main.css`: `container-site`, `container-wide`, `site-header`, `header-home`, `hero-shade`, `btn-primary`, `btn-accent`, `btn-ghost`, `btn-ghost-light`, `eyebrow` (+ `eyebrow-light`), `card`, `bars-bg`, `prose-site`. In Tailwind v4 you can't `@apply` a custom component class.
 - Markdown output is wrapped in `.prose-site`; add `not-prose` to custom lists inside it (shortcodes do).
 - Tailwind only sees classes present in `hugo_stats.json` or the CSS: write full class names, never build them with `printf`. In the dev server, CSS changes may need a server restart (the file keeps its name).
 

@@ -3,7 +3,7 @@
 
   {{/* Hero: the video of the last edition over the whole window, under the transparent header.
        Muted, looping, no sound track; the small file on phones. main.js adds pause and honours reduced motion. */}}
-  <section class="relative -mt-16 flex h-[100svh] min-h-[34rem] items-end overflow-hidden bg-night-950">
+  <section class="relative -mt-16 flex h-[100svh] min-h-[34rem] items-end overflow-hidden bg-brand-900 text-white">
     {{ with .Params.hero_video }}
       <video class="absolute inset-0 size-full object-cover" autoplay muted loop playsinline preload="auto" aria-hidden="true" data-hero-video
         {{ with .poster }}poster="{{ . | relURL }}"{{ end }}>
@@ -14,15 +14,15 @@
     <div class="hero-shade absolute inset-0" aria-hidden="true"></div>
 
     <div class="container-wide relative pb-10 sm:pb-14 lg:pb-20">
-      {{ with .Params.edition }}<p class="eyebrow mb-6">{{ . }}</p>{{ end }}
-      <h1 class="text-[clamp(2.5rem,11.5vw,12rem)] leading-none">{{ partial "logo.html" "" }}</h1>
-      <div class="mt-8 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <p class="max-w-2xl font-display text-lg uppercase tracking-wide text-night-100 sm:text-2xl">{{ site.Params.description }}</p>
+      {{ with .Params.edition }}<p class="eyebrow eyebrow-light mb-6 text-sm">{{ . }}</p>{{ end }}
+      <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        {{/* The slogan is the page's main heading; the logo is already in the header */}}
+        <h1 class="max-w-4xl font-display text-3xl font-semibold uppercase leading-tight tracking-wide text-white sm:text-5xl">{{ site.Params.description }}</h1>
         {{ with .Params.buttons }}
           <div class="flex flex-wrap gap-4">
             {{ range . }}
               {{ $url := .url }}{{ if hasPrefix $url "/" }}{{ $url = strings.TrimPrefix "/" $url | relLangURL }}{{ end }}
-              <a href="{{ $url }}" class="{{ if eq .style "ghost" }}btn-ghost bg-night-950/40 backdrop-blur{{ else }}btn-primary{{ end }}">{{ .label }}</a>
+              <a href="{{ $url }}" class="{{ if eq .style "ghost" }}btn-ghost-light bg-brand-900/30 backdrop-blur{{ else }}btn-accent{{ end }}">{{ .label }}</a>
             {{ end }}
           </div>
         {{ end }}
@@ -30,7 +30,7 @@
     </div>
 
     {{ with .Params.hero_video }}
-      <button type="button" class="absolute right-4 top-20 grid size-10 place-items-center border border-white/40 bg-night-950/40 text-white backdrop-blur transition hover:border-lime hover:text-lime sm:right-6 lg:right-10" data-hero-toggle
+      <button type="button" class="absolute right-4 top-20 grid size-10 place-items-center border border-white/50 bg-brand-900/40 text-white backdrop-blur transition hover:border-tknika hover:text-tknika sm:right-6 lg:right-10" data-hero-toggle
         data-label-pause="{{ i18n "pauseVideo" }}" data-label-play="{{ i18n "resumeVideo" }}" aria-label="{{ i18n "pauseVideo" }}" hidden>
         <svg class="size-4" data-icon-pause viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2h3v12H4zM9 2h3v12H9z"/></svg>
         <svg class="hidden size-4" data-icon-play viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
@@ -46,33 +46,34 @@
       <div class="prose-site mt-8 max-w-2xl text-lg">{{ .Content }}</div>
     </div>
     {{ with .Params.hero_image }}
-      <img src="{{ . | relURL }}" alt="" loading="lazy" class="w-full drop-shadow-[0_30px_40px_rgba(0,0,0,0.6)]" width="1000" height="667">
+      <img src="{{ . | relURL }}" alt="" loading="lazy" class="w-full drop-shadow-[0_30px_30px_rgba(31,75,107,0.25)]" width="1000" height="667">
     {{ end }}
   </section>
 
   {{/* Phases and dynamic tests, from the competition page */}}
   {{ with $competition }}
-    <section class="container-wide space-y-10 pb-20 sm:pb-28">
+    <section class="bg-paper py-20 sm:py-28"><div class="container-wide space-y-10">
       <div class="flex flex-wrap items-end justify-between gap-4">
         <h2 class="text-4xl font-semibold sm:text-5xl xl:text-6xl">{{ $.Params.phases_title }}</h2>
         <a href="{{ .RelPermalink }}" class="btn-ghost">{{ i18n "readMore" }}</a>
       </div>
       {{ partial "phases.html" . }}
       {{ partial "tests.html" . }}
+    </div>
     </section>
   {{ end }}
 
   {{/* Sections of the site */}}
   {{ with .Params.sections }}
-    <section class="border-y border-night-800 bg-night-900">
-      <div class="container-wide grid gap-px py-16 md:grid-cols-3">
+    <section>
+      <div class="container-wide grid gap-6 py-20 sm:py-28 md:grid-cols-3">
         {{ range . }}
           {{ with partial "by-key.html" . }}
-            <a href="{{ .RelPermalink }}" class="group flex flex-col gap-4 p-6 transition hover:bg-night-800 sm:p-8">
-              <span class="h-1 w-10 bg-volt transition-all group-hover:w-16 group-hover:bg-lime" aria-hidden="true"></span>
+            <a href="{{ .RelPermalink }}" class="card group flex flex-col gap-4 p-6 sm:p-8">
+              <span class="h-1 w-10 bg-brand transition-all group-hover:w-16 group-hover:bg-tknika" aria-hidden="true"></span>
               <h2 class="text-2xl font-semibold">{{ .LinkTitle }}</h2>
-              <p class="text-night-300">{{ .Description }}</p>
-              <span class="mt-auto font-display text-sm font-semibold uppercase tracking-wide text-lime">{{ i18n "readMore" }} →</span>
+              <p class="text-ink-soft">{{ .Description }}</p>
+              <span class="mt-auto font-display text-sm font-semibold uppercase tracking-wide text-brand-700">{{ i18n "readMore" }} →</span>
             </a>
           {{ end }}
         {{ end }}
@@ -82,8 +83,8 @@
 
   {{/* Last edition's poster */}}
   {{ with .Params.poster }}
-    <section class="container-wide grid items-center gap-12 py-20 sm:py-28 md:grid-cols-2 lg:gap-20">
-      <img src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy" class="w-full border border-night-700">
+    <section class="container-wide grid items-center gap-12 pb-20 sm:pb-28 md:grid-cols-2 lg:gap-20">
+      <img src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy" class="w-full shadow-xl shadow-brand-900/15">
       <div>
         {{ with .eyebrow }}<p class="eyebrow mb-4">{{ . }}</p>{{ end }}
         <h2 class="text-4xl font-semibold sm:text-5xl">{{ .title }}</h2>
@@ -95,14 +96,14 @@
 
   {{/* Call to action: contact and Instagram */}}
   {{ with .Params.cta }}
-    <section class="container-wide pb-20 sm:pb-28">
-      <div class="relative overflow-hidden bg-volt-600 px-6 py-14 sm:px-12">
-        <div class="bars-bg absolute inset-y-0 right-0 w-1/2 opacity-40 [mask-image:linear-gradient(to_left,black,transparent)]" aria-hidden="true"></div>
+    <section class="relative overflow-hidden bg-brand text-white">
+      <div class="container-wide py-16 sm:py-24">
+        <div class="bars-bg absolute inset-y-0 right-0 w-1/2 [mask-image:linear-gradient(to_left,black,transparent)]" aria-hidden="true"></div>
         <div class="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <h2 class="max-w-2xl text-2xl font-semibold sm:text-3xl">{{ .title }}</h2>
+          <h2 class="max-w-3xl text-3xl font-semibold text-white sm:text-4xl">{{ .title }}</h2>
           <div class="flex flex-wrap gap-4">
-            {{ with partial "by-key.html" "contact" }}<a href="{{ .RelPermalink }}" class="btn-primary">{{ $.Params.cta.button }}</a>{{ end }}
-            {{ with site.Params.instagram }}<a href="{{ . }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 border border-white px-5 py-3 font-display text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white hover:text-night-950">Instagram</a>{{ end }}
+            {{ with partial "by-key.html" "contact" }}<a href="{{ .RelPermalink }}" class="btn-accent">{{ $.Params.cta.button }}</a>{{ end }}
+            {{ with site.Params.instagram }}<a href="{{ . }}" target="_blank" rel="noopener" class="btn-ghost-light">Instagram</a>{{ end }}
           </div>
         </div>
       </div>

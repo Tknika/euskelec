@@ -9,7 +9,7 @@ menus:
   main:
     weight: 10
 # Phases of the current edition. An empty `dates` or `place` shows "Laster".
-# status: active marks the current phase (lime line).
+# status: active marks the current phase (Tknika lime line).
 phases:
   - title: Eremu teknikoa eta sortzailea
     description: Proiektuak aurkeztea. Talde parte-hartzaileek Euskelec proiektuan egin duten lana eta bilakaera islatuko dira, proiektuaren memoria batean eta epaimahai aditu baten aurrean.

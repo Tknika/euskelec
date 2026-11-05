@@ -11,11 +11,11 @@ images/photo.jpg | Caption
     {{ $src := trim (index $parts 0) " \r" }}
     {{ $caption := "" }}{{ if gt (len $parts) 1 }}{{ $caption = trim (index $parts 1) " \r" }}{{ end }}
     {{ with $src }}
-      <figure class="group overflow-hidden border border-night-700 bg-night-900">
+      <figure class="group overflow-hidden border border-line bg-white">
         <a href="{{ . | relURL }}" class="block aspect-[4/3] overflow-hidden">
           <img src="{{ . | relURL }}" alt="{{ $caption }}" loading="lazy" class="size-full object-cover transition duration-500 group-hover:scale-105">
         </a>
-        {{ with $caption }}<figcaption class="px-4 py-3 font-display text-xs text-night-300">{{ . }}</figcaption>{{ end }}
+        {{ with $caption }}<figcaption class="px-4 py-3 font-display text-xs text-ink-soft">{{ . }}</figcaption>{{ end }}
       </figure>
     {{ end }}
   {{ end }}

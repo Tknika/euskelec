@@ -5,7 +5,7 @@
   <div class="not-prose -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
     <table class="w-full border-collapse text-sm">
       <thead>
-        <tr class="border-b border-night-600 text-left font-display uppercase tracking-wide text-night-300">
+        <tr class="border-b-2 border-brand text-left font-display uppercase tracking-wide text-ink-soft">
           <th class="py-2 pr-4 font-semibold">{{ i18n "bib" }}</th>
           <th class="py-2 pr-4 font-semibold">{{ i18n "school" }}</th>
           <th class="py-2 font-semibold">{{ i18n "region" }}</th>
@@ -13,10 +13,10 @@
       </thead>
       <tbody>
         {{ range . }}
-          <tr class="border-b border-night-800">
-            <td class="py-2 pr-4 font-display text-lime">{{ .bib }}</td>
-            <td class="py-2 pr-4 text-white">{{ .school }}</td>
-            <td class="py-2 text-night-300">{{ .region }}</td>
+          <tr class="border-b border-line">
+            <td class="py-2 pr-4 font-display font-semibold text-brand-700">{{ .bib }}</td>
+            <td class="py-2 pr-4">{{ .school }}</td>
+            <td class="py-2 text-ink-soft">{{ .region }}</td>
           </tr>
         {{ end }}
       </tbody>

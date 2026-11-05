@@ -6,9 +6,9 @@
     {{ $target := . }}
     {{ range $page.AllTranslations }}{{ if eq .Language.Lang $lang }}{{ $target = . }}{{ end }}{{ end }}
     {{ if eq $lang site.Language.Lang }}
-      <span class="border-b-2 border-lime px-1.5 py-1 text-white" aria-current="true" title="{{ .Language.Label }}">{{ upper $lang }}</span>
+      <span class="border-b-2 border-tknika px-1.5 py-1" aria-current="true" title="{{ .Language.Label }}">{{ upper $lang }}</span>
     {{ else }}
-      <a href="{{ $target.RelPermalink }}" hreflang="{{ $lang }}" lang="{{ $lang }}" class="border-b-2 border-transparent px-1.5 py-1 text-night-400 transition hover:text-white" title="{{ .Language.Label }}">{{ upper $lang }}</a>
+      <a href="{{ $target.RelPermalink }}" hreflang="{{ $lang }}" lang="{{ $lang }}" class="border-b-2 border-transparent px-1.5 py-1 opacity-70 transition hover:opacity-100" title="{{ .Language.Label }}">{{ upper $lang }}</a>
     {{ end }}
   {{ end }}
 </div>

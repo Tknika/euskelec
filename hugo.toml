@@ -17,7 +17,7 @@ disableKinds = ["taxonomy", "term"]
   twitter = "https://twitter.com/euskelec"
   youtube = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
 
-  # Footer logos, in this order. The footer is dark: logos must be the white versions.
+  # Footer logos, in this order. The footer is blue: logos must be the white versions.
   # Without `logo`, the name is shown as text. Without `url`, the logo is not a link.
   [[params.organizers]]
     name = "Tknika"

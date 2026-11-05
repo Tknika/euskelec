@@ -15,10 +15,10 @@ docs/euskelec-x-araudia.pdf | Araudia 26-27 | PDF
       {{ $href := cond (hasPrefix . "http") . (. | relURL) }}
       <li>
         <a href="{{ $href }}" target="_blank" class="card group flex items-center gap-5 p-6">
-          <svg class="size-10 shrink-0 text-volt transition group-hover:text-lime" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M12 11v6m-3-3 3 3 3-3"/></svg>
+          <svg class="size-10 shrink-0 text-brand transition group-hover:text-brand-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M12 11v6m-3-3 3 3 3-3"/></svg>
           <span class="flex flex-col">
-            <span class="font-display text-lg font-semibold text-white">{{ $title }}</span>
-            <span class="text-sm text-night-400">{{ i18n "download" }}{{ with $note }} · {{ . }}{{ end }}</span>
+            <span class="font-display text-lg font-semibold">{{ $title }}</span>
+            <span class="text-sm text-ink-soft">{{ i18n "download" }}{{ with $note }} · {{ . }}{{ end }}</span>
           </span>
         </a>
       </li>
