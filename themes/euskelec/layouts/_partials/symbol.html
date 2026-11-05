@@ -1,0 +1,8 @@
+{{- /* The Euskelec symbol, the graphic resource of the site: five bars in two staggered columns
+       (three on the right, two on the left), as in the logo and the favicon of the old site.
+       Decorative (aria-hidden). Context: classes for the <svg> (size, colour through text-*, position).
+       Usage: {{ partial "symbol.html" "absolute right-0 top-1/4 w-1/3 text-white/90" }} */ -}}
+<svg viewBox="0 0 40 27" class="{{ . }}" fill="currentColor" aria-hidden="true" focusable="false">
+  <rect x="20" y="0" width="20" height="5"/><rect x="20" y="11" width="20" height="5"/><rect x="20" y="22" width="20" height="5"/>
+  <rect x="0" y="5.5" width="20" height="5"/><rect x="0" y="16.5" width="20" height="5"/>
+</svg>

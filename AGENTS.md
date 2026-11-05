@@ -11,12 +11,12 @@ Trilingual (Basque `eu` = default, Spanish `es`, English `en`, each in its own f
 ```sh
 npm ci                                   # once: installs Tailwind (required by Hugo)
 hugo server --baseURL http://localhost:1313/euskelec/   # dev server on http://localhost:1313/euskelec/eu/, the same path as GitHub Pages
-hugo --gc --minify                       # production build → public/
+hugo --gc --minify -d /tmp/check          # production build check; never into public/ while `hugo server` runs (it serves public/ and would show the production HTML, without the /euskelec/ prefix and without styles)
 hugo --gc --minify --baseURL https://tknika.github.io/euskelec/ -d /tmp/out   # test a subpath build
 ```
 
 There is no test suite. **A change is verified when:**
-1. `hugo --gc --minify` finishes with no `ERROR` and no `WARN` lines.
+1. `hugo --gc --minify -d /tmp/check` finishes with no `ERROR` and no `WARN` lines.
 2. A build with a subpath `baseURL` (command above) has no links that miss the prefix:
    `grep -rhoE '(href|src|poster)="?/[^" >]*' /tmp/out --include=*.html | grep -vE '="?/euskelec/'` prints nothing.
 3. For visual changes, check the pages at ~1440px and ~390px wide, in the three languages.
@@ -50,10 +50,10 @@ There is no test suite. **A change is verified when:**
   - Square corners (no `rounded-*`).
 - Font: Lexend (`font-display`, self-hosted variable font) for titles, menus and labels; system sans for running text.
 - The logo is redrawn as one SVG in `_partials/logo.html`, traced from the old site's 218×25 PNG (`_originals/old-site/euskelec_logo.png`): five white bars in two staggered columns and the wide EUSKELEC lettering, all white (no blue, no Lexend). It is 1em high, so the parent's font size sets its size. Replace it with the official vector logo when available.
-- The logo's stacked bars are reused as a background motif (`.bars-bg`).
+- **The symbol** (five bars in two staggered columns, as in the logo and the favicon) is the site's graphic resource: `{{ partial "symbol.html" "classes" }}` draws it as an SVG in `currentColor`, sized and placed with the classes. It is used in the transitions of the home video (see below), large and faint on the blue page headers, the call to action and the footer, small on the home section cards (lime on hover), in the corner of each phase (lime when active) and on the 404 page. Keep it as a solid shape, cut by the edges when big; don't rotate or recolour it outside the palette.
 - **Widths, as on basqueunevocweek:** the home page, the header and the home footer use `container-wide` (the whole window, side margins only); inner pages use `container-site` (up to 96rem), with text kept to a readable column (`max-w-3xl`, unless `wide: true`).
-- **Home video:** `hero_video` in the home front matter (`large` 1920px, `small` 960px for phones, `poster`), files in `static/video/`. Muted, looping, no audio track, under a transparent header (`.header-home`: white text over the video, white with ink text once the page scrolls, through a CSS scroll-driven animation of the registered `--hdr-fg` / `--hdr-logo` colours). The source is `_originals/videos/home.mov`; re-encode with `ffmpeg -i home.mov -an -c:v libx264 -preset slow -crf 30 -pix_fmt yuv420p -movflags +faststart -vf scale=1920:-2 home-1920.mp4` (crf 28 and `scale=960:-2` for the small one). Keep it short and under ~5 MB.
-- Components in `@layer components` in `main.css`: `container-site`, `container-wide`, `site-header`, `header-home`, `hero-shade`, `btn-primary`, `btn-accent`, `btn-ghost`, `btn-ghost-light`, `eyebrow` (+ `eyebrow-light`), `card`, `bars-bg`, `prose-site`. In Tailwind v4 you can't `@apply` a custom component class.
+- **Home video:** `hero_video` in the home front matter (`large` 1920px, `small` 960px for phones, `poster`), files in `static/video/`. Muted, looping, no audio track, under a transparent header (`.header-home`: white text over the video, white with ink text once the page scrolls, through a CSS scroll-driven animation of the registered `--hdr-fg` / `--hdr-logo` colours). The source is `_originals/videos/home.mov`. Two of its seven cuts (2.12 s and 5.48 s of the source; not all of them, on purpose) use a **symbol transition**: no colour, the next scene comes in through the symbol, first the five symbol bars open from the sides, then the rest of the frame (an ffmpeg `xfade` with a custom mask, 0.7 s, so the two scenes overlap and the video is 9.1 s). `scripts/video-symbol-transitions.sh` renders both web files from the source; its header has the usage. Nothing is drawn over the video in the page itself. Keep the video short and under ~5 MB. When the video changes, give the files a new name (`home-v3-…` → `home-v4-…`, in the three `_index.md`): browsers keep the old file cached under the same name.
+- Components in `@layer components` in `main.css`: `container-site`, `container-wide`, `site-header`, `header-home`, `hero-shade`, `btn-primary`, `btn-accent`, `btn-ghost`, `btn-ghost-light`, `eyebrow` (+ `eyebrow-light`), `card`, `prose-site`. In Tailwind v4 you can't `@apply` a custom component class.
 - Markdown output is wrapped in `.prose-site`; add `not-prose` to custom lists inside it (shortcodes do).
 - Tailwind only sees classes present in `hugo_stats.json` or the CSS: write full class names, never build them with `printf`. In the dev server, CSS changes may need a server restart (the file keeps its name).
 
