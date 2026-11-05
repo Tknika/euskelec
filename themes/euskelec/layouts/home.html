@@ -3,7 +3,7 @@
 
   {{/* Hero: the video of the last edition over the whole window, under the transparent header.
        Muted, looping, no sound track; the small file on phones. main.js adds pause and honours reduced motion. */}}
-  <section class="relative -mt-[calc(6rem+2px)] flex h-[100svh] min-h-[34rem] items-end overflow-hidden bg-brand-900 text-white">
+  <section class="relative -mt-[calc(6rem+1px)] flex h-[100svh] min-h-[34rem] items-end overflow-hidden bg-brand-900 text-white">
     {{ with .Params.hero_video }}
       <video class="absolute inset-0 size-full object-cover" autoplay muted loop playsinline preload="auto" aria-hidden="true" data-hero-video
         {{ with .poster }}poster="{{ . | relURL }}"{{ end }}>

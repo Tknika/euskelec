@@ -1,8 +1,8 @@
 {{ $page := . }}
 {{- /* Two levels: a thin bar with the languages, then the logo and the main menu.
-       Total height 6rem + 2px of borders (h-8 + h-16): the home hero pulls itself up by the same amount (home.html). */ -}}
+       Total height 6rem + 1px of border (the line under the main menu) (h-8 + h-16): the home hero pulls itself up by the same amount (home.html). */ -}}
 <header class="site-header sticky top-0 z-40{{ if .IsHome }} header-home{{ end }}">
-  <div class="border-b border-current/10">
+  <div>
     <div class="container-wide flex h-8 items-center justify-end">
       {{ partial "lang-switcher.html" $page }}
     </div>
