@@ -16,7 +16,7 @@ buttons:
 about:
   eyebrow: What is Euskelec?
   title: Electric vehicles built by vocational training students
-phases_title: Two phases, five dynamic tests
+phases_title: "**Two** phases, **five** dynamic tests"
 sections: [competition, media, docs]
 poster:
   eyebrow: Last edition

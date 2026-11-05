@@ -16,7 +16,7 @@ buttons:
 about:
   eyebrow: Zer da Euskelec?
   title: Ibilgailu elektrikoak, lanbide-heziketako ikasleek eginak
-phases_title: Bi fase, bost proba dinamiko
+phases_title: "**Bi** fase, **bost** proba dinamiko"
 # Cards to the site's sections (translationKey of each page)
 sections: [competition, media, docs]
 poster:
@@ -36,6 +36,6 @@ cta:
   button: Konektatuko dugu?
 ---
 
-Euskelec lehiaketa bat da eta, bertan, Euskadiko lanbide-heziketako ikastetxeetako ikasleek **ibilgailu % 100 elektriko bat** diseinatu eta eraikitzen dute, oinarri eragile komun batetik abiatuta: motorra, motorraren kontrolatzailea eta bateriak.
+Euskelec lehiaketa bat da. Euskadiko lanbide-heziketako ikastetxeetako ikasleek **ibilgailu %100 elektriko bat** diseinatu eta eraikitzen dute oinarri amankomun batetik abiatuta: motorra, motorraren kontrolatzailea eta bateriak.
 
-Helburua ikasleen arteko talde-lana sustatzea da, eta jarduera esperimentala eta sortzailea elementu pedagogiko gisa erabiltzea, ibilgailu elektrikoen ezagutza teknikorako.
+Ikasleen arteko talde-lana sustatzea du helburu. Jarduera esperimental eta sortzailea elementu pedagogiko bilakatuaz ibilgailu elektrikoen ezagutza teknikorako.

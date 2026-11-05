@@ -16,7 +16,7 @@ buttons:
 about:
   eyebrow: ¿Qué es Euskelec?
   title: Vehículos eléctricos hechos por alumnado de formación profesional
-phases_title: Dos fases, cinco pruebas dinámicas
+phases_title: "**Dos** fases, **cinco** pruebas dinámicas"
 sections: [competition, media, docs]
 poster:
   eyebrow: Última edición
