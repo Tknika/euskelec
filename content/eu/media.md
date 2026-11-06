@@ -10,6 +10,12 @@ menus:
     weight: 20
 ---
 
+## Kartela
+
+{{< downloads >}}
+docs/euskelec-ix-kartela.pdf | Euskelec IX kartela | PDF · 7 MB
+{{< /downloads >}}
+
 ## Bideoak
 
 {{< videos >}}

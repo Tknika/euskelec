@@ -10,6 +10,12 @@ menus:
     weight: 20
 ---
 
+## Cartel
+
+{{< downloads >}}
+docs/euskelec-ix-kartela.pdf | Cartel de Euskelec IX | PDF · 7 MB
+{{< /downloads >}}
+
 ## Vídeos
 
 {{< videos >}}

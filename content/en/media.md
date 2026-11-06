@@ -10,6 +10,12 @@ menus:
     weight: 20
 ---
 
+## Poster
+
+{{< downloads >}}
+docs/euskelec-ix-kartela.pdf | Euskelec IX poster | PDF · 7 MB
+{{< /downloads >}}
+
 ## Videos
 
 {{< videos >}}
