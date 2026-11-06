@@ -9,11 +9,32 @@ menus:
   main:
     weight: 10
 # Phases of the current edition. An empty `dates` or `place` shows "Coming soon".
+# The competition in a glance ({{< competition-intro >}}): how it works, goals, what it drives
+intro:
+  lead: "Euskelec is a competition in which students from vocational training centres in the Basque Country design and build **a 100% electric vehicle** using the same driving base. The goal is to encourage teamwork and to establish experimentation and creation as a teaching strategy."
+  steps:
+    - title: Common driving base
+      items: [Motor, Motor controller, Batteries]
+    - title: Vocational training students
+      text: Students from vocational training centres in the Basque Country design and build it.
+    - title: 100% electric vehicle
+  goals_title: Goals
+  goals:
+    - Encourage students to work as a team
+    - Experimentation and creation as a teaching strategy
+    - Technical knowledge of electric vehicles
+  platform_title: A platform to
+  platform_text: "The contest is a platform for training technicians specialised in electric vehicles, with an eye on the needs of new transport and industrialisation models."
+  platform:
+    - Train and promote technicians specialised in electric vehicles
+    - Experiment with new manufacturing techniques and new materials
+    - Meet the needs of new transport and industrialisation models
 phases:
   - title: Technical and creative aspects
     description: A presentation detailing the work undertaken on the Euskelec project by the participating teams and how the project has evolved, compiled in a project report and presented before an expert panel.
     dates: ""
     place: ""
+    challenges: [Design, Innovation, Communication]
   - title: Dynamic testing event
     description: The performance, features and design of the vehicles are assessed via slalom, acceleration, maximum braking and resistance tests.
     dates: ""
@@ -31,17 +52,11 @@ phases:
         icon: images/icons/racing.svg
 ---
 
-<div class="max-w-3xl space-y-5">
-
-Euskelec is a competition in which students from vocational training centres in the Basque Country design and build a 100% electric vehicle using the same driving base (motor, motor controller and batteries). The overarching goal is to encourage students to work as a team and to establish experimentation and creation as a teaching strategy for imparting technical knowledge of electric vehicles.
-
-The competition comprises two phases: a technical and creative phase with challenges around design, innovation and communication, all compiled in a project report and presented before an expert panel; and a dynamic phase to assess the performance, features and design of the vehicles via slalom, acceleration, maximum braking and resistance tests. These tests will lead to a selection of prizes which will recognise the excellence of the teams in the different aspects of the competition.
-
-The contest is a platform for training and promoting technicians specialised in electric vehicles and promotes experimentation with new manufacturing techniques and the use of new materials. Participants will be in a position to meet the needs arising from both a new transport model based on electric vehicles and emerging industrialisation models.
-
-</div>
+{{< competition-intro >}}
 
 ## Phases
+
+The competition comprises two phases. The first, technical and creative, sets challenges in design, innovation and communication, compiled in a project report and presented before an expert panel. In the second, the dynamic phase, the performance, features and design of the vehicles are assessed, and the tests lead to prizes that recognise the excellence of the teams.
 
 {{< phases >}}
 

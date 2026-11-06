@@ -2,7 +2,7 @@
 title: Media
 translationKey: media
 eyebrow: Euskelec
-description: Recopilación de fotos y vídeos oficiales de los eventos del campeonato de ediciones pasadas.
+description: "Recursos para periodistas y medios de comunicación: dossier de prensa, cartel, logotipos, vídeos y fotos."
 weight: 20
 wide: true
 menus:
@@ -10,11 +10,17 @@ menus:
     weight: 20
 ---
 
-## Cartel
-
-{{< downloads >}}
+{{< downloads cols="3" style="plain" >}}
+docs/euskelec-dossier-de-prensa.pdf | Dossier de prensa | PDF · 4 páginas
 docs/euskelec-ix-kartela.pdf | Cartel de Euskelec IX | PDF · 7 MB
+mailto:admin@euskelec.eus | Contacto de prensa | admin@euskelec.eus
 {{< /downloads >}}
+
+## Logotipos
+
+Logotipos oficiales de las entidades organizadoras, para su uso en medios de comunicación.
+
+{{< press-logos >}}
 
 ## Vídeos
 

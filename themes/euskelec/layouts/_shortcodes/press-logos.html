@@ -1,0 +1,27 @@
+{{- /* Logo downloads for the press room, from data/press-logos.yaml. Usage: {{< press-logos >}}
+       Each organisation: name, preview (+ preview_dark to show it on blue), files [{path, format, variant}]
+       with variant colour | white | all, or on_request (no files: ask at the press email). Files in static/press/logos/. */ -}}
+<ul class="not-prose grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  {{ range index hugo.Data "press-logos" }}
+    <li class="card flex flex-col">
+      <div class="flex h-40 items-center justify-center p-6 {{ if .preview_dark }}bg-brand-800{{ else }}bg-white{{ end }}">
+        {{ with .preview }}<img src="{{ . | relURL }}" alt="" loading="lazy" class="h-full w-full object-contain">{{ end }}
+      </div>
+      <div class="flex flex-1 flex-col gap-3 border-t border-line p-5">
+        <p class="font-display text-lg font-semibold leading-snug">{{ .name }}</p>
+        {{ if .on_request }}
+          <p class="text-sm text-ink-soft">{{ i18n "logoOnRequest" }} {{ with site.Params.email }}<a href="mailto:{{ . }}" class="text-brand-700 underline decoration-brand/40 underline-offset-4 hover:decoration-tknika">{{ . }}</a>{{ end }}</p>
+        {{ else }}
+          <ul class="not-prose flex flex-wrap gap-2">
+            {{ range .files }}
+              {{ $variant := index (dict "colour" "logoColour" "black" "logoBlack" "white" "logoWhite" "all" "logoAll") .variant }}
+              <li><a href="{{ .path | relURL }}" download class="inline-flex items-center gap-1.5 border border-brand-700 px-3 py-1.5 font-display text-xs font-semibold uppercase tracking-wide text-brand-700 transition hover:border-tknika hover:bg-tknika hover:text-ink">
+                <svg class="size-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v8m-3.5-3.5L8 10l3.5-3.5M3 13h10"/></svg>
+                {{ .format }} · {{ i18n $variant }}</a></li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+    </li>
+  {{ end }}
+</ul>

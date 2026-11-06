@@ -2,7 +2,7 @@
 title: Media
 translationKey: media
 eyebrow: Euskelec
-description: Txapelketako aurreko edizioetako argazki eta bideo ofizialen bilduma.
+description: "Kazetari eta komunikabideentzako baliabideak: prentsa-dossierra, kartela, logotipoak, bideoak eta argazkiak."
 weight: 20
 wide: true
 menus:
@@ -10,11 +10,17 @@ menus:
     weight: 20
 ---
 
-## Kartela
-
-{{< downloads >}}
+{{< downloads cols="3" style="plain" >}}
+docs/euskelec-prentsa-dossierra.pdf | Prentsa-dossierra | PDF · 4 orrialde
 docs/euskelec-ix-kartela.pdf | Euskelec IX kartela | PDF · 7 MB
+mailto:admin@euskelec.eus | Prentsarako harremana | admin@euskelec.eus
 {{< /downloads >}}
+
+## Logotipoak
+
+Antolatzaileen logotipo ofizialak, komunikabideetan erabiltzeko.
+
+{{< press-logos >}}
 
 ## Bideoak
 

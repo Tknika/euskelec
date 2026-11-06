@@ -1,10 +1,13 @@
 {{- /* Download cards for documents (PDFs in static/docs/). One per line: `path | Title | Note`.
+A `mailto:` line becomes a contact item (envelope icon, the note shown as is). cols="3" for three per row.
+style="plain": no cards, a light strip of text links between thin lines (press room in the Media page).
 Usage:
 {{< downloads >}}
 docs/euskelec-x-araudia.pdf | Araudia 26-27 | PDF
 {{< /downloads >}}
 */ -}}
-<ul class="not-prose grid gap-4 sm:grid-cols-2">
+{{ $plain := eq (.Get "style") "plain" }}
+<ul class="not-prose grid {{ if $plain }}divide-y divide-line border-y border-line sm:divide-x sm:divide-y-0{{ else }}gap-4{{ end }} sm:grid-cols-2 {{ if eq (.Get "cols") "3" }}{{ if $plain }}sm:grid-cols-3{{ else }}lg:grid-cols-3{{ end }}{{ end }}">
   {{/* "\r" too: on Windows checkouts (autocrlf) the lines end in CRLF */}}
   {{ range split (trim .Inner "\r\n ") "\n" }}
     {{ $parts := split . "|" }}
@@ -12,15 +15,35 @@ docs/euskelec-x-araudia.pdf | Araudia 26-27 | PDF
     {{ $title := $src }}{{ if gt (len $parts) 1 }}{{ $title = trim (index $parts 1) " \r" }}{{ end }}
     {{ $note := "" }}{{ if gt (len $parts) 2 }}{{ $note = trim (index $parts 2) " \r" }}{{ end }}
     {{ with $src }}
-      {{ $href := cond (hasPrefix . "http") . (. | relURL) }}
+      {{ $mail := hasPrefix . "mailto:" }}
+      {{ $href := cond (or $mail (hasPrefix . "http")) . (. | relURL) }}
+      {{ $meta := cond $mail $note (printf "%s%s" (i18n "download") (cond (ne $note "") (printf " · %s" $note) "")) }}
       <li>
-        <a href="{{ $href }}" target="_blank" class="card group flex items-center gap-5 p-6">
-          <svg class="size-10 shrink-0 text-brand transition group-hover:text-tknika" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M12 11v6m-3-3 3 3 3-3"/></svg>
-          <span class="flex flex-col">
-            <span class="font-display text-lg font-semibold">{{ $title }}</span>
-            <span class="text-sm text-ink-soft">{{ i18n "download" }}{{ with $note }} · {{ . }}{{ end }}</span>
-          </span>
-        </a>
+        {{ if $plain }}
+          <a href="{{ $href }}"{{ if not $mail }} target="_blank"{{ end }} class="group flex items-start gap-3 py-5 sm:px-6 sm:first:pl-0">
+            {{ if $mail }}
+              <svg class="mt-0.5 size-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+            {{ else }}
+              <svg class="mt-0.5 size-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 20h14"/></svg>
+            {{ end }}
+            <span class="flex min-w-0 flex-col">
+              <span class="font-display font-semibold underline decoration-transparent decoration-2 underline-offset-4 transition group-hover:decoration-tknika">{{ $title }}</span>
+              <span class="break-words text-sm text-ink-soft">{{ $meta }}</span>
+            </span>
+          </a>
+        {{ else }}
+          <a href="{{ $href }}"{{ if not $mail }} target="_blank"{{ end }} class="card group flex h-full items-center gap-5 p-6">
+            {{ if $mail }}
+              <svg class="size-10 shrink-0 text-brand transition group-hover:text-tknika" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+            {{ else }}
+              <svg class="size-10 shrink-0 text-brand transition group-hover:text-tknika" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M12 11v6m-3-3 3 3 3-3"/></svg>
+            {{ end }}
+            <span class="flex min-w-0 flex-col">
+              <span class="font-display text-lg font-semibold">{{ $title }}</span>
+              <span class="break-words text-sm text-ink-soft">{{ $meta }}</span>
+            </span>
+          </a>
+        {{ end }}
       </li>
     {{ end }}
   {{ end }}

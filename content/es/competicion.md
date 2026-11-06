@@ -9,11 +9,32 @@ menus:
   main:
     weight: 10
 # Phases of the current edition. An empty `dates` or `place` shows "Próximamente".
+# The competition in a glance ({{< competition-intro >}}): how it works, goals, what it drives
+intro:
+  lead: "Euskelec es una competición en la que alumnos de centros de formación profesional del País Vasco diseñan y construyen **un vehículo 100 % eléctrico** sobre una base motriz común. El objetivo es potenciar el trabajo en equipo y fundamentar la actividad experimental y creativa como elemento pedagógico."
+  steps:
+    - title: Base motriz común
+      items: [Motor, Controlador de motor, Baterías]
+    - title: Alumnado de formación profesional
+      text: Alumnos de centros de formación profesional del País Vasco lo diseñan y construyen.
+    - title: Vehículo 100 % eléctrico
+  goals_title: Objetivos
+  goals:
+    - Potenciar el trabajo en equipo del alumnado
+    - La actividad experimental y creativa como elemento pedagógico
+    - El conocimiento técnico de los vehículos eléctricos
+  platform_title: Una plataforma para
+  platform_text: "El campeonato es una plataforma para la capacitación de técnicos especializados en vehículos de tracción eléctrica, atenta a las necesidades de los nuevos modelos de movilidad e industrialización."
+  platform:
+    - Capacitar y promocionar técnicos especializados en vehículos de tracción eléctrica
+    - Experimentar con nuevas técnicas de fabricación y nuevos materiales
+    - Responder a las necesidades de nuevos modelos de movilidad e industrialización
 phases:
   - title: Ámbito técnico y creativo
     description: Presentación del proyecto, donde se refleja el trabajo y la evolución del proyecto Euskelec de los equipos participantes, en una memoria del proyecto y ante un jurado experto.
     dates: ""
     place: ""
+    challenges: [Diseño, Innovación, Comunicación]
   - title: Evento de pruebas dinámicas
     description: Se evalúan las prestaciones, características y diseño de los vehículos mediante las pruebas de slalom, aceleración, frenada máxima y resistencia.
     dates: ""
@@ -31,17 +52,11 @@ phases:
         icon: images/icons/racing.svg
 ---
 
-<div class="max-w-3xl space-y-5">
-
-Euskelec es una competición en la que alumnos de centros de formación profesional del País Vasco diseñan y construyen un vehículo 100 % eléctrico sobre una base motriz común (motor, controlador de motor y baterías) con el objetivo de potenciar el trabajo en equipo de los alumnos y fundamentar la actividad experimental y creativa como elemento pedagógico para el conocimiento técnico de los vehículos eléctricos.
-
-La competición consta de una fase técnica y creativa con desafíos en diseño, innovación y comunicación, todo representado en una memoria del proyecto y presentado ante un jurado experto, y una fase dinámica en la que se evaluarán prestaciones, características y diseño de los vehículos mediante las pruebas de slalom, aceleración, frenada máxima y resistencia. De estas pruebas derivarán un conjunto de premios que resaltarán la excelencia de los equipos en los diferentes aspectos de análisis de la competición.
-
-El campeonato es una plataforma para la capacitación y promoción de técnicos especializados en vehículos de tracción eléctrica y promueve la experimentación de nuevas técnicas de fabricación y la utilización de nuevos materiales. Los participantes podrán dar cobertura a las necesidades surgidas de un nuevo modelo de movilidad, basado en los vehículos de tracción eléctrica, y de unos emergentes modelos de industrialización.
-
-</div>
+{{< competition-intro >}}
 
 ## Fases
+
+La competición consta de dos fases. La primera, técnica y creativa, plantea desafíos de diseño, innovación y comunicación, recogidos en una memoria del proyecto y presentados ante un jurado experto. En la segunda, la fase dinámica, se evalúan las prestaciones, características y diseño de los vehículos, y de sus pruebas derivan premios que resaltan la excelencia de los equipos.
 
 {{< phases >}}
 

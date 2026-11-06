@@ -10,6 +10,7 @@ enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
 
 [params]
+  website = "euskelec.eus"   # shown in the press kit (the published domain, not the build baseURL)
   # Asks search engines not to index the site. Set to false at launch.
   noindex = true
   email = "admin@euskelec.eus"

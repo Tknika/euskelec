@@ -8,11 +8,18 @@
       <p class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-brand-700">{{ i18n "phase" }} {{ add $i 1 }}</p>
       <h3 class="mt-2 font-display text-2xl font-semibold">{{ $p.title }}</h3>
       {{ with $p.description }}<p class="mt-3 text-ink-soft">{{ . | markdownify }}</p>{{ end }}
+      {{/* Challenges of the phase (phase 1: design, innovation, communication) */}}
+      {{ with $p.challenges }}
+        <p class="mt-6 font-display text-xs uppercase tracking-wider text-ink-soft">{{ i18n "challenges" }}</p>
+        <ul class="not-prose mt-3 flex flex-wrap gap-2">
+          {{ range . }}<li class="bg-brand-50 px-3 py-1.5 font-display text-sm font-medium text-brand-700">{{ . }}</li>{{ end }}
+        </ul>
+      {{ end }}
       {{/* The dynamic tests belong to this phase only (`tests` inside the phase): line icons drawn inline
            (static/images/icons/*.svg, in currentColor) so they take the Euskelec blue */}}
       {{ with $p.tests }}
         <p class="mt-6 font-display text-xs uppercase tracking-wider text-ink-soft">{{ i18n "dynamicTests" }}</p>
-        <ul class="mt-3 flex flex-wrap gap-px border border-line bg-line">
+        <ul class="not-prose mt-3 flex flex-wrap gap-px border border-line bg-line">
           {{ range . }}
             <li class="flex min-w-[7.5rem] flex-1 flex-col items-center gap-2 bg-white px-2 py-4 text-center">
               {{ with .icon }}<span class="size-10 text-brand [&>svg]:size-full" aria-hidden="true">{{ os.ReadFile (printf "static/%s" .) | safeHTML }}</span>{{ end }}
@@ -21,6 +28,7 @@
           {{ end }}
         </ul>
       {{ end }}
+      {{ with $p.note }}<p class="mt-4 flex gap-2 text-sm text-ink-soft"><span class="mt-[0.6em] h-0.5 w-3 shrink-0 bg-tknika" aria-hidden="true"></span>{{ . }}</p>{{ end }}
       <dl class="mt-6 grid gap-4 border-t border-line pt-5 text-sm sm:grid-cols-2">
         <div>
           <dt class="font-display text-xs uppercase tracking-wider text-ink-soft">{{ i18n "when" }}</dt>

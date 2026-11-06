@@ -1,0 +1,42 @@
+# Organisers' logos in the press room (Media page, {{< press-logos >}}). Files in static/press/logos/.
+# Only official files, from the organisations' own sites (downloaded 2026-11-06):
+#  - Tknika: https://tknika.eus/wp-content/uploads/2023/02/0-marca_tknika_bakarrik_transparentea.png and
+#    https://tknika.eus/wp-content/uploads/2020/09/marca_tknika_vertical_rgb_20.jpg (no vector version published).
+#  - Basque Government, Department of Education: "Símbolos e identidad"
+#    (https://www.euskadi.eus/simbolos-e-identidad/web01-s1ezaleh/es/), ZIP "Marca Gobierno Vasco" (XIII legislatura),
+#    file 08_Hezkuntza Saila_Departamento de Educación: PDF and AI (text in outlines) with every lockup, colour and mono.
+#    The PNG is its colour horizontal lockup, rendered from that PDF (2540 px, transparent background).
+#    Its use is regulated by the Manual de Identidad Corporativa (Decreto 318/1999).
+#  - FP Euskadi: black PNG provided by the organisers (2026-11-06, _originals/logos-padded/FP-Euskadi.png); the white one is the same file recoloured.
+# Fields: name, preview (image shown), preview_dark (show the preview on blue), on_request, files [{path, format, variant}]
+# variant: colour | black | white | all (a sheet with every version)
+- name: Tknika
+  preview: press/logos/tknika.png
+  files:
+    - path: press/logos/tknika.png
+      format: PNG
+      variant: colour
+    - path: press/logos/tknika-bertikala.jpg
+      format: JPG
+      variant: colour
+- name: Eusko Jaurlaritza · Gobierno Vasco — Hezkuntza Saila
+  preview: press/logos/eusko-jaurlaritza-hezkuntza-saila.png
+  files:
+    - path: press/logos/eusko-jaurlaritza-hezkuntza-saila.png
+      format: PNG
+      variant: colour
+    - path: press/logos/eusko-jaurlaritza-hezkuntza-saila.pdf
+      format: PDF
+      variant: all
+    - path: press/logos/eusko-jaurlaritza-hezkuntza-saila.ai
+      format: AI
+      variant: all
+- name: FP Euskadi
+  preview: press/logos/fp-euskadi.png
+  files:
+    - path: press/logos/fp-euskadi.png
+      format: PNG
+      variant: black
+    - path: press/logos/fp-euskadi-zuria.png
+      format: PNG
+      variant: white

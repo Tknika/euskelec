@@ -10,11 +10,32 @@ menus:
     weight: 10
 # Phases of the current edition. An empty `dates` or `place` shows "Laster".
 # status: active marks the current phase (Tknika lime line).
+# The competition in a glance ({{< competition-intro >}}): how it works, goals, what it drives
+intro:
+  lead: "Euskelec lehiaketa bat da eta, bertan, Euskadiko lanbide-heziketako ikastetxeetako ikasleek **ibilgailu %100 elektriko bat** diseinatu eta eraikitzen dute, oinarri eragile komun batetik abiatuta. Talde-lana sustatzea eta jarduera esperimentala eta sortzailea elementu pedagogiko gisa erabiltzea da helburua."
+  steps:
+    - title: Oinarri eragile komuna
+      items: [Motorra, Motorraren kontrolatzailea, Bateriak]
+    - title: Lanbide-heziketako ikasleak
+      text: Euskadiko lanbide-heziketako ikastetxeetako ikasleek diseinatu eta eraikitzen dute.
+    - title: Ibilgailu %100 elektrikoa
+  goals_title: Helburuak
+  goals:
+    - Ikasleen arteko talde-lana sustatzea
+    - Jarduera esperimentala eta sortzailea elementu pedagogiko gisa erabiltzea
+    - Ibilgailu elektrikoen ezagutza teknikoa
+  platform_title: Plataforma bat
+  platform_text: "Txapelketa trakzio elektrikoko ibilgailuetan espezializatutako teknikariak trebatzeko plataforma bat da, mugikortasun- eta industrializazio-eredu berrien beharrei begira."
+  platform:
+    - Trakzio elektrikoko ibilgailuetan espezializatutako teknikariak trebatu eta sustatzeko
+    - Fabrikazio-teknika berriekin eta material berriekin esperimentatzeko
+    - Mugikortasun- eta industrializazio-eredu berrien beharrei erantzuteko
 phases:
   - title: Eremu teknikoa eta sortzailea
     description: Proiektuak aurkeztea. Talde parte-hartzaileek Euskelec proiektuan egin duten lana eta bilakaera islatuko dira, proiektuaren memoria batean eta epaimahai aditu baten aurrean.
     dates: ""
     place: ""
+    challenges: [Diseinua, Berrikuntza, Komunikazioa]
   - title: Proba dinamikoen ekitaldia
     description: Ibilgailuen prestazioak, ezaugarriak eta diseinua ebaluatzen dira, slalom, azelerazio, gehieneko balaztatze eta erresistentziarako proben bidez.
     dates: ""
@@ -32,17 +53,11 @@ phases:
         icon: images/icons/racing.svg
 ---
 
-<div class="max-w-3xl space-y-5">
-
-Euskelec lehiaketa bat da eta, bertan, Euskadiko lanbide-heziketako ikastetxeetako ikasleek ibilgailu % 100 elektriko bat diseinatu eta eraiki behar dute, oinarri eragile komun batetik abiatuta (motorra, motorraren kontrolatzailea eta bateriak), ikasleen artean talde-lana sustatzeko, eta jarduera esperimentala eta sortzailea elementu pedagogiko gisa erabiltzeko, ibilgailu elektrikoen ezagutza teknikorako.
-
-Lehiaketak bi fase ditu: fase tekniko eta sortzailea, diseinuaren, berrikuntzaren eta komunikazioaren arloetako erronkak barnean hartzen dituena (hori guztia proiektuaren memoria batean irudikatuta eta epaimahai aditu baten aurrean aurkeztua); eta fase dinamikoa. Bigarren fase horretan, ibilgailuen prestazioak, ezaugarriak eta diseinua ebaluatuko dira, slalom, azelerazio, gehieneko balaztatze eta erresistentziarako proben bidez. Proba horien ondorioz sari batzuk emango dira, taldeek lehiaketan aztertutako zenbait alderditan izan duten bikaintasuna nabarmentzeko.
-
-Txapelketa trakzio elektrikoko ibilgailuetan espezializatutako teknikariak trebatzeko eta sustatzeko plataforma bat da, eta fabrikazio-teknika berrien esperimentazioa eta material berrien erabilera sustatzen du. Parte-hartzaileek mugikortasun-eredu berri batetik –trakzio elektrikoko ibilgailuetan oinarrituta– eta industrializazio-eredu berrietatik sortutako beharrei erantzun ahal izango diete.
-
-</div>
+{{< competition-intro >}}
 
 ## Faseak
+
+Lehiaketak bi fase ditu. Lehenengoa tekniko eta sortzailea da: diseinu, berrikuntza eta komunikazio erronkak, proiektuaren memoria batean jasota eta epaimahai aditu baten aurrean aurkeztuta. Bigarrenean, fase dinamikoan, ibilgailuen prestazioak, ezaugarriak eta diseinua ebaluatzen dira, eta proben ondorioz sariak ematen dira taldeen bikaintasuna nabarmentzeko.
 
 {{< phases >}}
 

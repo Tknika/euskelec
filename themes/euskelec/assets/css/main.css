@@ -174,6 +174,10 @@
   .prose-site {
     @apply max-w-none leading-relaxed text-ink;
   }
+  /* Loose paragraphs keep a readable line length, also on wide pages (cards and grids still use the full width) */
+  .prose-site > p {
+    @apply max-w-3xl;
+  }
   .prose-site > * + * {
     @apply mt-5;
   }
@@ -213,5 +217,32 @@
   }
   .prose-site hr {
     @apply my-10 border-line;
+  }
+}
+
+/* Press kit (layouts/dossier.html): A4 pages, printed to PDF with the colours as they are */
+@page {
+  size: A4;
+  margin: 0;
+}
+.dossier {
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+.dossier-page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  break-after: page;
+  background-color: #fff;
+}
+@media screen {
+  .dossier {
+    background: #c9d1d8;
+  }
+  .dossier-page {
+    margin: 24px auto;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.15);
   }
 }

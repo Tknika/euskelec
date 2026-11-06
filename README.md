@@ -79,6 +79,7 @@ menus:
 - **Documents**: put the PDFs in `static/docs/` and list them with `{{< downloads >}}` (`path | Title | Note` per line).
 - **Sponsors and organisers**: `params.organizers`, `params.sponsors`, `params.collaborators` in `hugo.toml` (white PNG logos). Organisers are shown bigger, all at one height. Sponsors and collaborators get the same visible area whatever their shape, so their PNGs must be trimmed to the drawing, with no transparent margin (the untrimmed originals are in `_originals/logos-padded/`).
 - **Videos**: `{{< videos >}}` (`VIDEO_ID | Title | Year` per line), then run `scripts/fetch-video-thumbs.sh` to add the preview images.
+- **Press room (Media page)**: press kit PDFs from `scripts/build-dossier.sh`, organisers' logos listed in `data/press-logos.yaml` (shown with `{{< press-logos >}}`).
 
 ### Shortcodes
 
