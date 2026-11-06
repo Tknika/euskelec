@@ -29,7 +29,7 @@ There is no test suite. **A change is verified when:**
 4. **Don't invent facts.** Dates, venues, rules, results and sponsors come from the organisers. While a fact is unknown, leave the field empty (it shows "Laster" / "Próximamente" / "Coming soon") or use a `{{< note >}}`, and say so in your summary.
 5. **Tailwind: npm only.** Hugo 0.16x refuses the standalone `tailwindcss` binary. No PostCSS, `tailwind.config.js` or extra npm packages unless asked; Tailwind v4 is configured in CSS (`@theme` in `assets/css/main.css`).
 6. **Don't commit build output:** `public/`, `resources/_gen/`, `node_modules/`, `hugo_stats.json` and `.hugo_build.lock` are git-ignored. `_originals/` (full-size photos and old-site downloads) too.
-7. **Keep it static and light.** No tracking scripts, no new third-party requests. Fonts are self-hosted. YouTube is only contacted when a video tile is clicked (youtube-nocookie). The only JavaScript is that click handler and the pause button of the home video (which also stops autoplay under `prefers-reduced-motion`); the mobile menu is a `<details>`.
+7. **Keep it static and light.** No tracking scripts, no new third-party requests. Fonts are self-hosted. YouTube is only contacted when a video tile is clicked (youtube-nocookie). The only JavaScript is that click handler and the pause button of the home video (which also stops autoplay under `prefers-reduced-motion`); the mobile menu is a `<details>`. Images of the car and the competition must be real photos, never models or illustrations made up for the site (a 3D model was tried in 2026-11 and dropped).
 
 ## Conventions
 

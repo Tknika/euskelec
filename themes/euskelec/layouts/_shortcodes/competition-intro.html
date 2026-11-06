@@ -1,13 +1,17 @@
 {{- /* The competition in a glance, from the page's `intro` front matter (instead of long paragraphs):
-       lead (one short paragraph), steps (how it works: base → students → vehicle), goals, and platform
+       lead (one short paragraph, next to the real car photo of the home page), steps (step 1 icon: a kit box, the base handed to the teams) (how it works: base → students → vehicle), goals, and platform
        (what the championship drives, with an optional platform_text sentence).
        Usage: {{< competition-intro >}} */ -}}
 {{ with .Page.Params.intro }}
   {{ $icons := slice
-    `<rect x="3" y="7" width="16" height="10" rx="1"/><path d="M21 10.5v3M7.5 10v4M11.5 10v4M15.5 10v4"/>`
+    `<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9M7.5 5.2l9 4.6"/>`
     `<circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0M13.5 20a4.5 4.5 0 0 1 8 -2.8"/>`
     `<path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/>` }}
-  {{ with .lead }}<p class="mb-8 max-w-3xl text-xl leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+  {{/* Opening: the short lead on one side, the real car (the home photo) on the other */}}
+  <div class="not-prose mb-10 grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+    {{ with .lead }}<p class="text-xl leading-relaxed">{{ . | markdownify }}</p>{{ end }}
+    {{ with site.Home.Params.hero_image }}<img src="{{ . | relURL }}" alt="{{ i18n "kartLabel" }}" width="1000" height="667" class="mx-auto w-full max-w-xl drop-shadow-[0_30px_30px_rgba(31,75,107,0.25)]">{{ end }}
+  </div>
   <div class="not-prose space-y-6">
     {{/* How it works: three steps, with an arrow between them */}}
     <ol class="not-prose grid border border-line lg:grid-cols-3">

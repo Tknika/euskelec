@@ -13,11 +13,12 @@ menus:
 intro:
   lead: "Euskelec is a competition in which students from vocational training centres in the Basque Country design and build **a 100% electric vehicle** using the same driving base. The goal is to encourage teamwork and to establish experimentation and creation as a teaching strategy."
   steps:
-    - title: Common driving base
+    - title: "Starting point: a common base"
+      text: "All the teams start from the same base, which they are given. It is made up of three elements:"
       items: [Motor, Motor controller, Batteries]
-    - title: Vocational training students
-      text: Students from vocational training centres in the Basque Country design and build it.
-    - title: 100% electric vehicle
+    - title: "Vocational training students"
+      text: "Students from vocational training centres in the Basque Country design and build the vehicle from that base."
+    - title: "100% electric vehicle"
   goals_title: Goals
   goals:
     - Encourage students to work as a team

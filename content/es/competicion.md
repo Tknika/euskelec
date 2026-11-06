@@ -13,11 +13,12 @@ menus:
 intro:
   lead: "Euskelec es una competición en la que alumnos de centros de formación profesional del País Vasco diseñan y construyen **un vehículo 100 % eléctrico** sobre una base motriz común. El objetivo es potenciar el trabajo en equipo y fundamentar la actividad experimental y creativa como elemento pedagógico."
   steps:
-    - title: Base motriz común
+    - title: "Punto de partida: una base común"
+      text: "Todos los equipos parten de la misma base, que se les entrega. La forman tres elementos:"
       items: [Motor, Controlador de motor, Baterías]
-    - title: Alumnado de formación profesional
-      text: Alumnos de centros de formación profesional del País Vasco lo diseñan y construyen.
-    - title: Vehículo 100 % eléctrico
+    - title: "Alumnado de formación profesional"
+      text: "Alumnos de centros de formación profesional del País Vasco diseñan y construyen el vehículo a partir de esa base."
+    - title: "Vehículo 100 % eléctrico"
   goals_title: Objetivos
   goals:
     - Potenciar el trabajo en equipo del alumnado

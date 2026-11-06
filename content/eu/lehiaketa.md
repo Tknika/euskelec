@@ -14,11 +14,12 @@ menus:
 intro:
   lead: "Euskelec lehiaketa bat da eta, bertan, Euskadiko lanbide-heziketako ikastetxeetako ikasleek **ibilgailu %100 elektriko bat** diseinatu eta eraikitzen dute, oinarri eragile komun batetik abiatuta. Talde-lana sustatzea eta jarduera esperimentala eta sortzailea elementu pedagogiko gisa erabiltzea da helburua."
   steps:
-    - title: Oinarri eragile komuna
+    - title: "Abiapuntua: oinarri bera"
+      text: "Talde guztiek ematen zaien oinarri beretik abiatzen dira. Hiru elementuk osatzen dute:"
       items: [Motorra, Motorraren kontrolatzailea, Bateriak]
-    - title: Lanbide-heziketako ikasleak
-      text: Euskadiko lanbide-heziketako ikastetxeetako ikasleek diseinatu eta eraikitzen dute.
-    - title: Ibilgailu %100 elektrikoa
+    - title: "Lanbide-heziketako ikasleak"
+      text: "Euskadiko lanbide-heziketako ikasleek, oinarri horretatik abiatuta, ibilgailua diseinatu eta eraikitzen dute."
+    - title: "Ibilgailu %100 elektrikoa"
   goals_title: Helburuak
   goals:
     - Ikasleen arteko talde-lana sustatzea
