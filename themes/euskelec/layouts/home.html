@@ -22,7 +22,7 @@
           <div class="flex flex-wrap gap-4">
             {{ range . }}
               {{ $url := .url }}{{ if hasPrefix $url "/" }}{{ $url = strings.TrimPrefix "/" $url | relLangURL }}{{ end }}
-              <a href="{{ $url }}" class="{{ if eq .style "ghost" }}btn-ghost-light bg-brand-900/30 backdrop-blur{{ else }}btn-accent{{ end }}">{{ .label }}</a>
+              <a href="{{ $url }}" class="{{ if eq .style "ghost" }}btn-ghost-light bg-brand-900/30 backdrop-blur hover:border-tknika hover:bg-brand-900/50 hover:text-tknika{{ else }}btn-accent{{ end }}">{{ .label }}</a>
             {{ end }}
           </div>
         {{ end }}
@@ -54,12 +54,11 @@
   {{ with $competition }}
     <section class="bg-paper py-20 sm:py-28"><div class="container-wide space-y-10">
       <div class="flex flex-wrap items-end justify-between gap-4">
-        {{/* Numbers in **bold** in phases_title are highlighted: Euskelec blue with a Tknika lime underline */}}
-        <h2 class="text-4xl font-semibold sm:text-5xl xl:text-6xl [&_strong]:font-bold [&_strong]:text-brand [&_strong]:underline [&_strong]:decoration-tknika [&_strong]:decoration-4 [&_strong]:underline-offset-8">{{ $.Params.phases_title | $.RenderString }}</h2>
+        {{/* Numbers in **bold** in phases_title are highlighted like a marker: a Tknika lime band behind the lower part (no underline: it looked like a link) */}}
+        <h2 class="text-4xl font-semibold sm:text-5xl xl:text-6xl [&_strong]:font-bold [&_strong]:bg-[linear-gradient(transparent_58%,var(--color-tknika)_58%,var(--color-tknika)_92%,transparent_92%)] [&_strong]:px-1 [&_strong]:[box-decoration-break:clone]">{{ $.Params.phases_title | $.RenderString }}</h2>
         <a href="{{ .RelPermalink }}" class="btn-ghost">{{ i18n "readMore" }}</a>
       </div>
       {{ partial "phases.html" . }}
-      {{ partial "tests.html" . }}
     </div>
     </section>
   {{ end }}

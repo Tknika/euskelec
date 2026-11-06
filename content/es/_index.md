@@ -4,8 +4,8 @@ description: El campeonato de vehículos eléctricos de Euskadi. Alumnado de for
 edition: X edición · 2026-2027
 hero_image: images/bolido.png
 hero_video:
-  large: video/home-v3-1920.mp4
-  small: video/home-v3-960.mp4
+  large: video/home-v4-1920.mp4
+  small: video/home-v4-960.mp4
   poster: images/home-video.jpg
 buttons:
   - label: Competición

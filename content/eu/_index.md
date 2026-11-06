@@ -4,8 +4,8 @@ description: Euskadiko Ibilgailu Elektrikoen Txapelketa. Lanbide-heziketako ikas
 edition: X. edizioa · 2026-2027
 hero_image: images/bolido.png
 hero_video:
-  large: video/home-v3-1920.mp4
-  small: video/home-v3-960.mp4
+  large: video/home-v4-1920.mp4
+  small: video/home-v4-960.mp4
   poster: images/home-video.jpg
 buttons:
   - label: Lehiaketa
@@ -38,4 +38,4 @@ cta:
 
 Euskelec lehiaketa bat da. Euskadiko lanbide-heziketako ikastetxeetako ikasleek **ibilgailu %100 elektriko bat** diseinatu eta eraikitzen dute oinarri amankomun batetik abiatuta: motorra, motorraren kontrolatzailea eta bateriak.
 
-Ikasleen arteko talde-lana sustatzea du helburu. Jarduera esperimental eta sortzailea elementu pedagogiko bilakatuaz ibilgailu elektrikoen ezagutza teknikorako.
+**Ikasleen arteko talde-lana sustatzea du helburu.** Jarduera esperimental eta sortzailea elementu pedagogiko bilakatuaz ibilgailu elektrikoen ezagutza teknikorako.

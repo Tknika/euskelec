@@ -18,17 +18,17 @@ phases:
     description: Se evalúan las prestaciones, características y diseño de los vehículos mediante las pruebas de slalom, aceleración, frenada máxima y resistencia.
     dates: ""
     place: ""
-tests:
-  - name: Prueba de aceleración
-    icon: images/icons/speedometer.png
-  - name: Prueba de slalom
-    icon: images/icons/traffic-cone.png
-  - name: Prueba de frenada
-    icon: images/icons/disc-brake.png
-  - name: Clasificación
-    icon: images/icons/podium.png
-  - name: Prueba de resistencia
-    icon: images/icons/racing.png
+    tests:
+      - name: Prueba de aceleración
+        icon: images/icons/speedometer.svg
+      - name: Prueba de slalom
+        icon: images/icons/traffic-cone.svg
+      - name: Prueba de frenada
+        icon: images/icons/disc-brake.svg
+      - name: Clasificación
+        icon: images/icons/podium.svg
+      - name: Prueba de resistencia
+        icon: images/icons/racing.svg
 ---
 
 <div class="max-w-3xl space-y-5">
@@ -44,12 +44,6 @@ El campeonato es una plataforma para la capacitación y promoción de técnicos 
 ## Fases
 
 {{< phases >}}
-
-## Pruebas dinámicas
-
-El campeonato cuenta con 5 pruebas de tipo dinámico:
-
-{{< tests >}}
 
 El reglamento y los desafíos están en [Documentación técnica](/documentacion-tecnica/).
 

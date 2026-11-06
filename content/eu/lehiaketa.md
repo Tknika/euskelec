@@ -19,17 +19,17 @@ phases:
     description: Ibilgailuen prestazioak, ezaugarriak eta diseinua ebaluatzen dira, slalom, azelerazio, gehieneko balaztatze eta erresistentziarako proben bidez.
     dates: ""
     place: ""
-tests:
-  - name: Azelerazio-proba
-    icon: images/icons/speedometer.png
-  - name: Slalom-proba
-    icon: images/icons/traffic-cone.png
-  - name: Balaztatze-proba
-    icon: images/icons/disc-brake.png
-  - name: Sailkapena
-    icon: images/icons/podium.png
-  - name: Erresistentzia-proba
-    icon: images/icons/racing.png
+    tests:
+      - name: Azelerazio-proba
+        icon: images/icons/speedometer.svg
+      - name: Slalom-proba
+        icon: images/icons/traffic-cone.svg
+      - name: Balaztatze-proba
+        icon: images/icons/disc-brake.svg
+      - name: Sailkapena
+        icon: images/icons/podium.svg
+      - name: Erresistentzia-proba
+        icon: images/icons/racing.svg
 ---
 
 <div class="max-w-3xl space-y-5">
@@ -45,12 +45,6 @@ Txapelketa trakzio elektrikoko ibilgailuetan espezializatutako teknikariak treba
 ## Faseak
 
 {{< phases >}}
-
-## Proba dinamikoak
-
-Txapelketak 5 proba dinamiko ditu:
-
-{{< tests >}}
 
 Araudia eta erronkak [Dokumentazio teknikoa](/dokumentazio-teknikoa/) atalean daude.
 

@@ -18,17 +18,17 @@ phases:
     description: The performance, features and design of the vehicles are assessed via slalom, acceleration, maximum braking and resistance tests.
     dates: ""
     place: ""
-tests:
-  - name: Acceleration test
-    icon: images/icons/speedometer.png
-  - name: Slalom test
-    icon: images/icons/traffic-cone.png
-  - name: Braking test
-    icon: images/icons/disc-brake.png
-  - name: Classification
-    icon: images/icons/podium.png
-  - name: Resistance test
-    icon: images/icons/racing.png
+    tests:
+      - name: Acceleration test
+        icon: images/icons/speedometer.svg
+      - name: Slalom test
+        icon: images/icons/traffic-cone.svg
+      - name: Braking test
+        icon: images/icons/disc-brake.svg
+      - name: Classification
+        icon: images/icons/podium.svg
+      - name: Resistance test
+        icon: images/icons/racing.svg
 ---
 
 <div class="max-w-3xl space-y-5">
@@ -44,12 +44,6 @@ The contest is a platform for training and promoting technicians specialised in 
 ## Phases
 
 {{< phases >}}
-
-## Dynamic tests
-
-The contest involves five dynamic tests:
-
-{{< tests >}}
 
 The rules and challenges are in [Technical documentation](/technical-documentation/).
 
