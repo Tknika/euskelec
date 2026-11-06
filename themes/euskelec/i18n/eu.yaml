@@ -9,7 +9,7 @@ sponsors: Babesleak
 collaborators: Laguntzaileak
 readMore: Gehiago jakin
 download: Deskargatu
-phase: Fasea
+phase: "{{ .N }}. fasea"
 when: Noiz
 where: Non
 soon: Laster

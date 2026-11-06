@@ -9,7 +9,7 @@ sponsors: Patrocinadores
 collaborators: Colaboradores
 readMore: Saber más
 download: Descargar
-phase: Fase
+phase: "Fase {{ .N }}"
 when: Cuándo
 where: Dónde
 soon: Próximamente

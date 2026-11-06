@@ -33,11 +33,15 @@ intro:
     - Mugikortasun- eta industrializazio-eredu berrien beharrei erantzuteko
 phases:
   - title: Eremu teknikoa eta sortzailea
+    image: images/galeria/2019/dscn7969.jpg
+    image_alt: "Talde bat bere proiektua epaimahaiaren aurrean aurkezten (2019)"
     description: Proiektuak aurkeztea. Talde parte-hartzaileek Euskelec proiektuan egin duten lana eta bilakaera islatuko dira, proiektuaren memoria batean eta epaimahai aditu baten aurrean.
     dates: ""
     place: ""
     challenges: [Diseinua, Berrikuntza, Komunikazioa]
   - title: Proba dinamikoen ekitaldia
+    image: images/galeria/2018/13.jpg
+    image_alt: "Ibilgailuak pistan proba dinamikoetan (2018)"
     description: Ibilgailuen prestazioak, ezaugarriak eta diseinua ebaluatzen dira, slalom, azelerazio, gehieneko balaztatze eta erresistentziarako proben bidez.
     dates: ""
     place: ""

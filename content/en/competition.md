@@ -32,11 +32,15 @@ intro:
     - Meet the needs of new transport and industrialisation models
 phases:
   - title: Technical and creative aspects
+    image: images/galeria/2019/dscn7969.jpg
+    image_alt: "A team presents its project to the jury (2019)"
     description: A presentation detailing the work undertaken on the Euskelec project by the participating teams and how the project has evolved, compiled in a project report and presented before an expert panel.
     dates: ""
     place: ""
     challenges: [Design, Innovation, Communication]
   - title: Dynamic testing event
+    image: images/galeria/2018/13.jpg
+    image_alt: "Vehicles on the track during the dynamic tests (2018)"
     description: The performance, features and design of the vehicles are assessed via slalom, acceleration, maximum braking and resistance tests.
     dates: ""
     place: ""
