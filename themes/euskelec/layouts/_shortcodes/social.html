@@ -1,0 +1,28 @@
+{{- /* The social networks of hugo.toml (`instagram`, `twitter`, `youtube`) as cards, then the official hashtags
+       (`hashtags`). Usage: {{< social >}} (contact page). */ -}}
+{{ $nets := slice }}
+{{ with site.Params.instagram }}{{ $nets = $nets | append (dict "key" "instagram" "name" "Instagram" "url" . "sub" (printf "@%s" (path.Base (strings.TrimSuffix "/" .)))) }}{{ end }}
+{{ with site.Params.twitter }}{{ $nets = $nets | append (dict "key" "twitter" "name" "X (Twitter)" "url" . "sub" (printf "@%s" (path.Base (strings.TrimSuffix "/" .)))) }}{{ end }}
+{{ with site.Params.youtube }}{{ $nets = $nets | append (dict "key" "youtube" "name" "YouTube" "url" . "sub" (i18n "trainingVideos")) }}{{ end }}
+<ul class="not-prose grid gap-4 sm:grid-cols-3">
+  {{ range $nets }}
+    <li>
+      <a href="{{ .url }}" target="_blank" rel="noopener" class="card group flex h-full items-center gap-4 p-4 sm:flex-col sm:items-start sm:p-5">
+        <span class="grid size-11 shrink-0 place-items-center bg-brand-700 text-white transition group-hover:bg-tknika group-hover:text-ink">{{ partial "social-icon.html" (dict "name" .key "class" "size-5") }}</span>
+        <span class="flex min-w-0 flex-col">
+          <span class="font-display font-semibold">{{ .name }}</span>
+          <span class="text-sm text-ink-soft">{{ .sub }}</span>
+        </span>
+        <span class="ml-auto text-brand-700 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:hidden" aria-hidden="true">↗</span>
+      </a>
+    </li>
+  {{ end }}
+</ul>
+{{ with site.Params.hashtags }}
+  <div class="not-prose">
+    <p class="text-sm text-ink-soft">{{ i18n "hashtagsIntro" }}</p>
+    <ul class="not-prose mt-3 flex flex-wrap gap-2">
+      {{ range . }}<li class="bg-brand-50 px-3 py-1.5 font-display text-sm font-medium text-brand-700">#{{ . }}</li>{{ end }}
+    </ul>
+  </div>
+{{ end }}

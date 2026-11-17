@@ -17,6 +17,8 @@ disableKinds = ["taxonomy", "term"]
   instagram = "https://www.instagram.com/euskelec/"
   twitter = "https://twitter.com/euskelec"
   youtube = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
+  # Official hashtags (from the challenges PDF: teams must use them in their videos), shown on the contact page
+  hashtags = ["Euskelec", "Tknika", "FPEuskadi"]
 
   # Footer logos, in this order. The footer is blue: logos must be the white versions.
   # Without `logo`, the name is shown as text. Without `url`, the logo is not a link.

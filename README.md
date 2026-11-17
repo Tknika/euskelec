@@ -78,13 +78,15 @@ menus:
 - **3D car**: `intro.model` in the competition page front matter (`src`: a `.glb` in `static/models/`; `still`: a picture of it) shows the car turning on itself beside the intro, with three.js (see AGENTS.md).
 - **Phases and dynamic tests**: `phases` in the competition page front matter (shown there with `{{< phases >}}` and on the home page). The dynamic tests belong to phase 2 only: they are a `tests` list (name + SVG icon from `static/images/icons/`) inside that phase, shown in its card. An empty `dates` or `place` shows "Laster" / "Próximamente" / "Coming soon"; `status: active` highlights a phase. Each phase can have a photo, shown on both pages (`image`, `image_alt`, and `image_position` to choose what the 3:1 crop keeps, e.g. `"50% 75%"`). Phase photos go in `static/images/galeria/phases/`, about 1600 px wide (originals in `_originals/photos/`).
 - **Documents**: put the PDFs in `static/docs/` and list them with `{{< downloads >}}` (`path | Title | Note` per line).
+- **Contact map**: `map.places` in the contact page front matter (`name`, `text`, `lat`, `lon`) puts the places on one OpenStreetMap map (Leaflet, no cookies) beside the text. `venue: true` marks where the competition takes place: a big lime marker with a chequered flag, listed first.
+- **Technical documentation page**: no Markdown body; its front matter holds the rules and challenges PDFs (`documents`) and a summary of them: the challenge calendar, the scoring system and the vehicle's dimensions and powertrain kit (see AGENTS.md). When new PDFs arrive, update it in the three languages.
 - **Sponsors and organisers**: `params.organizers`, `params.sponsors`, `params.collaborators` in `hugo.toml` (white PNG logos). Organisers are shown bigger, all at one height. Sponsors and collaborators get the same visible area whatever their shape, so their PNGs must be trimmed to the drawing, with no transparent margin (the untrimmed originals are in `_originals/logos-padded/`).
 - **Videos**: `{{< videos >}}` (`VIDEO_ID | Title | Year` per line), then run `scripts/fetch-video-thumbs.sh` to add the preview images.
 - **Press room (Media page)**: press kit PDFs from `scripts/build-dossier.sh`, organisers' logos listed in `data/press-logos.yaml` (shown with `{{< press-logos >}}`).
 
 ### Shortcodes
 
-`note`, `button`, `faq` + `stack`, `gallery`, `videos`, `downloads`, `phases`, `participants "VIII"`.
+`note`, `button`, `faq` + `stack`, `gallery`, `videos`, `downloads`, `phases`, `participants "VIII"`, `social` (the networks and hashtags of `hugo.toml`, on the contact page).
 
 ## License
 

@@ -1,0 +1,41 @@
+{{- /* Map of the places in `map.places` (page front matter: `name`, `text`, `lat`, `lon`, and `venue: true` for
+       where the competition takes place), all on one map, with Leaflet (npm `leaflet`, bundled from
+       assets/js/map.js; its CSS copied to assets/css/leaflet.css) and OpenStreetMap tiles. No cookies: the tile
+       servers set none and there is no key or account.
+       The venue stands out: a big Tknika-lime marker with a chequered flag and its text in the label; the other
+       places are small blue squares. Under the map, the same places as text, each linking to OpenStreetMap: the
+       map's text alternative, and all there is without JS. `isolate` keeps Leaflet's z-indexes under the sticky
+       header. Context: the page. */ -}}
+{{ with .Params.map.places }}
+  {{ $flag := `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 21V4h14v9H5"/><path fill="currentColor" stroke="none" d="M5 4h3.5v4.5H5zm7 0h3.5v4.5H12zM8.5 8.5H12V13H8.5zm7 0H19V13h-3.5z"/></svg>` }}
+  <div>
+    <div class="isolate aspect-square border border-line bg-paper sm:aspect-[4/3]" role="region" aria-label="{{ i18n "mapLabel" }}"
+      data-map data-places="{{ jsonify . }}" data-flag="{{ $flag }}" hidden></div>
+    <ul class="mt-5 grid gap-5 sm:grid-cols-2">
+      {{ range . }}
+        <li class="flex gap-3">
+          {{ if .venue }}
+            <span class="grid size-8 shrink-0 place-items-center border-2 border-white bg-tknika text-ink shadow-[0_0_0_1px_var(--color-ink)] [&>svg]:size-5" aria-hidden="true">{{ $flag | safeHTML }}</span>
+          {{ else }}
+            <span class="ml-2 mt-1.5 size-3.5 shrink-0 border-[3px] border-white bg-brand-700 outline outline-1 outline-brand-700" aria-hidden="true"></span>
+          {{ end }}
+          <span class="flex flex-col gap-0.5">
+            <span class="font-display {{ if .venue }}text-lg font-bold{{ else }}font-semibold{{ end }}">{{ .name }}</span>
+            {{ with .text }}<span class="text-sm text-ink-soft">{{ . }}</span>{{ end }}
+            <a href="https://www.openstreetmap.org/?mlat={{ .lat }}&mlon={{ .lon }}#map=16/{{ .lat }}/{{ .lon }}" target="_blank" rel="noopener"
+              class="self-start text-sm font-medium text-brand-700 underline decoration-tknika decoration-2 underline-offset-4 hover:decoration-brand-700">{{ i18n "openInOsm" }}</a>
+            {{/* Only a link: nothing is loaded from Google unless the visitor follows it */}}
+            <a href="https://www.google.com/maps/search/?api=1&query={{ .lat }}%2C{{ .lon }}" target="_blank" rel="noopener"
+              class="self-start text-sm font-medium text-brand-700 underline decoration-tknika decoration-2 underline-offset-4 hover:decoration-brand-700">{{ i18n "openInGoogleMaps" }}</a>
+          </span>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ with slice (resources.Get "css/leaflet.css") (resources.Get "css/map.css") | resources.Concat "css/map.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+  {{ end }}
+  {{ with resources.Get "js/map.js" | js.Build (dict "minify" hugo.IsProduction "target" "es2020") | fingerprint }}
+    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+  {{ end }}
+{{ end }}

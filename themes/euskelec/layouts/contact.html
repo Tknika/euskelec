@@ -1,0 +1,11 @@
+{{- /* Contact page (`layout: contact`): the text on the left, the map of `map.places` on the right
+       (below it on phones). */ -}}
+{{ define "main" }}
+  {{ partial "page-header.html" . }}
+  <div class="container-site grid gap-12 py-12 sm:py-16 lg:grid-cols-2 lg:gap-16">
+    <article class="prose-site">
+      {{ .Content }}
+    </article>
+    {{ partial "map.html" . }}
+  </div>
+{{ end }}

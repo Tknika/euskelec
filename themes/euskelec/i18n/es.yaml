@@ -32,3 +32,14 @@ kartLabel: El vehículo de Euskelec
 car3dLabel: Modelo 3D de un vehículo de Euskelec, girando
 pauseRotation: Pausar el giro
 resumeRotation: Reanudar el giro
+pagesCount:
+  one: "{{ .Count }} página"
+  other: "{{ .Count }} páginas"
+required: Obligatorio
+optional: Opcional
+points: puntos
+mapLabel: Mapa de los lugares
+openInOsm: Abrir en OpenStreetMap
+trainingVideos: Vídeos de formación
+hashtagsIntro: "En tus publicaciones, usa estas etiquetas:"
+openInGoogleMaps: Abrir en Google Maps

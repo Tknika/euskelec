@@ -32,3 +32,14 @@ kartLabel: Euskelec ibilgailua
 car3dLabel: Euskelec ibilgailu baten 3D eredua, biraka
 pauseRotation: Gelditu biraketa
 resumeRotation: Jarraitu biraketa
+pagesCount:
+  one: "orrialde {{ .Count }}"
+  other: "{{ .Count }} orrialde"
+required: Nahitaezkoa
+optional: Aukerakoa
+points: puntu
+mapLabel: Tokien mapa
+openInOsm: Ireki OpenStreetMap-en
+trainingVideos: Formakuntza-bideoak
+hashtagsIntro: "Zure argitalpenetan, erabili traola hauek:"
+openInGoogleMaps: Ireki Google Maps-en
