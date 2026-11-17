@@ -36,8 +36,8 @@ intro:
     - Responder a las necesidades de nuevos modelos de movilidad e industrialización
 phases:
   - title: Ámbito técnico y creativo
-    image: images/galeria/2019/dscn7969.jpg
-    image_alt: "Un equipo presenta su proyecto ante el jurado (2019)"
+    image: images/galeria/phases/phase-1-still-09.jpg
+    image_alt: "Un equipo presenta su proyecto ante el jurado (2026)"
     description: Presentación del proyecto, donde se refleja el trabajo y la evolución del proyecto Euskelec de los equipos participantes, en una memoria del proyecto y ante un jurado experto.
     dates: ""
     place: ""

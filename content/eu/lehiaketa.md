@@ -37,8 +37,8 @@ intro:
     - Mugikortasun- eta industrializazio-eredu berrien beharrei erantzuteko
 phases:
   - title: Eremu teknikoa eta sortzailea
-    image: images/galeria/2019/dscn7969.jpg
-    image_alt: "Talde bat bere proiektua epaimahaiaren aurrean aurkezten (2019)"
+    image: images/galeria/phases/phase-1-still-09.jpg
+    image_alt: "Talde bat bere proiektua epaimahaiaren aurrean aurkezten (2026)"
     description: Proiektuak aurkeztea. Talde parte-hartzaileek Euskelec proiektuan egin duten lana eta bilakaera islatuko dira, proiektuaren memoria batean eta epaimahai aditu baten aurrean.
     dates: ""
     place: ""

@@ -1,40 +1,34 @@
 {{- /* List of YouTube videos that load nothing from YouTube until clicked (light page, no third-party
        requests on load). One video per line: `VIDEO_ID | Title` or `VIDEO_ID | Title | Tag` (e.g. the edition year).
+       featured="N": the first N videos big, two per row; the rest smaller, four per row, under the heading `more`.
        Usage:
-       {{< videos >}}
+       {{< videos featured="2" more="Previous editions" >}}
        KJSr3SliPnM | Iniciación al Reversing (Joxean Koret)
        {{< /videos >}}
        main.js swaps the tile for a youtube-nocookie player on click; without JS the tile links to YouTube.
        New video? Run scripts/fetch-video-thumbs.sh to add its preview image. */ -}}
-<ul class="not-prose my-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-  {{/* "\r" too: on Windows checkouts (autocrlf) the lines end in CRLF */}}
-  {{ range split (trim .Inner "\r\n ") "\n" }}
-    {{ $parts := split . "|" }}
-    {{ $id := trim (index $parts 0) " \r" }}
-    {{ $title := "" }}{{ if gt (len $parts) 1 }}{{ $title = trim (index $parts 1) " \r" }}{{ end }}
-    {{ $tag := "" }}{{ if gt (len $parts) 2 }}{{ $tag = trim (index $parts 2) " \r" }}{{ end }}
-    {{ with $id }}
-      <li class="card overflow-hidden">
-        <a href="https://www.youtube.com/watch?v={{ . }}" rel="noopener" target="_blank" data-yt="{{ . }}" data-yt-title="{{ $title }}"
-           class="group relative grid aspect-video place-items-center overflow-hidden bg-brand-900">
-          {{/* Preview image, self-hosted by scripts/fetch-video-thumbs.sh (no request to YouTube before the click) */}}
-          {{ $thumb := printf "images/videos/%s.jpg" . }}
-          {{ if fileExists (printf "static/%s" $thumb) }}
-            <img src="{{ $thumb | relURL }}" alt="" loading="lazy" class="absolute inset-0 size-full object-cover transition duration-500 group-hover:scale-105">
-            <span class="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-transparent" aria-hidden="true"></span>
-          {{ else }}
-            <span class="absolute inset-0 bg-gradient-to-br from-brand via-brand-800 to-brand-900" aria-hidden="true"></span>
-          {{ end }}
-          <span class="relative grid size-14 place-items-center bg-tknika text-ink shadow-lg shadow-black/30 transition group-hover:scale-110 group-hover:bg-tknika-300" aria-hidden="true">
-            <svg class="ml-1 size-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
-          </span>
-          <span class="sr-only">{{ i18n "playVideo" }}: {{ $title }}</span>
-        </a>
-        <div class="flex items-start gap-3 px-4 py-3">
-          {{ with $tag }}<span class="mt-px shrink-0 bg-brand-50 px-1.5 py-0.5 font-display text-[11px] font-semibold leading-none text-brand-700">{{ . }}</span>{{ end }}
-          <p class="text-sm leading-snug">{{ $title }}</p>
-        </div>
-      </li>
-    {{ end }}
+{{ $items := slice }}
+{{/* "\r" too: on Windows checkouts (autocrlf) the lines end in CRLF */}}
+{{ range split (trim .Inner "\r\n ") "\n" }}
+  {{ $parts := split . "|" }}
+  {{ $id := trim (index $parts 0) " \r" }}
+  {{ $title := "" }}{{ if gt (len $parts) 1 }}{{ $title = trim (index $parts 1) " \r" }}{{ end }}
+  {{ $tag := "" }}{{ if gt (len $parts) 2 }}{{ $tag = trim (index $parts 2) " \r" }}{{ end }}
+  {{ with $id }}{{ $items = $items | append (dict "id" . "title" $title "tag" $tag) }}{{ end }}
+{{ end }}
+{{ $featured := int (.Get "featured" | default 0) }}
+{{ if $featured }}
+  <ul class="not-prose my-6 grid gap-6 md:grid-cols-2">
+    {{ range first $featured $items }}{{ partial "video-tile.html" (merge . (dict "compact" false)) }}{{ end }}
+  </ul>
+  {{ with after $featured $items }}
+    {{ with $.Get "more" }}<h3>{{ . }}</h3>{{ end }}
+    <ul class="not-prose my-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      {{ range . }}{{ partial "video-tile.html" (merge . (dict "compact" true)) }}{{ end }}
+    </ul>
   {{ end }}
-</ul>
+{{ else }}
+  <ul class="not-prose my-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {{ range $items }}{{ partial "video-tile.html" (merge . (dict "compact" false)) }}{{ end }}
+  </ul>
+{{ end }}

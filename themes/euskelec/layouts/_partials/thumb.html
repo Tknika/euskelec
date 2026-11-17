@@ -1,0 +1,5 @@
+{{- /* The thumbnail of a photo if there is one (`thumbs/<name>` next to it, 640×480 covering, see AGENTS.md),
+       else the photo itself. Usage: partial "thumb.html" "images/galeria/2026/x.jpg" */ -}}
+{{ $thumb := path.Join (path.Dir .) "thumbs" (path.Base .) }}
+{{ $out := . }}{{ if os.FileExists (printf "static/%s" $thumb) }}{{ $out = $thumb }}{{ end }}
+{{ return $out }}

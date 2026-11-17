@@ -246,3 +246,8 @@
     box-shadow: 0 10px 30px rgb(0 0 0 / 0.15);
   }
 }
+
+/* The page behind the photo lightbox (_partials/lightbox.html) does not scroll */
+html:has(dialog[data-lightbox][open]) {
+  overflow: hidden;
+}

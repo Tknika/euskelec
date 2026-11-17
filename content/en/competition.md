@@ -36,8 +36,8 @@ intro:
     - Meet the needs of new transport and industrialisation models
 phases:
   - title: Technical and creative aspects
-    image: images/galeria/2019/dscn7969.jpg
-    image_alt: "A team presents its project to the jury (2019)"
+    image: images/galeria/phases/phase-1-still-09.jpg
+    image_alt: "A team presents its project to the jury (2026)"
     description: A presentation detailing the work undertaken on the Euskelec project by the participating teams and how the project has evolved, compiled in a project report and presented before an expert panel.
     dates: ""
     place: ""

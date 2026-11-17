@@ -43,3 +43,15 @@ openInOsm: Open in OpenStreetMap
 trainingVideos: Training videos
 hashtagsIntro: "In your posts, use these hashtags:"
 openInGoogleMaps: Open in Google Maps
+photoViewer: Photo viewer
+close: Close
+previousPhoto: Previous photo
+nextPhoto: Next photo
+photosCount:
+  one: "{{ .Count }} photo"
+  other: "{{ .Count }} photos"
+videosCount:
+  one: "{{ .Count }} video"
+  other: "{{ .Count }} videos"
+photoN: "Photo {{ .N }}"
+otherAlbums: Other albums

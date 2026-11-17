@@ -49,13 +49,14 @@ To serve `euskelec.eus` from GitHub Pages: set it as the custom domain in *Setti
 | --- | --- | --- | --- |
 | `_index.md` (home) | `_index.md` | `_index.md` | (automatic) |
 | `lehiaketa.md` | `competicion.md` | `competition.md` | `competition` |
-| `media.md` | `media.md` | `media.md` | `media` |
+| `media/_index.md` (+ one page per photo album) | `media/_index.md` | `media/_index.md` | `media` |
 | `dokumentazio-teknikoa.md` | `documentacion-tecnica.md` | `technical-documentation.md` | `docs` |
 | *Formakuntza* (YouTube, in `hugo.toml`) | *Formación* | *Training* | |
 | `kontaktua.md` | `contacto.md` | `contact.md` | `contact` |
 | `lege-oharra.md` | `aviso-legal.md` | `legal-notice.md` | `legal` |
 | `pribatutasun-politika.md` | `politica-de-privacidad.md` | `privacy-policy.md` | `privacy` |
-| `cookie-politika.md` | `politica-de-cookies.md` | `cookies-policy.md` | `cookies` |
+
+There is no cookie policy: the site sets no cookies. The old cookie policy URLs redirect to the privacy policy (`aliases`).
 
 ## Editing content
 
@@ -83,10 +84,11 @@ menus:
 - **Sponsors and organisers**: `params.organizers`, `params.sponsors`, `params.collaborators` in `hugo.toml` (white PNG logos). Organisers are shown bigger, all at one height. Sponsors and collaborators get the same visible area whatever their shape, so their PNGs must be trimmed to the drawing, with no transparent margin (the untrimmed originals are in `_originals/logos-padded/`).
 - **Videos**: `{{< videos >}}` (`VIDEO_ID | Title | Year` per line), then run `scripts/fetch-video-thumbs.sh` to add the preview images.
 - **Press room (Media page)**: press kit PDFs from `scripts/build-dossier.sh`, organisers' logos listed in `data/press-logos.yaml` (shown with `{{< press-logos >}}`).
+- **Photos**: one album per edition or phase, a page in `content/<lang>/media/` with `layout: album` and its photos in the front matter (`photos`: `src` + `alt`; optional `video`, `cover`, `weight` for the order). The Media page lists them as cards (`{{< albums >}}`). Put the photos at about 1600 px and 640×480 thumbnails in a `thumbs/` folder beside them (used automatically); originals in `_originals/photos/`. The photos open in a lightbox. For a few photos inside a page's text there is also `{{< gallery >}}` (`path | alt text` per line).
 
 ### Shortcodes
 
-`note`, `button`, `faq` + `stack`, `gallery`, `videos`, `downloads`, `phases`, `participants "VIII"`, `social` (the networks and hashtags of `hugo.toml`, on the contact page).
+`note`, `button`, `faq` + `stack`, `gallery`, `videos` (`featured="2"`: the first two big), `albums`, `downloads`, `phases`, `participants "VIII"`, `social` (the networks and hashtags of `hugo.toml`, on the contact page).
 
 ## License
 

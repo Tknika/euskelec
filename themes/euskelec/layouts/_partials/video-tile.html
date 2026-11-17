@@ -1,0 +1,24 @@
+{{- /* One YouTube tile of the videos shortcode. Context: dict "id" "title" "tag" "compact" (smaller play button
+       and text, for the grid of older videos). Nothing is loaded from YouTube until it is clicked (main.js). */ -}}
+{{ $id := .id }}
+<li class="card overflow-hidden">
+  <a href="https://www.youtube.com/watch?v={{ $id }}" rel="noopener" target="_blank" data-yt="{{ $id }}" data-yt-title="{{ .title }}"
+     class="group relative grid aspect-video place-items-center overflow-hidden bg-brand-900">
+    {{/* Preview image, self-hosted by scripts/fetch-video-thumbs.sh (no request to YouTube before the click) */}}
+    {{ $thumb := printf "images/videos/%s.jpg" $id }}
+    {{ if fileExists (printf "static/%s" $thumb) }}
+      <img src="{{ $thumb | relURL }}" alt="" loading="lazy" class="absolute inset-0 size-full object-cover transition duration-500 group-hover:scale-105">
+      <span class="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-transparent to-transparent" aria-hidden="true"></span>
+    {{ else }}
+      <span class="absolute inset-0 bg-gradient-to-br from-brand via-brand-800 to-brand-900" aria-hidden="true"></span>
+    {{ end }}
+    <span class="relative grid {{ if .compact }}size-10{{ else }}size-16{{ end }} place-items-center bg-tknika text-ink shadow-lg shadow-black/30 transition group-hover:scale-110 group-hover:bg-tknika-300" aria-hidden="true">
+      <svg class="ml-0.5 {{ if .compact }}size-4{{ else }}size-7{{ end }}" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+    </span>
+    <span class="sr-only">{{ i18n "playVideo" }}: {{ .title }}</span>
+  </a>
+  <div class="flex items-start gap-3 {{ if .compact }}px-3 py-2.5{{ else }}px-5 py-4{{ end }}">
+    {{ with .tag }}<span class="mt-px shrink-0 bg-brand-50 px-1.5 py-0.5 font-display text-[11px] font-semibold leading-none text-brand-700">{{ . }}</span>{{ end }}
+    <p class="{{ if .compact }}text-sm{{ else }}font-display font-semibold{{ end }} leading-snug">{{ .title }}</p>
+  </div>
+</li>

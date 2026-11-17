@@ -1,0 +1,23 @@
+{{- /* One tile of a photo grid (_partials/gallery-grid.html). Context: dict "src" "text" "n" (photo number) "captions".
+       A photo shows its thumbnail and links to the big image (the lightbox opens it). Without a text (old photos),
+       the alt text is "Photo n", so the link still has a name, and the lightbox shows no caption.
+       A video takes the width of two columns (and two rows on wide screens, where the photos beside it set the
+       height); it has no autoplay and loads nothing until it is played (preload="none"; only the poster). */ -}}
+{{ $src := .src }}
+{{ $text := .text }}
+{{ if strings.HasSuffix (lower $src) ".mp4" }}
+  <figure class="relative col-span-2 overflow-hidden border border-line bg-ink lg:row-span-2">
+    <video class="block aspect-video w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" controls playsinline preload="none"
+      poster="{{ printf "%s.jpg" (strings.TrimSuffix ".mp4" $src) | relURL }}"{{ with $text }} aria-label="{{ . }}"{{ end }}>
+      <source src="{{ $src | relURL }}" type="video/mp4">
+    </video>
+  </figure>
+{{ else }}
+  <figure class="group overflow-hidden border border-line bg-white">
+    <a href="{{ $src | relURL }}" class="block aspect-[4/3] overflow-hidden" data-photo{{ with $text }} data-caption="{{ . }}"{{ end }}>
+      <img src="{{ partial "thumb.html" $src | relURL }}" alt="{{ $text | default (i18n "photoN" (dict "N" .n)) }}" loading="lazy" decoding="async"
+        class="size-full object-cover transition duration-500 group-hover:scale-105">
+    </a>
+    {{ if and .captions $text }}<figcaption class="px-4 py-3 font-display text-xs text-ink-soft">{{ $text }}</figcaption>{{ end }}
+  </figure>
+{{ end }}

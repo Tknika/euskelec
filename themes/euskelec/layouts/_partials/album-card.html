@@ -1,0 +1,22 @@
+{{- /* Card of a photo album (a page with layout: album, under media/): a mosaic of its cover and two more photos
+       (thumbnails, decorative: the text says what it is; absolute, so a portrait photo cannot stretch the
+       mosaic; on phones, with two cards per row, only the cover), the eyebrow (year, place), the title and how
+       many photos and videos it has. Context: the album page. Used by the albums shortcode (Media) and album.html. */ -}}
+{{ $photos := .Params.photos | default slice }}
+{{ $cover := .Params.cover | default (index $photos 0).src }}
+{{ $more := slice }}
+{{ range $photos }}{{ if and (ne .src $cover) (lt (len $more) 2) }}{{ $more = $more | append .src }}{{ end }}{{ end }}
+<a href="{{ .RelPermalink }}" class="card group flex h-full flex-col">
+  <span class="grid aspect-[4/3] grid-cols-3 grid-rows-2 gap-0.5 overflow-hidden bg-white" aria-hidden="true">
+    <span class="relative col-span-3 row-span-2 overflow-hidden sm:col-span-2"><img src="{{ partial "thumb.html" $cover | relURL }}" alt="" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover transition duration-500 group-hover:scale-105"></span>
+    {{ range $more }}<span class="relative hidden overflow-hidden sm:block"><img src="{{ partial "thumb.html" . | relURL }}" alt="" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover transition duration-500 group-hover:scale-105"></span>{{ end }}
+  </span>
+  <span class="flex flex-1 flex-col gap-1.5 p-3 sm:p-5">
+    {{ with .Params.eyebrow }}<span class="font-display text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-700 sm:text-xs sm:tracking-[0.15em]">{{ . }}</span>{{ end }}
+    <span class="text-balance font-display font-semibold leading-snug sm:text-lg">{{ .Title }}</span>
+    <span class="mt-auto flex items-end gap-2 pt-2 text-sm text-ink-soft">
+      <span class="text-balance">{{ i18n "photosCount" (dict "Count" (len $photos)) }}{{ with .Params.video }} · {{ i18n "videosCount" (dict "Count" 1) }}{{ end }}</span>
+      <span class="ml-auto text-brand-700 transition group-hover:translate-x-1" aria-hidden="true">→</span>
+    </span>
+  </span>
+</a>

@@ -1,0 +1,12 @@
+{{- /* A grid of photos (and videos) that open in the lightbox (main.js, _partials/lightbox.html).
+       Context: dict "items" (list of dict "src" "text"), "captions" (show the text under each photo), "cols" (3 or 4
+       on wide screens; two on phones). Used by album.html and the gallery shortcode. */ -}}
+<div class="not-prose" data-gallery>
+  <div class="grid grid-cols-2 gap-2 sm:gap-4 {{ if eq .cols 4 }}lg:grid-cols-4{{ else }}lg:grid-cols-3{{ end }}">
+    {{ $n := 0 }}
+    {{ range .items }}
+      {{ if not (strings.HasSuffix (lower .src) ".mp4") }}{{ $n = add $n 1 }}{{ end }}
+      {{ partial "gallery-item.html" (dict "src" .src "text" .text "n" $n "captions" $.captions) }}
+    {{ end }}
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{{- /* Sections: only Media (media/_index.md), whose pages are the photo albums (album.html). Shown like a page
+       (page.html); the albums come in through {{< albums >}} in its text. */ -}}
+{{ define "main" }}
+  {{ partial "page-header.html" . }}
+  <div class="container-site py-12 sm:py-16">
+    <article class="prose-site {{ if not .Params.wide }}max-w-3xl{{ end }}">
+      {{ .Content }}
+    </article>
+  </div>
+{{ end }}

@@ -1,22 +1,18 @@
-{{- /* Image grid. One image per line: `path | caption`.
+{{- /* Photo grid inside a page's text. One photo per line: `path | text` (the text is the alt text and, unless
+       captions="false", a caption under the photo; the lightbox shows it either way). cols="4": four columns on
+       wide screens (default three). A `.mp4` line is a video (poster: the same path in .jpg).
+       Photo albums are pages of their own (layouts/album.html), not this shortcode.
 Usage:
-{{< gallery >}}
-images/photo.jpg | Caption
+{{< gallery captions="false" >}}
+images/photo.jpg | Text
 {{< /gallery >}}
 */ -}}
-<div class="not-prose grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-  {{/* "\r" too: on Windows checkouts (autocrlf) the lines end in CRLF */}}
-  {{ range split (trim .Inner "\r\n ") "\n" }}
-    {{ $parts := split . "|" }}
-    {{ $src := trim (index $parts 0) " \r" }}
-    {{ $caption := "" }}{{ if gt (len $parts) 1 }}{{ $caption = trim (index $parts 1) " \r" }}{{ end }}
-    {{ with $src }}
-      <figure class="group overflow-hidden border border-line bg-white">
-        <a href="{{ . | relURL }}" class="block aspect-[4/3] overflow-hidden">
-          <img src="{{ . | relURL }}" alt="{{ $caption }}" loading="lazy" class="size-full object-cover transition duration-500 group-hover:scale-105">
-        </a>
-        {{ with $caption }}<figcaption class="px-4 py-3 font-display text-xs text-ink-soft">{{ . }}</figcaption>{{ end }}
-      </figure>
-    {{ end }}
-  {{ end }}
-</div>
+{{ $items := slice }}
+{{/* "\r" too: on Windows checkouts (autocrlf) the lines end in CRLF */}}
+{{ range split (trim .Inner "\r\n ") "\n" }}
+  {{ $parts := split . "|" }}
+  {{ $src := trim (index $parts 0) " \r" }}
+  {{ $text := "" }}{{ if gt (len $parts) 1 }}{{ $text = trim (index $parts 1) " \r" }}{{ end }}
+  {{ with $src }}{{ $items = $items | append (dict "src" . "text" $text) }}{{ end }}
+{{ end }}
+{{ partial "gallery-grid.html" (dict "items" $items "captions" (ne (.Get "captions") "false") "cols" (cond (eq (.Get "cols") "4") 4 3)) }}

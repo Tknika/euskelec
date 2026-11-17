@@ -43,3 +43,15 @@ openInOsm: Abrir en OpenStreetMap
 trainingVideos: Vídeos de formación
 hashtagsIntro: "En tus publicaciones, usa estas etiquetas:"
 openInGoogleMaps: Abrir en Google Maps
+photoViewer: Visor de fotos
+close: Cerrar
+previousPhoto: Foto anterior
+nextPhoto: Foto siguiente
+photosCount:
+  one: "{{ .Count }} foto"
+  other: "{{ .Count }} fotos"
+videosCount:
+  one: "{{ .Count }} vídeo"
+  other: "{{ .Count }} vídeos"
+photoN: "Foto {{ .N }}"
+otherAlbums: Otros álbumes

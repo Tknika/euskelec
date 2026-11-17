@@ -1,0 +1,7 @@
+{{- /* The photo albums (the pages under media/, layout: album) as cards, in `weight` order. Usage: {{< albums >}}
+       on the Media page (media/_index.md). Each album page holds its photos; Media stays light. */ -}}
+{{ with .Page.RegularPages }}
+  <ul class="not-prose grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+    {{ range . }}<li>{{ partial "album-card.html" . }}</li>{{ end }}
+  </ul>
+{{ end }}

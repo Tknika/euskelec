@@ -1,0 +1,28 @@
+{{- /* Photo viewer for {{< gallery >}} (main.js): a modal <dialog> over the page, the photo as big as it fits,
+       previous / next (also the arrow keys and swiping), Esc, the × or a click beside the photo to close. The
+       caption and the counter are a live region, so screen readers hear each new photo. White on brand-900. */ -}}
+{{ $btn := "grid size-11 shrink-0 place-items-center text-white transition hover:bg-tknika hover:text-ink focus-visible:outline-white" }}
+<dialog class="m-0 size-full max-h-none max-w-none bg-brand-900/95 p-0 text-white backdrop:bg-transparent open:grid open:grid-rows-[auto_minmax(0,1fr)_auto]"
+  data-lightbox aria-label="{{ i18n "photoViewer" }}">
+  <div class="flex justify-end p-2">
+    <button type="button" class="{{ $btn }}" data-lb-close aria-label="{{ i18n "close" }}">
+      <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  {{/* The photo fits the box between the bars (absolute, so its height is known and max-h-full works) */}}
+  <div class="relative min-h-0" data-lb-stage>
+    <div class="absolute inset-y-0 inset-x-2 flex items-center justify-center sm:inset-x-16" data-lb-stage>
+      <img class="max-h-full max-w-full select-none object-contain" alt="" data-lb-img>
+    </div>
+    <button type="button" class="{{ $btn }} absolute left-2 top-1/2 -translate-y-1/2 bg-brand-900/60 sm:bg-transparent" data-lb-prev aria-label="{{ i18n "previousPhoto" }}">
+      <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button type="button" class="{{ $btn }} absolute right-2 top-1/2 -translate-y-1/2 bg-brand-900/60 sm:bg-transparent" data-lb-next aria-label="{{ i18n "nextPhoto" }}">
+      <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+  <div class="flex items-baseline justify-between gap-4 px-4 py-4 text-sm sm:px-16" aria-live="polite">
+    <p data-lb-caption></p>
+    <p class="shrink-0 font-display tabular-nums text-white/80" data-lb-count></p>
+  </div>
+</dialog>

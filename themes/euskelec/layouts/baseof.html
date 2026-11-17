@@ -10,6 +10,7 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+  {{ if or (.HasShortcode "gallery") .Params.photos }}{{ partial "lightbox.html" . }}{{ end }}
   {{ with resources.Get "js/main.js" | js.Build (dict "minify" hugo.IsProduction) | fingerprint }}
     <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
   {{ end }}

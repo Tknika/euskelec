@@ -43,3 +43,15 @@ openInOsm: Ireki OpenStreetMap-en
 trainingVideos: Formakuntza-bideoak
 hashtagsIntro: "Zure argitalpenetan, erabili traola hauek:"
 openInGoogleMaps: Ireki Google Maps-en
+photoViewer: Argazki-ikustailea
+close: Itxi
+previousPhoto: Aurreko argazkia
+nextPhoto: Hurrengo argazkia
+photosCount:
+  one: "argazki {{ .Count }}"
+  other: "{{ .Count }} argazki"
+videosCount:
+  one: "bideo {{ .Count }}"
+  other: "{{ .Count }} bideo"
+photoN: "{{ .N }}. argazkia"
+otherAlbums: Beste argazki-bilduma batzuk
