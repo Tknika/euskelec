@@ -11,6 +11,10 @@ menus:
 # Phases of the current edition. An empty `dates` or `place` shows "Próximamente".
 # The competition in a glance ({{< competition-intro >}}): how it works, goals, what it drives
 intro:
+  # The car beside the lead: a 3D model turning on itself (static/models/), with a still picture of it for loading and without WebGL. Without `model`, the photo of the home page.
+  model:
+    src: models/eusk26-menditech.glb
+    still: images/eusk26-menditech.png
   lead: "Euskelec es una competición en la que alumnos de centros de formación profesional del País Vasco diseñan y construyen **un vehículo 100 % eléctrico** sobre una base motriz común. El objetivo es potenciar el trabajo en equipo y fundamentar la actividad experimental y creativa como elemento pedagógico."
   steps:
     - title: "Punto de partida: una base común"
@@ -39,8 +43,9 @@ phases:
     place: ""
     challenges: [Diseño, Innovación, Comunicación]
   - title: Evento de pruebas dinámicas
-    image: images/galeria/2018/13.jpg
-    image_alt: "Vehículos en pista durante las pruebas dinámicas (2018)"
+    image: images/galeria/phases/8k6b1800.jpg
+    image_position: "50% 75%"
+    image_alt: "Un comisario agita la bandera verde y los vehículos arrancan en un circuito urbano lleno de público (2026)"
     description: Se evalúan las prestaciones, características y diseño de los vehículos mediante las pruebas de slalom, aceleración, frenada máxima y resistencia.
     dates: ""
     place: ""

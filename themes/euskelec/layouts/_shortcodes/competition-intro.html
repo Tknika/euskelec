@@ -1,5 +1,5 @@
 {{- /* The competition in a glance, from the page's `intro` front matter (instead of long paragraphs):
-       lead (one short paragraph, next to the real car photo of the home page), steps (step 1 icon: a kit box, the base handed to the teams) (how it works: base → students → vehicle), goals, and platform
+       lead (one short paragraph, next to `model`, a 3D car turning on itself, or else the real car photo of the home page), steps (step 1 icon: a kit box, the base handed to the teams) (how it works: base → students → vehicle), goals, and platform
        (what the championship drives, with an optional platform_text sentence).
        Usage: {{< competition-intro >}} */ -}}
 {{ with .Page.Params.intro }}
@@ -7,10 +7,25 @@
     `<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9M7.5 5.2l9 4.6"/>`
     `<circle cx="8" cy="8" r="3"/><circle cx="16.5" cy="9" r="2.5"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0M13.5 20a4.5 4.5 0 0 1 8 -2.8"/>`
     `<path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/>` }}
-  {{/* Opening: the short lead on one side, the real car (the home photo) on the other */}}
+  {{/* Opening: the short lead on one side, the car on the other: the 3D model, or the home photo */}}
   <div class="not-prose mb-10 grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
     {{ with .lead }}<p class="text-xl leading-relaxed">{{ . | markdownify }}</p>{{ end }}
-    {{ with site.Home.Params.hero_image }}<img src="{{ . | relURL }}" alt="{{ i18n "kartLabel" }}" width="1000" height="667" class="mx-auto w-full max-w-xl drop-shadow-[0_30px_30px_rgba(31,75,107,0.25)]">{{ end }}
+    {{ with .model }}
+      {{/* A 3D model of a car turning on itself (car3d.js, three.js). `still` is a picture of the same model, shown while it loads and without WebGL or JavaScript. */}}
+      <figure class="relative mx-auto w-full max-w-xl" data-car3d data-src="{{ .src | relURL }}" data-draco="{{ "vendor/draco/" | relURL }}">
+        <div class="relative aspect-[4/3]" data-car3d-stage>
+          <img src="{{ .still | relURL }}" alt="{{ i18n "car3dLabel" }}" width="1200" height="900" class="absolute inset-0 size-full object-contain transition-opacity duration-700">
+        </div>
+        <button type="button" class="absolute bottom-2 right-2 grid size-10 place-items-center border border-line bg-white text-ink transition hover:border-tknika" data-car3d-toggle
+          data-label-pause="{{ i18n "pauseRotation" }}" data-label-play="{{ i18n "resumeRotation" }}" aria-label="{{ i18n "pauseRotation" }}" hidden>
+          <svg class="size-4" data-icon-pause viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2h3v12H4zM9 2h3v12H9z"/></svg>
+          <svg class="hidden size-4" data-icon-play viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2l10 6-10 6z"/></svg>
+        </button>
+      </figure>
+      {{ with resources.Get "js/car3d.js" | js.Build (dict "minify" hugo.IsProduction "target" "es2020" "format" "esm") | fingerprint }}<script type="module" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}
+    {{ else }}
+      {{ with site.Home.Params.hero_image }}<img src="{{ . | relURL }}" alt="{{ i18n "kartLabel" }}" width="1000" height="667" class="mx-auto w-full max-w-xl drop-shadow-[0_30px_30px_rgba(31,75,107,0.25)]">{{ end }}
+    {{ end }}
   </div>
   <div class="not-prose space-y-6">
     {{/* How it works: three steps, with an arrow between them */}}

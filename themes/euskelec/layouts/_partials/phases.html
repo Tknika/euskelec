@@ -1,10 +1,11 @@
 {{- /* The competition phases, from the `phases` list of the competition page (translationKey: competition).
-       An empty `dates` or `place` shows "Laster". `image` + `image_alt`: a real photo of that phase, on top of the card.
-       Context: the competition page. */ -}}
+       An empty `dates` or `place` shows "Laster". `image` + `image_alt`: a real photo of that phase, on top of the card
+       (the same on the competition page and on the home page). Context: the competition page. */ -}}
 <ol class="not-prose grid gap-6 md:grid-cols-2">
   {{ range $i, $p := .Params.phases }}
     <li class="relative flex flex-col border border-line bg-white">
-      {{ with $p.image }}<img src="{{ . | relURL }}" alt="{{ $p.image_alt }}" loading="lazy" class="aspect-[3/1] w-full object-cover">{{ end }}
+      {{- /* image_position: which part of the photo the 3:1 crop keeps (CSS object-position, e.g. "50% 75%" to frame it lower); centred by default */ -}}
+      {{ with $p.image }}<img src="{{ . | relURL }}" alt="{{ $p.image_alt }}" loading="lazy" class="aspect-[3/1] w-full object-cover"{{ with $p.image_position }} style="object-position: {{ . | safeCSS }}"{{ end }}>{{ end }}
       <span class="block h-1 {{ if eq $p.status "active" }}bg-tknika{{ else }}bg-brand{{ end }}" aria-hidden="true"></span>
       <div class="relative flex-1 p-6 sm:p-8">
       {{ partial "symbol.html" (printf "absolute right-6 top-6 h-5 w-auto sm:right-8 sm:top-8 %s" (cond (eq $p.status "active") "text-tknika" "text-brand/25")) }}

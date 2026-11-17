@@ -12,6 +12,10 @@ menus:
 # status: active marks the current phase (Tknika lime line).
 # The competition in a glance ({{< competition-intro >}}): how it works, goals, what it drives
 intro:
+  # The car beside the lead: a 3D model turning on itself (static/models/), with a still picture of it for loading and without WebGL. Without `model`, the photo of the home page.
+  model:
+    src: models/eusk26-menditech.glb
+    still: images/eusk26-menditech.png
   lead: "Euskelec lehiaketa bat da eta, bertan, Euskadiko lanbide-heziketako ikastetxeetako ikasleek **ibilgailu %100 elektriko bat** diseinatu eta eraikitzen dute, oinarri eragile komun batetik abiatuta. Talde-lana sustatzea eta jarduera esperimentala eta sortzailea elementu pedagogiko gisa erabiltzea da helburua."
   steps:
     - title: "Abiapuntua: oinarri bera"
@@ -40,8 +44,9 @@ phases:
     place: ""
     challenges: [Diseinua, Berrikuntza, Komunikazioa]
   - title: Proba dinamikoen ekitaldia
-    image: images/galeria/2018/13.jpg
-    image_alt: "Ibilgailuak pistan proba dinamikoetan (2018)"
+    image: images/galeria/phases/8k6b1800.jpg
+    image_position: "50% 75%"
+    image_alt: "Komisario batek bandera berdea astintzen du eta ibilgailuak abiatzen dira, jendez betetako hiri-zirkuitu batean (2026)"
     description: Ibilgailuen prestazioak, ezaugarriak eta diseinua ebaluatzen dira, slalom, azelerazio, gehieneko balaztatze eta erresistentziarako proben bidez.
     dates: ""
     place: ""

@@ -29,3 +29,6 @@ logoOnRequest: "Ask for it at the press email:"
 logoBlack: black
 challenges: Challenges
 kartLabel: The Euskelec vehicle
+car3dLabel: 3D model of a Euskelec vehicle, turning
+pauseRotation: Pause the rotation
+resumeRotation: Resume the rotation

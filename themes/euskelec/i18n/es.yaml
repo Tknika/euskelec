@@ -29,3 +29,6 @@ logoOnRequest: "Solicítalo en el correo de prensa:"
 logoBlack: negro
 challenges: Desafíos
 kartLabel: El vehículo de Euskelec
+car3dLabel: Modelo 3D de un vehículo de Euskelec, girando
+pauseRotation: Pausar el giro
+resumeRotation: Reanudar el giro
