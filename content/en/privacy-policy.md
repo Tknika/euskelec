@@ -1,6 +1,8 @@
 ---
 title: Privacy policy
 translationKey: privacy
+# The cookie policy was removed (the site sets no cookies): its old URL leads here
+aliases: [cookies-policy/]
 eyebrow: Euskelec
 menus:
   footer:
