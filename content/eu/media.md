@@ -3,11 +3,11 @@ title: Media
 translationKey: media
 eyebrow: Euskelec
 description: "Kazetari eta komunikabideentzako baliabideak: prentsa-dossierra, kartela, logotipoak, bideoak eta argazkiak."
-weight: 20
+weight: 45
 wide: true
 menus:
   main:
-    weight: 20
+    weight: 45
 ---
 
 {{< downloads cols="3" style="plain" >}}

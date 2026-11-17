@@ -3,11 +3,11 @@ title: Media
 translationKey: media
 eyebrow: Euskelec
 description: "Resources for journalists and the media: press kit, poster, logos, videos and photos."
-weight: 20
+weight: 45
 wide: true
 menus:
   main:
-    weight: 20
+    weight: 45
 ---
 
 {{< downloads cols="3" style="plain" >}}
