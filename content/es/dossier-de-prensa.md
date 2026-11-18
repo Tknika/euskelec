@@ -23,5 +23,5 @@ figures:
     label: pruebas dinámicas
   - value: "100 %"
     label: eléctrico
-participants_label: centros en la VIII edición
+participants_label: centros en la X edición
 ---

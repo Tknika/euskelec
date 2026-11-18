@@ -73,6 +73,6 @@ Lehiaketak bi fase ditu. Lehenengoa tekniko eta sortzailea da: diseinu, berrikun
 
 Araudia eta erronkak [Dokumentazio teknikoa](/dokumentazio-teknikoa/) atalean daude.
 
-## VIII. edizioko parte-hartzaileak
+## X. edizioko parte-hartzaileak
 
-{{< participants "VIII" >}}
+{{< participants "X" >}}

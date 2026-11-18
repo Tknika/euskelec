@@ -24,5 +24,5 @@ figures:
     label: proba dinamiko
   - value: "%100"
     label: elektrikoa
-participants_label: ikastetxe VIII. edizioan
+participants_label: ikastetxe X. edizioan
 ---

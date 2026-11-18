@@ -72,6 +72,6 @@ The competition comprises two phases. The first, technical and creative, sets ch
 
 The rules and challenges are in [Technical documentation](/technical-documentation/).
 
-## Participants in the 8th edition
+## Participants in the 10th edition
 
-{{< participants "VIII" >}}
+{{< participants "X" >}}

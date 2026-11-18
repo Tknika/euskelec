@@ -88,7 +88,7 @@ menus:
 
 ### Shortcodes
 
-`note`, `button`, `faq` + `stack`, `gallery`, `videos` (`featured="2"`: the first two big), `albums`, `downloads`, `phases`, `participants "VIII"`, `social` (the networks and hashtags of `hugo.toml`, on the contact page).
+`note`, `button`, `faq` + `stack`, `gallery`, `videos` (`featured="2"`: the first two big), `albums`, `downloads`, `phases`, `participants "X"` (official teams and guest teams), `social` (the networks and hashtags of `hugo.toml`, on the contact page).
 
 ## License
 

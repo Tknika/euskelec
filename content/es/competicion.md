@@ -72,6 +72,6 @@ La competición consta de dos fases. La primera, técnica y creativa, plantea de
 
 El reglamento y los desafíos están en [Documentación técnica](/documentacion-tecnica/).
 
-## Participantes de la VIII edición
+## Participantes de la X edición
 
-{{< participants "VIII" >}}
+{{< participants "X" >}}

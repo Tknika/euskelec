@@ -23,5 +23,5 @@ figures:
     label: dynamic tests
   - value: "100%"
     label: electric
-participants_label: schools in the 8th edition
+participants_label: schools in the 10th edition
 ---

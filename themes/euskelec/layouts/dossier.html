@@ -52,7 +52,7 @@
           <span class="mt-[2mm] block font-display text-[4.2mm] font-semibold">{{ .label }}</span>
         </li>
       {{ end }}
-      {{ with index hugo.Data.participants "VIII" }}
+      {{ with (index hugo.Data.participants "X").teams }}
         <li class="bg-brand px-[4mm] py-[6mm] text-white">
           <span class="block font-display text-[12mm] font-bold leading-none">{{ len . }}</span>
           <span class="mt-[2mm] block font-display text-[4.2mm] font-semibold">{{ $.Params.participants_label }}</span>

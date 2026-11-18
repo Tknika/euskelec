@@ -1,7 +1,11 @@
-{{- /* Table of participating schools of an edition, from data/participants.yaml.
-       Usage: {{< participants "VIII" >}} (the edition key in the data file). Region names are shown as given. */ -}}
+{{- /* The participating schools of an edition, from data/participants.yaml: the official teams with their bib, then the
+       guest teams (no bib) under their own heading. Usage: {{< participants "X" >}} (the edition key in the data file).
+       Names and regions are shown as given; in Basque, region_eu replaces region when the Basque list gives another name.
+       Teams marked new: true get a "new team" tag. */ -}}
 {{ $ed := index hugo.Data.participants (.Get 0) }}
-{{ with $ed }}
+{{ $eu := eq .Page.Language.Lang "eu" }}
+{{ $tag := printf `<span class="mt-1 block w-fit bg-tknika px-1.5 py-0.5 sm:mt-0 sm:ml-2 sm:inline-block sm:align-middle font-display text-[0.7rem] font-semibold whitespace-nowrap text-ink uppercase">%s</span>` (i18n "newTeam") | safeHTML }}
+{{ with $ed.teams }}
   <div class="not-prose -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
     <table class="w-full border-collapse text-sm">
       <thead>
@@ -15,8 +19,29 @@
         {{ range . }}
           <tr class="border-b border-line">
             <td class="py-2 pr-4 font-display font-semibold text-brand-700">{{ .bib }}</td>
-            <td class="py-2 pr-4">{{ .school }}</td>
-            <td class="py-2 text-ink-soft">{{ .region }}</td>
+            <td class="py-2 pr-4">{{ .school }}{{ if .new }}{{ $tag }}{{ end }}</td>
+            <td class="py-2 text-ink-soft">{{ if and $eu .region_eu }}{{ .region_eu }}{{ else }}{{ .region }}{{ end }}</td>
+          </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
+{{ end }}
+{{ with $ed.guests }}
+  <h3 id="{{ i18n "guestTeams" | anchorize }}">{{ i18n "guestTeams" }}</h3>
+  <div class="not-prose -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+    <table class="w-full border-collapse text-sm">
+      <thead>
+        <tr class="border-b-2 border-brand text-left font-display uppercase tracking-wide text-ink-soft">
+          <th class="py-2 pr-4 font-semibold">{{ i18n "school" }}</th>
+          <th class="py-2 font-semibold">{{ i18n "region" }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range . }}
+          <tr class="border-b border-line">
+            <td class="py-2 pr-4">{{ .school }}{{ if .new }}{{ $tag }}{{ end }}</td>
+            <td class="py-2 text-ink-soft">{{ if and $eu .region_eu }}{{ .region_eu }}{{ else }}{{ .region }}{{ end }}</td>
           </tr>
         {{ end }}
       </tbody>
