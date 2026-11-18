@@ -41,11 +41,6 @@
             {{ partial "social-icon.html" (dict "name" "instagram") }}
             <span class="sr-only">Instagram</span></a></li>
         {{ end }}
-        {{ with site.Params.twitter }}
-          <li><a href="{{ . }}" target="_blank" rel="noopener" class="block text-white/80 transition hover:text-tknika" title="X (Twitter)">
-            {{ partial "social-icon.html" (dict "name" "twitter") }}
-            <span class="sr-only">X (Twitter)</span></a></li>
-        {{ end }}
         {{ with site.Params.youtube }}
           <li><a href="{{ . }}" target="_blank" rel="noopener" class="block text-white/80 transition hover:text-tknika" title="YouTube">
             {{ partial "social-icon.html" (dict "name" "youtube") }}

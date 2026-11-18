@@ -19,7 +19,6 @@
 {{ with .Params.image | default "images/euskelec-ix-kartela.jpg" }}
   <meta property="og:image" content="{{ . | absURL }}">
 {{ end }}
-<meta name="twitter:card" content="summary_large_image">
 
 {{/* The favicon of the old euskelec.eus site (originals in _originals/old-site/favicon/) */}}
 <link rel="icon" href="{{ "favicon-32x32.png" | relURL }}" sizes="32x32">

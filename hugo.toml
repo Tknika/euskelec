@@ -15,7 +15,6 @@ disableKinds = ["taxonomy", "term"]
   noindex = true
   email = "admin@euskelec.eus"
   instagram = "https://www.instagram.com/euskelec/"
-  twitter = "https://twitter.com/euskelec"
   youtube = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
   # Official hashtags (from the challenges PDF: teams must use them in their videos), shown on the contact page
   hashtags = ["Euskelec", "Tknika", "FPEuskadi"]

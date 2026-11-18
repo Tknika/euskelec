@@ -121,7 +121,6 @@
           <div><dt class="font-display text-[3.2mm] uppercase tracking-wider text-ink-soft">{{ $l.web }}</dt><dd class="font-display font-semibold text-brand-700">{{ $web }}</dd></div>
           {{ with site.Params.email }}<div><dt class="font-display text-[3.2mm] uppercase tracking-wider text-ink-soft">{{ $l.email }}</dt><dd class="font-display font-semibold text-brand-700">{{ . }}</dd></div>{{ end }}
           {{ with site.Params.instagram }}<div><dt class="font-display text-[3.2mm] uppercase tracking-wider text-ink-soft">Instagram</dt><dd class="font-display font-semibold text-brand-700">{{ strings.TrimPrefix "https://www." . | strings.TrimSuffix "/" }}</dd></div>{{ end }}
-          {{ with site.Params.twitter }}<div><dt class="font-display text-[3.2mm] uppercase tracking-wider text-ink-soft">X</dt><dd class="font-display font-semibold text-brand-700">{{ strings.TrimPrefix "https://" . }}</dd></div>{{ end }}
           {{ with site.Params.youtube }}<div><dt class="font-display text-[3.2mm] uppercase tracking-wider text-ink-soft">YouTube</dt><dd class="break-all font-display text-[3.4mm] font-semibold text-brand-700">{{ strings.TrimPrefix "https://www." . }}</dd></div>{{ end }}
         </dl>
       </div>

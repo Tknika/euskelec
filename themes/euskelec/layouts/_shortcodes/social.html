@@ -1,10 +1,9 @@
-{{- /* The social networks of hugo.toml (`instagram`, `twitter`, `youtube`) as cards, then the official hashtags
+{{- /* The social networks of hugo.toml (`instagram`, `youtube`) as cards, then the official hashtags
        (`hashtags`). Usage: {{< social >}} (contact page). */ -}}
 {{ $nets := slice }}
 {{ with site.Params.instagram }}{{ $nets = $nets | append (dict "key" "instagram" "name" "Instagram" "url" . "sub" (printf "@%s" (path.Base (strings.TrimSuffix "/" .)))) }}{{ end }}
-{{ with site.Params.twitter }}{{ $nets = $nets | append (dict "key" "twitter" "name" "X (Twitter)" "url" . "sub" (printf "@%s" (path.Base (strings.TrimSuffix "/" .)))) }}{{ end }}
 {{ with site.Params.youtube }}{{ $nets = $nets | append (dict "key" "youtube" "name" "YouTube" "url" . "sub" (i18n "trainingVideos")) }}{{ end }}
-<ul class="not-prose grid gap-4 sm:grid-cols-3">
+<ul class="not-prose grid gap-4 {{ if ge (len $nets) 3 }}sm:grid-cols-3{{ else }}sm:grid-cols-2{{ end }}">
   {{ range $nets }}
     <li>
       <a href="{{ .url }}" target="_blank" rel="noopener" class="card group flex h-full items-center gap-4 p-4 sm:flex-col sm:items-start sm:p-5">
