@@ -1,4 +1,4 @@
-{{- /* One YouTube tile of the videos shortcode. Context: dict "id" "title" "tag" "compact" (smaller play button
+{{- /* One YouTube tile of the videos shortcode. Context: dict "id" "title" "tag" "note" (a small line under the title) "compact" (smaller play button
        and text, for the grid of older videos). Nothing is loaded from YouTube until it is clicked (main.js). */ -}}
 {{ $id := .id }}
 <li class="card overflow-hidden">
@@ -19,6 +19,9 @@
   </a>
   <div class="flex items-start gap-3 {{ if .compact }}px-3 py-2.5{{ else }}px-5 py-4{{ end }}">
     {{ with .tag }}<span class="mt-px shrink-0 bg-brand-50 px-1.5 py-0.5 font-display text-[11px] font-semibold leading-none text-brand-700">{{ . }}</span>{{ end }}
-    <p class="{{ if .compact }}text-sm{{ else }}font-display font-semibold{{ end }} leading-snug">{{ .title }}</p>
+    <div class="min-w-0">
+      <p class="{{ if .compact }}text-sm{{ else }}font-display font-semibold{{ end }} leading-snug">{{ .title }}</p>
+      {{ with .note }}<p class="mt-1 text-xs text-ink-soft">{{ . }}</p>{{ end }}
+    </div>
   </div>
 </li>

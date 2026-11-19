@@ -1,5 +1,6 @@
 {{- /* List of YouTube videos that load nothing from YouTube until clicked (light page, no third-party
-       requests on load). One video per line: `VIDEO_ID | Title` or `VIDEO_ID | Title | Tag` (e.g. the edition year).
+       requests on load). One video per line: `VIDEO_ID | Title`, `VIDEO_ID | Title | Tag` (e.g. the edition year)
+       or `VIDEO_ID | Title | Tag | Note` (a small line under the title, e.g. "Euskelec IV · 34 min" on the training page).
        featured="N": the first N videos big, two per row; the rest smaller, four per row, under the heading `more`.
        Usage:
        {{< videos featured="2" more="Previous editions" >}}
@@ -14,7 +15,8 @@
   {{ $id := trim (index $parts 0) " \r" }}
   {{ $title := "" }}{{ if gt (len $parts) 1 }}{{ $title = trim (index $parts 1) " \r" }}{{ end }}
   {{ $tag := "" }}{{ if gt (len $parts) 2 }}{{ $tag = trim (index $parts 2) " \r" }}{{ end }}
-  {{ with $id }}{{ $items = $items | append (dict "id" . "title" $title "tag" $tag) }}{{ end }}
+  {{ $note := "" }}{{ if gt (len $parts) 3 }}{{ $note = trim (index $parts 3) " \r" }}{{ end }}
+  {{ with $id }}{{ $items = $items | append (dict "id" . "title" $title "tag" $tag "note" $note) }}{{ end }}
 {{ end }}
 {{ $featured := int (.Get "featured" | default 0) }}
 {{ if $featured }}

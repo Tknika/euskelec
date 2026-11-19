@@ -106,31 +106,18 @@ disableKinds = ["taxonomy", "term"]
     contentDir = "content/eu"
     [languages.eu.params]
       description = "Euskadiko Ibilgailu Elektrikoen Txapelketa"
-    # External menu entries (pages add themselves to the menu from their front matter)
-    [[languages.eu.menus.main]]
-      name = "Formakuntza"
-      url = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
-      weight = 40
   [languages.es]
     label = "Español"
     weight = 2
     contentDir = "content/es"
     [languages.es.params]
       description = "El campeonato de vehículos eléctricos de Euskadi"
-    [[languages.es.menus.main]]
-      name = "Formación"
-      url = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
-      weight = 40
   [languages.en]
     label = "English"
     weight = 3
     contentDir = "content/en"
     [languages.en.params]
       description = "Basque Electric Vehicle Contest"
-    [[languages.en.menus.main]]
-      name = "Training"
-      url = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
-      weight = 40
 
 [markup.goldmark.renderer]
   unsafe = true
