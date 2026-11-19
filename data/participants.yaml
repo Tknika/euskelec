@@ -1,5 +1,5 @@
 # Participating schools per edition, from the official list (Word files "Listado de participantes oficiales en Euskelec X",
-# ES and EU, Ref. 9-2026). Shown with {{< participants "X" >}} and counted in the press kit. Names and regions are copied
+# ES and EU, Ref. 9-2026; the Basque V3 of 19 November 2026 adds the guest team IES JUAN DE LUCENA). Shown with {{< participants "X" >}} and counted in the press kit. Names and regions are copied
 # from them, with five typos fixed (see AGENTS.md): region is the Spanish list's, region_eu the Basque list's when it differs.
 # teams: official participants, with their bib; guests: guest teams, no bib. new: true = "new team" in the list.
 X:
@@ -94,6 +94,9 @@ X:
       new: true
     - school: "IES EMILIO CANALEJO OLMEDA"
       region: "ANDALUCÍA"
+      new: true
+    - school: "IES JUAN DE LUCENA"
+      region: "CASTILLA-LA MANCHA"
       new: true
     - school: "IES ESKURTZE BHI+ CIFP PEÑASCAL"
       region: "EUSKADI"
