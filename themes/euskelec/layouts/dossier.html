@@ -25,12 +25,13 @@
   {{/* 1. Cover */}}
   <section class="dossier-page flex flex-col bg-brand text-white">
     {{ partial "symbol.html" "pointer-events-none absolute -right-[18mm] top-[34mm] w-[150mm] text-white/10" }}
-    <div class="relative px-[18mm] pt-[18mm]">
+    {{/* The logo, and what this document is, big, in a lime label (asked in November 2026: the small eyebrow went unnoticed) */}}
+    <div class="relative flex items-center justify-between gap-[8mm] px-[18mm] pt-[18mm]">
       <div class="text-[9mm]">{{ partial "logo.html" "" }}</div>
+      <p class="shrink-0 whitespace-nowrap bg-tknika px-[5mm] py-[2.5mm] font-display text-[5.5mm] font-semibold uppercase tracking-[0.12em] text-ink">{{ .Title }}</p>
     </div>
     <div class="relative mt-auto px-[18mm] pb-[14mm]">
-      <p class="eyebrow eyebrow-light text-[4mm]">{{ .Title }}</p>
-      <h1 class="mt-[6mm] max-w-[160mm] font-display text-[13mm] font-semibold uppercase leading-[1.05] tracking-wide text-white">{{ site.Params.description }}</h1>
+      <h1 class="max-w-[160mm] font-display text-[13mm] font-semibold uppercase leading-[1.05] tracking-wide text-white">{{ site.Params.description }}</h1>
       {{ with $home.Params.edition }}<p class="mt-[6mm] font-display text-[6mm] font-medium">{{ . }}</p>{{ end }}
     </div>
     {{ with $home.Params.hero_video.poster }}

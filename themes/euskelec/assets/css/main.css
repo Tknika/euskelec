@@ -229,13 +229,17 @@
   print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
 }
-.dossier-page {
-  position: relative;
-  width: 210mm;
-  height: 297mm;
-  overflow: hidden;
-  break-after: page;
-  background-color: #fff;
+/* In the components layer, so that a page's own background (bg-brand on the cover, bg-paper) wins over the white:
+   outside a layer, the white beat every utility and the cover printed white, its white text unseen (fixed in November 2026). */
+@layer components {
+  .dossier-page {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    break-after: page;
+    background-color: #fff;
+  }
 }
 @media screen {
   .dossier {
