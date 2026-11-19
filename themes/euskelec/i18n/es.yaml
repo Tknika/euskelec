@@ -58,7 +58,7 @@ videosCount:
 photoN: "Foto {{ .N }}"
 otherAlbums: Otros álbumes
 # Countdown in the header (_partials/countdown.html): %s is the time left; the date is a Go layout (Hugo translates the month)
-countdown: "Faltan %s para la prueba"
+countdown: "Faltan %s para la fase 2"
 countdownDays:
   one: día
   other: días

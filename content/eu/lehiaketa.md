@@ -48,8 +48,8 @@ phases:
     image_position: "50% 75%"
     image_alt: "Komisario batek bandera berdea astintzen du eta ibilgailuak abiatzen dira, jendez betetako hiri-zirkuitu batean (2026)"
     description: Ibilgailuen prestazioak, ezaugarriak eta diseinua ebaluatzen dira, slalom, azelerazio, gehieneko balaztatze eta erresistentziarako proben bidez.
-    dates: ""
-    place: ""
+    dates: "2027ko maiatzaren 16a, 18:00"
+    place: Vitoria-Gasteiz
     tests:
       - name: Azelerazio-proba
         icon: images/icons/speedometer.svg

@@ -47,8 +47,8 @@ phases:
     image_position: "50% 75%"
     image_alt: "A marshal waves the green flag as the vehicles set off on an urban circuit lined with spectators (2026)"
     description: The performance, features and design of the vehicles are assessed via slalom, acceleration, maximum braking and resistance tests.
-    dates: ""
-    place: ""
+    dates: "16 May 2027, 18:00"
+    place: Vitoria-Gasteiz
     tests:
       - name: Acceleration test
         icon: images/icons/speedometer.svg

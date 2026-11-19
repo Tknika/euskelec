@@ -47,8 +47,8 @@ phases:
     image_position: "50% 75%"
     image_alt: "Un comisario agita la bandera verde y los vehículos arrancan en un circuito urbano lleno de público (2026)"
     description: Se evalúan las prestaciones, características y diseño de los vehículos mediante las pruebas de slalom, aceleración, frenada máxima y resistencia.
-    dates: ""
-    place: ""
+    dates: "16 de mayo de 2027, 18:00"
+    place: Vitoria-Gasteiz
     tests:
       - name: Prueba de aceleración
         icon: images/icons/speedometer.svg

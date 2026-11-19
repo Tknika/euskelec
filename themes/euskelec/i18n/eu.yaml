@@ -58,7 +58,7 @@ videosCount:
 photoN: "{{ .N }}. argazkia"
 otherAlbums: Beste argazki-bilduma batzuk
 # Countdown in the header (_partials/countdown.html): %s is the time left; the date is a Go layout (Hugo translates the month)
-countdown: "Probarako %s falta dira"
+countdown: "2. faserako %s falta dira"
 countdownDays:
   one: egun
   other: egun
