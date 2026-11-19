@@ -79,3 +79,29 @@ if (lightbox) {
   });
   lightbox.addEventListener("close", () => img.removeAttribute("src"));
 }
+
+// Countdown in the header (_partials/countdown.html): the time left until data-countdown, from the visitor's clock.
+// Days and hh:mm:ss, every second; for reduced motion, days, hours and minutes, every minute. Hidden once it has passed.
+const countdown = document.querySelector("[data-countdown]");
+if (countdown) {
+  const end = Date.parse(countdown.dataset.countdown);
+  const out = countdown.querySelector("[data-countdown-time]");
+  const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const pad = (n) => String(n).padStart(2, "0");
+  const tick = () => {
+    const left = Math.floor((end - Date.now()) / 1000);
+    if (!(left > 0)) {
+      countdown.hidden = true;
+      return;
+    }
+    const d = Math.floor(left / 86400);
+    const h = Math.floor(left / 3600) % 24;
+    const m = Math.floor(left / 60) % 60;
+    const days = d ? `${d} ${d === 1 ? countdown.dataset.dayOne : countdown.dataset.dayOther} ` : "";
+    out.textContent = calm ? `${days}${h} h ${m} min` : `${days}${pad(h)}:${pad(m)}:${pad(left % 60)}`;
+    countdown.hidden = false;
+    const step = calm ? 60000 : 1000;
+    setTimeout(tick, step - (Date.now() % step) + 20);
+  };
+  tick();
+}

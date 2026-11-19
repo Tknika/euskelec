@@ -18,6 +18,9 @@ disableKinds = ["taxonomy", "term"]
   youtube = "https://www.youtube.com/playlist?list=PLOYSs5_FlYNv8QAZpKkiceup3CAPb6P1t"
   # Official hashtags (from the challenges PDF: teams must use them in their videos), shown on the contact page
   hashtags = ["Euskelec", "Tknika", "FPEuskadi"]
+  # Countdown in the header, to the start of the competition (Spanish time, so +02:00 in May). The countdown goes
+  # away by itself once that moment has passed: set the next date when it is known.
+  countdown = "2027-05-16T12:00:00+02:00"
 
   # Footer logos, in this order. The footer is blue: logos must be the white versions.
   # Without `logo`, the name is shown as text. Without `url`, the logo is not a link.

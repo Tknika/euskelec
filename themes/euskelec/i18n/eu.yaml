@@ -57,3 +57,9 @@ videosCount:
   other: "{{ .Count }} bideo"
 photoN: "{{ .N }}. argazkia"
 otherAlbums: Beste argazki-bilduma batzuk
+# Countdown in the header (_partials/countdown.html): %s is the time left; the date is a Go layout (Hugo translates the month)
+countdown: "Probarako %s falta dira"
+countdownDays:
+  one: egun
+  other: egun
+countdownDate: "2006ko Januaryren 2a, 15:04"

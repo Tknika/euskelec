@@ -1,0 +1,19 @@
+{{- /* Countdown to the competition, in the thin bar of the header, left of the languages (asked in November 2026).
+  The date is `countdown` in hugo.toml (with its time zone). The time left is written by main.js from the visitor's clock:
+  days and hh:mm:ss, every second (days and h/min, every minute, for people who ask the system for reduced motion).
+  On phones, a chequered flag and the time left: the words are only for screen readers there (they did not fit beside the languages).
+  Hidden without JavaScript, and gone once the date has passed (in the browser, and at the next build).
+  Text in i18n: `countdown` (%s is the time left), `countdownDays`, `countdownDate` (a Go layout: Hugo translates the month). */ -}}
+{{ with site.Params.countdown }}
+  {{ $date := time.AsTime . }}
+  {{ if $date.After now }}
+    {{ $text := split (i18n "countdown") "%s" }}
+    <p class="mr-auto flex min-w-0 items-center gap-1.5 font-display text-xs font-semibold whitespace-nowrap" data-countdown="{{ $date.Format "2006-01-02T15:04:05-07:00" }}" data-day-one="{{ i18n "countdownDays" 1 }}" data-day-other="{{ i18n "countdownDays" 2 }}" hidden>
+      <svg class="size-4 shrink-0" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.75 2.5h10v7h-10z" fill="none" stroke="currentColor"/><path d="M3.75 2.5h2.5V6h-2.5zM8.75 2.5h2.5V6h-2.5zM6.25 6h2.5v3.5h-2.5zM11.25 6h2.5v3.5h-2.5z" fill="currentColor"/></svg>
+      {{ with index $text 0 | strings.TrimSpace }}<span class="max-sm:sr-only">{{ . }}</span>{{ end }}
+      <span class="bg-tknika px-1.5 py-0.5 text-ink tabular-nums" data-countdown-time></span>
+      {{ with index $text 1 | strings.TrimSpace }}<span class="max-sm:sr-only">{{ . }}</span>{{ end }}
+      <time class="hidden opacity-70 md:inline" datetime="{{ $date.Format "2006-01-02T15:04-07:00" }}">· {{ $date | time.Format (i18n "countdownDate") }}</time>
+    </p>
+  {{ end }}
+{{ end }}
