@@ -15,7 +15,7 @@ labels:
   resources: Recursos
   web: Web
   email: Correo electrónico
-  press_room: Sala de prensa (dossier, cartel, logotipos, vídeos y fotos)
+  press_room: Sala de prensa (dossier, cartel, vídeos y fotos)
 figures:
   - value: "2"
     label: fases

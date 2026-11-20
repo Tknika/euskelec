@@ -83,7 +83,7 @@ menus:
 - **Technical documentation page**: no Markdown body; its front matter holds the rules and challenges PDFs (`documents`) and a summary of them: the challenge calendar, the scoring system and the vehicle's dimensions and powertrain kit (see AGENTS.md). When new PDFs arrive, update it in the three languages.
 - **Sponsors and organisers**: `params.organizers`, `params.sponsors`, `params.collaborators` in `hugo.toml` (white PNG logos). Organisers are shown bigger, all at one height. Sponsors and collaborators get the same visible area whatever their shape, so their PNGs must be trimmed to the drawing, with no transparent margin (the untrimmed originals are in `_originals/logos-padded/`).
 - **Videos**: `{{< videos >}}` (`VIDEO_ID | Title | Year` per line), then run `scripts/fetch-video-thumbs.sh` to add the preview images.
-- **Press room (Media page)**: press kit PDFs from `scripts/build-dossier.sh`, organisers' logos listed in `data/press-logos.yaml` (shown with `{{< press-logos >}}`).
+- **Press room (Media page)**: press kit PDFs from `scripts/build-dossier.sh`, poster, videos and photos.
 - **Photos**: one album per edition or phase, a page in `content/<lang>/media/` with `layout: album` and its photos in the front matter (`photos`: `src` + `alt`; optional `video`, `cover`, `weight` for the order). The Media page lists them as cards (`{{< albums >}}`). Put the photos at about 1600 px and 640×480 thumbnails in a `thumbs/` folder beside them (used automatically); originals in `_originals/photos/`. The photos open in a lightbox. For a few photos inside a page's text there is also `{{< gallery >}}` (`path | alt text` per line).
 
 ### Shortcodes

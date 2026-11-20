@@ -16,7 +16,7 @@ labels:
   resources: Baliabideak
   web: Webgunea
   email: Posta elektronikoa
-  press_room: Prentsa-gunea (dossierra, kartela, logotipoak, bideoak eta argazkiak)
+  press_room: Prentsa-gunea (dossierra, kartela, bideoak eta argazkiak)
 figures:
   - value: "2"
     label: fase

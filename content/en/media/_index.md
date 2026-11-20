@@ -2,7 +2,7 @@
 title: Media
 translationKey: media
 eyebrow: Euskelec
-description: "Resources for journalists and the media: press kit, poster, logos, videos and photos."
+description: "Resources for journalists and the media: press kit, poster, videos and photos."
 weight: 45
 wide: true
 menus:
@@ -15,12 +15,6 @@ docs/euskelec-press-kit.pdf | Press kit | PDF · 4 pages
 docs/euskelec-ix-kartela.pdf | Euskelec IX poster | PDF · 7 MB
 mailto:admin@euskelec.eus | Press contact | admin@euskelec.eus
 {{< /downloads >}}
-
-## Logos
-
-Official logos of the organisers, for use in the media.
-
-{{< press-logos >}}
 
 ## Videos
 

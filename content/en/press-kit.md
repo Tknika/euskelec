@@ -15,7 +15,7 @@ labels:
   resources: Resources
   web: Website
   email: Email
-  press_room: Press room (press kit, poster, logos, videos and photos)
+  press_room: Press room (press kit, poster, videos and photos)
 figures:
   - value: "2"
     label: phases

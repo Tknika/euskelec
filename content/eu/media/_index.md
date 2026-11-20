@@ -2,7 +2,7 @@
 title: Media
 translationKey: media
 eyebrow: Euskelec
-description: "Kazetari eta komunikabideentzako baliabideak: prentsa-dossierra, kartela, logotipoak, bideoak eta argazkiak."
+description: "Kazetari eta komunikabideentzako baliabideak: prentsa-dossierra, kartela, bideoak eta argazkiak."
 weight: 45
 wide: true
 menus:
@@ -15,12 +15,6 @@ docs/euskelec-prentsa-dossierra.pdf | Prentsa-dossierra | PDF · 4 orrialde
 docs/euskelec-ix-kartela.pdf | Euskelec IX kartela | PDF · 7 MB
 mailto:admin@euskelec.eus | Prentsarako harremana | admin@euskelec.eus
 {{< /downloads >}}
-
-## Logotipoak
-
-Antolatzaileen logotipo ofizialak, komunikabideetan erabiltzeko.
-
-{{< press-logos >}}
 
 ## Bideoak
 
