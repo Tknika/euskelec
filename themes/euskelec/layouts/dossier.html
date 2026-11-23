@@ -21,9 +21,10 @@
   {{ partial "css.html" . }}
 </head>
 <body class="dossier">
+<main>
 
   {{/* 1. Cover */}}
-  <section class="dossier-page flex flex-col bg-brand text-white">
+  <section class="dossier-page flex flex-col bg-brand-700 text-white">
     {{ partial "symbol.html" "pointer-events-none absolute -right-[18mm] top-[34mm] w-[150mm] text-white/10" }}
     {{/* The logo, and what this document is, big, in a lime label (asked in November 2026: the small eyebrow went unnoticed) */}}
     <div class="relative flex items-center justify-between gap-[8mm] px-[18mm] pt-[18mm]">
@@ -48,13 +49,13 @@
     <p class="eyebrow mt-[12mm] text-[3.6mm]">{{ $l.figures }}</p>
     <ul class="mt-[5mm] grid grid-cols-4 gap-px bg-white">
       {{ range .Params.figures }}
-        <li class="bg-brand px-[4mm] py-[6mm] text-white">
+        <li class="bg-brand-700 px-[4mm] py-[6mm] text-white">
           <span class="block font-display text-[12mm] font-bold leading-none">{{ .value }}</span>
           <span class="mt-[2mm] block font-display text-[4.2mm] font-semibold">{{ .label }}</span>
         </li>
       {{ end }}
       {{ with (index hugo.Data.participants "X").teams }}
-        <li class="bg-brand px-[4mm] py-[6mm] text-white">
+        <li class="bg-brand-700 px-[4mm] py-[6mm] text-white">
           <span class="block font-display text-[12mm] font-bold leading-none">{{ len . }}</span>
           <span class="mt-[2mm] block font-display text-[4.2mm] font-semibold">{{ $.Params.participants_label }}</span>
         </li>
@@ -134,11 +135,12 @@
       </div>
     </div>
 
-    <div class="mt-auto flex items-end justify-between bg-brand px-[10mm] py-[8mm] text-white">
+    <div class="mt-auto flex items-end justify-between bg-brand-700 px-[10mm] py-[8mm] text-white">
       <div class="text-[7mm]">{{ partial "logo.html" "" }}</div>
       {{ partial "symbol.html" "h-[14mm] w-auto text-white/30" }}
     </div>
   </section>
 
+</main>
 </body>
 </html>

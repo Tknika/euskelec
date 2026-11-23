@@ -55,9 +55,9 @@
     </ol>
 
     <div class="grid gap-6 lg:grid-cols-2">
-      {{/* Goals, on the Euskelec blue: large bold text (white on this blue needs it) */}}
+      {{/* Goals, on brand-700: white on the plain Euskelec blue is 4.36:1, not enough for this text */}}
       {{ with .goals }}
-        <div class="relative overflow-hidden bg-brand p-6 text-white sm:p-8">
+        <div class="relative overflow-hidden bg-brand-700 p-6 text-white sm:p-8">
           {{ partial "symbol.html" "pointer-events-none absolute -bottom-6 -right-6 w-40 text-white/10" }}
           <p class="eyebrow eyebrow-light relative text-sm">{{ $.Page.Params.intro.goals_title }}</p>
           <ul class="not-prose relative mt-5 space-y-4">

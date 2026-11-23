@@ -73,6 +73,17 @@
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-brand-700;
   }
+  /* On dark backgrounds the blue ring would not show (1.4:1 on the footer): white there (WCAG 2.4.7, 1.4.11).
+     In the home header it follows the text colour: white over the video, ink once the header turns white. */
+  :where(footer, .bg-brand, .bg-brand-700, .bg-brand-800, .bg-brand-900) :focus-visible {
+    outline-color: #fff;
+  }
+  .header-home :focus-visible {
+    outline-color: var(--hdr-fg);
+  }
+  .header-home nav.bg-white :focus-visible {
+    outline-color: var(--color-brand-700);
+  }
 }
 
 @layer components {
@@ -110,12 +121,13 @@
     }
   }
 
-  /* The home video, tinted with the Euskelec blue: deeper at the bottom and on the left, where the text goes */
+  /* The home video, tinted with the Euskelec blue: deeper at the bottom and on the left, where the text goes,
+     and under the transparent header (85% → 80% over its 6rem), so its white text keeps ≥4.5:1 on any frame (WCAG 1.4.3) */
   .hero-shade {
     background:
       linear-gradient(to top, color-mix(in oklab, var(--color-brand-900) 92%, transparent) 0%, color-mix(in oklab, var(--color-brand-800) 55%, transparent) 40%, transparent 70%),
       linear-gradient(to right, color-mix(in oklab, var(--color-brand-800) 65%, transparent) 0%, transparent 60%),
-      linear-gradient(to bottom, color-mix(in oklab, var(--color-brand-900) 55%, transparent) 0, transparent 8rem),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-brand-900) 85%, transparent) 0, color-mix(in oklab, var(--color-brand-900) 80%, transparent) 6rem, transparent 11rem),
       color-mix(in oklab, var(--color-brand) 18%, transparent);
   }
 
