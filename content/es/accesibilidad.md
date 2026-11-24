@@ -24,9 +24,8 @@ El contenido que se recoge a continuación no es accesible por lo siguiente:
 
 ### Falta de conformidad con el Real Decreto 1112/2018
 
-- Las fotografías de los álbumes de 2018 y 2019 tienen un texto alternativo genérico («Foto 1», «Foto 2»…) que no describe lo que muestran (requisito 9.1.1.1 de la norma UNE-EN 301 549:2022, criterio 1.1.1 de las WCAG 2.1).
-- Algunos vídeos de las páginas Formación y Media, alojados en YouTube, pueden no tener subtítulos revisados ni audiodescripción (requisitos 9.1.2.2 y 9.1.2.5; criterios 1.2.2 y 1.2.5).
-- Los documentos PDF del reglamento y de los desafíos en euskera e inglés indican el español como idioma del documento, por lo que los lectores de pantalla pueden leerlos con una pronunciación incorrecta (requisito 10.3.1; criterio 3.1.1).
+- Algunos vídeos de las páginas Formación y Media, alojados en YouTube, pueden no tener subtítulos revisados ni audiodescripción (requisitos 9.1.2.2 y 9.1.2.5 de la norma UNE-EN 301 549:2022; criterios 1.2.2 y 1.2.5 de las WCAG 2.1).
+- En los documentos PDF del reglamento y de los desafíos, algunos fragmentos de texto están marcados con un idioma distinto del suyo, por lo que los lectores de pantalla pueden leerlos con una pronunciación incorrecta (requisito 10.3.2; criterio 3.1.2).
 - El cartel de la IX edición en PDF no tiene etiquetas de estructura ni texto alternativo (requisitos 10.1.1.1 y 10.1.3.1; criterios 1.1.1 y 1.3.1).
 
 ### Carga desproporcionada

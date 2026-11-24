@@ -24,9 +24,8 @@ Behean jasotako edukiak ez dira irisgarriak, arrazoi hauengatik:
 
 ### 1112/2018 Errege Dekretuarekiko adostasun-eza
 
-- 2018ko eta 2019ko albumetako argazkiek testu alternatibo generikoa dute («1. argazkia», «2. argazkia»…), eta ez dute deskribatzen zer erakusten duten (UNE-EN 301 549:2022 arauaren 9.1.1.1 betekizuna, WCAG 2.1eko 1.1.1 irizpidea).
-- Formakuntza eta Media orrietako bideo batzuek, YouTuben daudenek, baliteke azpititulu berrikusirik eta audio-deskribapenik ez izatea (9.1.2.2 eta 9.1.2.5 betekizunak; 1.2.2 eta 1.2.5 irizpideak).
-- Araudiaren eta erronken PDF dokumentuek, euskaraz eta ingelesez, gaztelania adierazten dute dokumentuaren hizkuntza gisa; beraz, pantaila-irakurgailuek ahoskera okerrarekin irakur ditzakete (10.3.1 betekizuna; 3.1.1 irizpidea).
+- Formakuntza eta Media orrietako bideo batzuek, YouTuben daudenek, baliteke azpititulu berrikusirik eta audio-deskribapenik ez izatea (UNE-EN 301 549:2022 arauaren 9.1.2.2 eta 9.1.2.5 betekizunak; WCAG 2.1eko 1.2.2 eta 1.2.5 irizpideak).
+- Araudiaren eta erronken PDF dokumentuetan, testu-zati batzuk berea ez den hizkuntza batekin markatuta daude; beraz, pantaila-irakurgailuek ahoskera okerrarekin irakur ditzakete (10.3.2 betekizuna; 3.1.2 irizpidea).
 - IX. edizioko kartelak, PDFn, ez du egitura-etiketarik ez testu alternatiborik (10.1.1.1 eta 10.1.3.1 betekizunak; 1.1.1 eta 1.3.1 irizpideak).
 
 ### Neurriz kanpoko zama

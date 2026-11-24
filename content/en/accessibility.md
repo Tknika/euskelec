@@ -24,9 +24,8 @@ The content listed below is non-accessible for the following reasons:
 
 ### Non-compliance with Royal Decree 1112/2018
 
-- The photos in the 2018 and 2019 albums have a generic text alternative ("Photo 1", "Photo 2"…) that does not describe what they show (requirement 9.1.1.1 of standard EN 301 549 v3.2.1, WCAG 2.1 success criterion 1.1.1).
-- Some videos on the Training and Media pages, hosted on YouTube, may lack reviewed captions and audio description (requirements 9.1.2.2 and 9.1.2.5; criteria 1.2.2 and 1.2.5).
-- The PDF documents of the rules and the challenges in Basque and English declare Spanish as the document language, so screen readers may read them with the wrong pronunciation (requirement 10.3.1; criterion 3.1.1).
+- Some videos on the Training and Media pages, hosted on YouTube, may lack reviewed captions and audio description (requirements 9.1.2.2 and 9.1.2.5 of standard EN 301 549 v3.2.1; WCAG 2.1 success criteria 1.2.2 and 1.2.5).
+- In the PDF documents of the rules and the challenges, some passages are marked with a language other than their own, so screen readers may read them with the wrong pronunciation (requirement 10.3.2; criterion 3.1.2).
 - The poster of the 9th edition, in PDF, has no structure tags or text alternative (requirements 10.1.1.1 and 10.1.3.1; criteria 1.1.1 and 1.3.1).
 
 ### Disproportionate burden
